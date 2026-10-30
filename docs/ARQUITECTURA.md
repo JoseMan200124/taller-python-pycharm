@@ -29,6 +29,64 @@ flowchart LR
 
 Si mañana se cambia SQLite por PostgreSQL, solo se toca `base_datos.py`. Esa es la lección de fondo del diseño por capas.
 
+## ¿Por qué está dividido así?
+
+### El problema que resuelve
+
+La lección 07 hace el mismo CRUD en un solo archivo de unas 200 líneas, y funciona. Pero tiene tres problemas que aparecen en cuanto el sistema crece:
+
+1. **Un cambio toca todo.** Para cambiar SQLite por MySQL hay que buscar SQL mezclado entre botones.
+2. **No se puede probar sin abrir la ventana.** Para comprobar que `crear()` funciona hay que hacer clic a mano.
+3. **No se puede trabajar en equipo.** Dos personas en el mismo archivo chocan.
+
+`app_crud/` es el mismo sistema, pero además **se puede cambiar, probar y repartir**.
+
+### Una analogía: un restaurante
+
+| Restaurante | Archivo | Qué hace |
+|---|---|---|
+| El mesero | `ventana_principal.py` | Atiende al cliente y lleva pedidos. **No cocina.** |
+| El que revisa la orden | `validaciones.py` | «¿Ese platillo existe? ¿Falta algo?» |
+| El cocinero | `repositorio.py` | Sabe preparar cada platillo: crear, listar, actualizar, eliminar. |
+| La bodega | `base_datos.py` | La única puerta a los ingredientes (SQLite). |
+| La comanda | `modelo.py` | El papel con el pedido que pasa de mano en mano: el `Estudiante`. |
+
+Si el mesero entrara a la bodega a sacar ingredientes, sería un desorden. Eso es la lección 07.
+
+### Cada pieza ya apareció en una lección
+
+| Archivo | Lección donde se vio | Qué cambia aquí |
+|---|---|---|
+| `modelo.py` | 03 (diccionario = ficha) | El diccionario pasa a ser una `dataclass`. |
+| `validaciones.py` | 02 (`if`, `try/except`) | Las mismas validaciones, juntas en una función. |
+| `base_datos.py` | 04 (conectar, `CREATE TABLE`) | La conexión vive en una clase: la única puerta a SQLite. |
+| `repositorio.py` | 05 (`crear()`, `listar()`…) | Las mismas cuatro funciones, dentro de una clase. |
+| `ventana_principal.py` | 06 y 07 (botones, `command=`) | La ventana ya no sabe SQL: le pide todo al repositorio. |
+
+Estos cinco archivos son los que muestra el visor de código, porque son los únicos por los que pasa el dato. Los demás (`configuracion.py`, `datos_ejemplo.py` y casi todo `interfaz/`) son apariencia y ayudas didácticas.
+
+### Buenas prácticas aplicadas
+
+| # | Práctica | Dónde se ve |
+|---|---|---|
+| 1 | **Separación de responsabilidades**: cada archivo tiene un solo trabajo. | Busca `INSERT` en `ventana_principal.py`: no hay ninguno. |
+| 2 | **Arquitectura por capas**: cada capa solo llama a la de abajo. | `Ventana → Repositorio → BaseDatos → taller.db`; el visor siempre recorre las pestañas en ese orden. |
+| 3 | **Patrón Repositorio**: todo el CRUD de una tabla en una clase. | `repo.crear(estudiante)`: quien lo llama no ve el SQL. |
+| 4 | **Un solo punto de acceso a la base de datos**. | Todo SQL pasa por `BaseDatos.ejecutar()` o `consultar()`; por eso la Consola SQL se agregó sin tocar nada más. |
+| 5 | **Modelo de datos explícito**. | `estudiante.correo` en vez de `fila[2]`; `Estudiante.desde_fila()` traduce en un solo lugar. |
+| 6 | **Defensa en profundidad**: se valida dos veces. | Python valida primero, con mensajes amables (`validaciones.py`); SQLite valida al final con `UNIQUE`, `CHECK` y `NOT NULL`. |
+| 7 | **Consultas parametrizadas** (`?`) siempre. | Todo `repositorio.py`; `test_inyeccion_sql_no_funciona` lo comprueba. |
+| 8 | **Transacciones**. | `with self.conexion:` en `ejecutar()`: COMMIT si todo sale bien, ROLLBACK si algo falla. |
+| 9 | **Los errores se relanzan, no se esconden**. | `base_datos.py` avisa y hace `raise`; la ventana es la que se lo explica al usuario. |
+| 10 | **Inyección de dependencias**: las piezas se conectan en un solo lugar. | `main.py` crea `BaseDatos`, se la pasa al repositorio y los dos a la ventana. Las pruebas usan `BaseDatos(":memory:")`. |
+| 11 | **Pruebas automáticas**. | `tests/test_crud.py`. Solo es posible porque el CRUD no depende de la ventana. |
+| 12 | **Configuración centralizada**. | Colores, rutas y carreras en `configuracion.py`. |
+| 13 | **Legibilidad**. | Type hints (`-> int`), docstrings, una cabecera con diagrama en cada archivo y avisos como `# ⚠️ sin WHERE se borra TODO`. |
+
+**Regla para recordar:** cada archivo tiene un solo trabajo. La ventana no sabe SQL y el repositorio no sabe de botones.
+
+> Para un CRUD de una sola tabla, esta estructura es más de lo estrictamente necesario. Se hizo así a propósito: enseña cómo se organiza un sistema que va a crecer.
+
 ## Recorrido de una operación
 
 Así viaja el dato cuando el usuario pulsa **Crear**:

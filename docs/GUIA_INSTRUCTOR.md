@@ -125,6 +125,16 @@ app_crud/
 
 Regla que conviene repetir: **cada archivo tiene un solo trabajo**. La ventana no sabe SQL; el repositorio no sabe de botones.
 
+### Cómo presentar la división (5 minutos, antes de abrir los archivos)
+
+1. Proyecta la lección 07 y pregunta: *«¿Qué pasa si mañana el jefe dice "cambien a MySQL"?»*. Que respondan: hay que buscar SQL por todo el archivo.
+2. Cuenta la analogía del restaurante: el mesero (ventana), el que revisa la orden (validaciones), el cocinero (repositorio), la bodega (base de datos) y la comanda (modelo).
+3. Muestra la tabla «Cada pieza ya apareció en una lección»: nada es nuevo, solo está ordenado.
+4. Explica los cinco archivos del visor **de abajo hacia arriba** (`modelo → base_datos → repositorio → validaciones → ventana_principal`, solo `crear()`). Luego sigue un clic en el visor **de arriba hacia abajo**.
+5. Corre las pruebas y cierra: *«Esto solo se puede hacer porque separamos.»*
+
+La justificación completa (las 13 buenas prácticas y dónde se ve cada una) está en [`ARQUITECTURA.md` → ¿Por qué está dividido así?](ARQUITECTURA.md#por-qué-está-dividido-así).
+
 Para empezar con la base vacía: cerrar la app y borrar `app_crud/taller.db`.
 
 ---
