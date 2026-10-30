@@ -1,0 +1,16 @@
+# Bases de datos que se generan al ejecutar
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# PyCharm
+.idea/
+
+# Sistema operativo y herramientas
+.DS_Store
+Thumbs.db
+.playwright-mcp/

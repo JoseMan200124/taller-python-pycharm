@@ -1,0 +1,1507 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller Python con PyCharm</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: la app del taller y su código lado a lado (pantalla ancha) o uno sobre otro (pantalla angosta); después, secciones de apoyo para proyectar. */
+:root{
+  --papel:#F3F5FA; --tarjeta:#FFFFFF; --tinta:#17213A; --suave:#5C6883; --linea:#D6DCE8;
+  --azul:#1F3A68; --azul-claro:#2F6FDE; --amarillo:#FFD43B;
+  --crear:#1E9E5A; --leer:#2F6FDE; --actualizar:#D98200; --eliminar:#D64545;
+  --consola:#111722; --consola-tinta:#D6DEEB; --consola-suave:#6E7A91; --morado:#B07FE0;
+  --f-display:"Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --f-texto:"Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
+  --f-codigo:"JetBrains Mono", Consolas, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --papel:#0E1424; --tarjeta:#161F33; --tinta:#E7ECF6; --suave:#98A4BE; --linea:#2A3550;
+  --azul:#9DB8F0; --azul-claro:#6E9BF5; --amarillo:#FFD43B;
+  --crear:#3CC47A; --leer:#6E9BF5; --actualizar:#F2A33A; --eliminar:#F06C6C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --papel:#0E1424; --tarjeta:#161F33; --tinta:#E7ECF6; --suave:#98A4BE; --linea:#2A3550;
+  --azul:#9DB8F0; --azul-claro:#6E9BF5; --amarillo:#FFD43B;
+  --crear:#3CC47A; --leer:#6E9BF5; --actualizar:#F2A33A; --eliminar:#F06C6C; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--f-texto);font-size:17px;line-height:1.55}
+.envoltura{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ancha{max-width:1720px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.08}
+h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.01em}
+h3{font-size:20px;font-weight:800}
+p{margin:0;max-width:68ch}
+code{font-family:var(--f-codigo);font-size:.9em}
+.etiqueta{font-family:var(--f-codigo);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--suave)}
+section{padding-block:52px;border-top:1px solid var(--linea)}
+.cabeza-seccion{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:baseline;margin-bottom:26px}
+.num{font-family:var(--f-codigo);font-weight:700;font-size:14px;color:var(--papel);background:var(--tinta);border-radius:999px;padding:3px 10px;align-self:center}
+.cabeza-seccion p{grid-column:2;color:var(--suave)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--amarillo);outline-offset:2px}
+
+/* ───────── Portada ───────── */
+.portada{background:#1F3A68;color:#fff;padding-block:40px 44px}
+.portada .etiqueta{color:#AFC2E6}
+.portada h1{font-size:clamp(34px,5.4vw,64px);font-weight:800;letter-spacing:-.02em;margin-top:12px;max-width:20ch}
+.portada h1 span{color:#FFD43B}
+.portada p{color:#D5E0F5;margin-top:14px;font-size:19px}
+.portada-pie{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;align-items:center}
+.letra{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border-radius:10px;padding:7px 14px 7px 7px;font-size:14px;color:#D5E0F5}
+.letra b{font-family:var(--f-display);font-size:20px;width:34px;height:34px;display:grid;place-items:center;border-radius:8px;color:#fff}
+.ir{margin-left:auto;background:#FFD43B;color:#1F3A68;font-weight:700;border-radius:10px;padding:10px 18px;text-decoration:none}
+
+/* ───────── Escritorio: app + visor ───────── */
+.escritorio{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:1280px){.escritorio{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);align-items:start}}
+
+/* La ventana de la app imita a la app de tkinter: siempre clara, como en PyCharm. */
+.ventana-app{position:relative;background:#EEF2F8;color:#1C2333;border-radius:12px;overflow:hidden;box-shadow:0 18px 50px rgba(15,25,50,.22);font-size:14px;min-width:0;border:1px solid #C9D2E2}
+.cromo{display:flex;align-items:center;gap:7px;background:#DCE3EE;padding:8px 12px;font-size:12px;color:#5F6B82}
+.cromo i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.cromo span{margin-left:8px}
+.app-enc{display:flex;align-items:center;gap:12px;background:#1F3A68;color:#fff;padding:12px 16px;flex-wrap:wrap}
+.logo{width:34px;height:34px;position:relative;flex:none}
+.logo::before,.logo::after{content:"";position:absolute;width:20px;height:20px}
+.logo::before{left:0;top:0;background:#4B8BBE}.logo::after{right:0;bottom:0;background:#FFD43B}
+.app-enc h3{font-size:18px;font-family:var(--f-texto)}
+.app-enc small{display:block;color:#FFD43B;font-size:12px}
+.ver-codigo{margin-left:auto;background:#FFD43B;color:#1F3A68;border:0;border-radius:7px;padding:7px 12px;font-weight:700;font-size:13px}
+.insignias{display:flex;gap:6px}
+.insignia{text-align:center;font-size:10px;color:#AFC2E6}
+.insignia b{display:grid;place-items:center;width:34px;height:30px;border-radius:5px;background:#3A5079;color:#fff;font-size:16px;margin-bottom:2px}
+.insignia.pulso b{animation:pulso .9s ease-out}
+@keyframes pulso{from{background:var(--c)}}
+.app-cuerpo{display:grid;grid-template-columns:250px minmax(0,1fr);gap:12px;padding:12px}
+@media (max-width:760px){.app-cuerpo{grid-template-columns:1fr}}
+.t{background:#fff;border-radius:6px;padding:12px;min-width:0}
+.t h4{margin:0 0 6px;font-size:14px}
+.form-campo{display:grid;gap:2px;margin-bottom:6px;min-width:0}
+.form-campo label{font-size:13px}
+.form-campo input,.form-campo select{font:inherit;font-size:14px;padding:6px 8px;border:1.5px solid #D5DCE8;border-radius:4px;background:#fff;color:#1C2333;width:100%;min-width:0}
+.form-campo.mal input,.form-campo.mal select{background:#FDECEC;border-color:#C62828}
+.form-campo small{font-size:11px;color:#5F6B82;min-height:15px}
+.form-campo.mal small{color:#C62828}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.form-titulo{font-weight:700;font-size:15px}
+.form-titulo.editando{color:#E08A00}
+.pista{font-size:12px;color:#5F6B82;margin-bottom:8px}
+.botones{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.bt{border:0;border-radius:4px;padding:9px 6px;color:#fff;font-weight:700;font-size:14px}
+.bt:disabled{background:#C9CFDA!important;cursor:not-allowed}
+.bt.c{background:#1E9E5A}.bt.u{background:#E08A00}.bt.d{background:#D64545}
+.bt.l{background:#fff;color:#1C2333;border:1px solid #D5DCE8;font-weight:400}
+.confirmar{margin-top:8px;background:#FDECEC;border:1px solid #D64545;border-radius:5px;padding:8px;font-size:13px}
+.confirmar div{display:flex;gap:6px;margin-top:6px}
+.confirmar button{flex:1;border:0;border-radius:4px;padding:6px;font-size:13px}
+.app-der{display:grid;gap:12px;min-width:0}
+.tabla-cab{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.tabla-cab h4{margin:0;margin-right:auto}
+.tabla-cab input{font:inherit;font-size:13px;padding:5px 8px;border:1.5px solid #D5DCE8;border-radius:4px;width:170px;max-width:100%;background:#fff;color:#1C2333}
+.tabla-scroll{max-height:236px;overflow:auto;border:1px solid #D5DCE8}
+.app-tabla{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.app-tabla th{position:sticky;top:0;background:#1F3A68;color:#fff;padding:6px 8px;text-align:left;font-weight:700}
+.app-tabla td{padding:6px 8px;border-top:1px solid #EEF2F8;white-space:nowrap}
+.app-tabla tbody tr{cursor:pointer}
+.app-tabla tbody tr:nth-child(even){background:#F6F8FC}
+.app-tabla tbody tr:hover{background:#E6EEFC}
+.app-tabla tbody tr.sel{background:#2F6FDE;color:#fff}
+.app-tabla tr.destello{animation:destello 1.4s ease-out}
+@keyframes destello{from{background:var(--c)}}
+.vacio{text-align:center;color:#5F6B82;padding:18px}
+.ruta-dato{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center}
+.ruta-dato h4{margin:0}
+.estaciones{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+.riel{position:absolute;left:10%;right:10%;top:12px;height:4px;background:#D5DCE8;border-radius:3px}
+.riel i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--c,#2F6FDE);border-radius:3px;transition:width 1.6s ease-out}
+.estacion{text-align:center;position:relative;z-index:1;font-size:11px}
+.estacion b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 3px;border-radius:50%;border:2px solid #D5DCE8;background:#fff;color:#fff;font-size:13px;transition:background .2s,border-color .2s}
+.estacion.ok b{background:var(--c);border-color:var(--c)}
+.estacion.salto{opacity:.35}
+.estacion.aqui b{box-shadow:0 0 0 4px #FFD43B;transform:scale(1.18)}
+.estacion.aqui{font-weight:700}
+.estacion small{display:none}
+.abajo{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:12px}
+@media (max-width:760px){.abajo{grid-template-columns:1fr}}
+.pizarra .franja{height:4px;background:#D5DCE8;margin:4px 0 8px;border-radius:2px}
+.pizarra-texto{font-size:13.5px;min-height:118px;line-height:1.5;white-space:pre-wrap}
+.pizarra-texto .k{font-family:var(--f-codigo);font-weight:700;background:#EDF2FB;color:#1F3A68;padding:0 3px;border-radius:3px;font-size:12.5px}
+.pizarra-texto .s{color:#5F6B82}
+.pizarra-texto .tit{font-weight:700}
+.pest{display:flex;gap:4px;margin:-4px 0 6px}
+.pest button{border:0;background:#EEF2F8;color:#1C2333;border-radius:4px 4px 0 0;padding:5px 10px;font-size:12.5px}
+.pest button[aria-selected="true"]{background:#111722;color:#fff}
+.consola{background:#111722;color:#D6DEEB;font-family:var(--f-codigo);font-size:11.5px;line-height:1.45;padding:8px 10px;height:150px;overflow:auto;border-radius:4px;white-space:pre-wrap;word-break:break-word}
+.consola .h{color:#6E7A91}.consola .kw{color:#C792EA;font-weight:700}.consola .val{color:#FFD43B}.consola .err{color:#FF7B7B;font-weight:700}
+.consola .INSERT{color:#3CC47A;font-weight:700}.consola .SELECT{color:#6E9BF5;font-weight:700}.consola .UPDATE{color:#F2A33A;font-weight:700}.consola .DELETE{color:#F06C6C;font-weight:700}
+.grafico{height:150px;overflow:auto;display:grid;gap:5px;align-content:start;padding:4px 2px}
+.barra-fila{display:grid;grid-template-columns:130px 1fr 26px;gap:8px;align-items:center;font-size:12px}
+.barra-fila span:first-child{text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.barra-fila div{height:14px;background:#EEF2F8;border-radius:3px;overflow:hidden}
+.barra-fila div i{display:block;height:100%;width:0;transition:width .7s ease-out}
+.app-estado{display:flex;justify-content:space-between;gap:10px;padding:0 14px 10px;font-size:11.5px;color:#5F6B82;flex-wrap:wrap}
+.toast{position:absolute;right:16px;bottom:34px;color:#fff;font-weight:700;padding:10px 16px;border-radius:5px;transform:translateX(130%);transition:transform .35s cubic-bezier(.2,.9,.3,1.2);pointer-events:none;max-width:80%}
+.toast.ver{transform:none}
+
+/* ───────── Visor de código (tema oscuro de PyCharm, siempre oscuro) ───────── */
+.visor{--op:#2F6FDE;background:#1E1F22;color:#BCBEC4;border-radius:12px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35);display:flex;flex-direction:column;min-width:0;border:1px solid #393B40}
+.visor:focus-visible{outline:3px solid #FFD43B}
+.visor.llamar{animation:llamar 1s ease-out}
+@keyframes llamar{from{box-shadow:0 0 0 6px #FFD43B}}
+.v-barra{display:flex;align-items:center;gap:12px;background:#2B2D30;padding:10px 14px;flex-wrap:wrap}
+.v-barra .marca{font-family:var(--f-codigo);font-weight:700;color:#FFD43B;font-size:18px}
+.v-titulo{font-weight:700;color:var(--op)}
+.v-titulo small{display:block;color:#7A7E85;font-weight:400;font-size:12px}
+.v-controles{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.v-controles button{border:1px solid #393B40;background:#2B2D30;color:#DFE1E5;border-radius:5px;padding:5px 10px;font-size:13px;font-weight:700}
+.v-controles button:hover{background:#393B40}
+.vel{display:flex;border:1px solid #393B40;border-radius:5px;overflow:hidden}
+.vel button{border:0;border-radius:0;font-weight:400;padding:5px 8px;background:#1E1F22}
+.vel button[aria-pressed="true"]{background:#393B40;color:#fff}
+.v-controles .grande{background:var(--op);border-color:var(--op);color:#fff;padding:6px 14px;font-size:14px}
+.v-controles .grande:hover{background:var(--op);filter:brightness(1.12)}
+.v-controles button:disabled{opacity:.4;cursor:default}
+.v-pestanas{display:flex;background:#2B2D30;overflow-x:auto;border-top:1px solid #393B40}
+.v-pestanas button{border:0;background:transparent;color:#7A7E85;font-family:var(--f-codigo);font-size:12.5px;padding:7px 12px 6px;border-bottom:3px solid transparent;white-space:nowrap}
+.v-pestanas button.activa{background:#1E1F22;color:#fff;border-bottom-color:var(--op)}
+.v-pestanas button i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:6px;background:transparent;vertical-align:middle}
+.v-pestanas button.visto i{background:var(--op)}
+.v-codigo{height:520px;overflow:auto;font-family:var(--f-codigo);font-size:var(--letra,13.5px);line-height:1.62;padding:6px 0;position:relative}
+.archivo[hidden]{display:none}
+.l{display:flex;white-space:pre;min-width:max-content;padding-right:16px;transition:background .3s}
+.l .n{width:50px;flex:none;text-align:right;padding-right:16px;color:#4B5059;user-select:none}
+.l.hecha{background:color-mix(in srgb,var(--op) 14%,transparent)}
+.l.activa{background:color-mix(in srgb,var(--op) 42%,transparent);box-shadow:inset 4px 0 0 var(--op);animation:brillo .9s ease-out}
+.l.activa .n{color:#FFD43B;font-weight:700}
+.l.err{background:#B93B3B!important;color:#fff}
+.l.err span{color:#fff!important}
+@keyframes brillo{from{background:color-mix(in srgb,var(--op) 80%,transparent)}}
+.py-k{color:#CF8E6D}.py-s{color:#6AAB73}.py-c{color:#7A7E85;font-style:italic}.py-n{color:#2AACB8}
+.py-d{color:#56A8F5}.py-self{color:#94558D}.py-b{color:#8888C6}.py-dec{color:#B3AE60}
+.v-depura{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:1px;background:#393B40;border-top:1px solid #393B40}
+.v-depura>div{background:#2B2D30;padding:8px 12px;min-width:0}
+.v-depura h5{margin:0 0 4px;font-size:11.5px;font-weight:400;color:#7A7E85}
+.v-depura pre{margin:0;font-family:var(--f-codigo);font-size:12px;line-height:1.5;height:96px;overflow:auto;white-space:pre}
+.pila .actual{color:#fff;font-weight:700}.pila .otra{color:#7A7E85}
+.vars .nom{color:#56A8F5}.vars .cambio{color:#FFD43B;font-weight:700}
+.v-progreso{height:10px;background:#1E1F22;cursor:pointer}
+.v-progreso i{display:block;height:100%;width:0;background:var(--op);transition:width .2s}
+.v-estado{background:#2B2D30;padding:7px 14px;font-size:12.5px;color:#BCBEC4;min-height:34px}
+.v-estado b{color:#FFD43B;font-weight:400}
+@media (max-width:760px){.v-codigo{height:380px;font-size:12.5px}.v-depura{grid-template-columns:1fr}}
+
+/* ───────── Secciones de apoyo ───────── */
+.ruta{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,1fr);position:relative}
+.ruta::before{content:"";position:absolute;left:7%;right:7%;top:23px;height:4px;background:var(--linea);border-radius:4px}
+.ruta li{position:relative;text-align:center;padding:0 6px}
+.ruta .punto{width:50px;height:50px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-codigo);font-weight:700;background:var(--tarjeta);border:3px solid var(--azul-claro);color:var(--azul-claro);position:relative;z-index:1}
+.ruta li.meta .punto{background:var(--amarillo);border-color:var(--amarillo);color:#17213A}
+.ruta h3{font-size:16px}
+.ruta small{display:block;color:var(--suave);font-size:13px;margin-top:4px}
+.ruta .min{font-family:var(--f-codigo);font-size:12px;color:var(--azul-claro);margin-top:6px;display:block}
+.capas{display:grid;gap:10px}
+.capa{display:grid;grid-template-columns:210px 1fr auto;gap:16px;align-items:center;background:var(--tarjeta);border:1px solid var(--linea);border-radius:12px;padding:14px 18px}
+.capa code{font-weight:700;color:var(--azul-claro)}
+.capa p{color:var(--suave);font-size:15px}
+.capa .sabe{font-size:13px;color:var(--suave);white-space:nowrap}
+.flecha{text-align:center;color:var(--suave);font-family:var(--f-codigo);font-size:13px;line-height:1}
+.iny{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.iny-caja{border-radius:12px;padding:18px;border:2px solid var(--linea);background:var(--tarjeta);min-width:0}
+.iny-caja.mal{border-color:color-mix(in srgb,var(--eliminar) 60%,transparent)}
+.iny-caja.bien{border-color:color-mix(in srgb,var(--crear) 60%,transparent)}
+.sql{background:var(--consola);color:var(--consola-tinta);border-radius:10px;padding:14px 16px;font-family:var(--f-codigo);font-size:14px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin-top:12px}
+.sql .kw{color:var(--morado);font-weight:700}.sql .val{color:#FFD43B}.sql .cm{color:var(--consola-suave)}
+.resultado{margin-top:12px;font-weight:700}
+.resultado.peligro{color:var(--eliminar)}.resultado.ok{color:var(--crear)}
+.entrada-iny{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.entrada-iny input{font-family:var(--f-codigo);font-size:16px;padding:10px 12px;border:1.5px solid var(--linea);border-radius:8px;background:var(--tarjeta);color:var(--tinta);flex:1;min-width:0}
+.chip{border:1px solid var(--linea);background:var(--tarjeta);color:var(--tinta);border-radius:999px;padding:6px 12px;font-size:14px}
+.atajos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.atajo{background:var(--tarjeta);border:1px solid var(--linea);border-radius:12px;padding:16px}
+.atajo p{font-size:15px;color:var(--suave);margin-top:8px}
+kbd{font-family:var(--f-codigo);font-size:13px;background:var(--papel);border:1px solid var(--linea);border-bottom-width:3px;border-radius:6px;padding:2px 7px;color:var(--tinta);white-space:nowrap}
+.cierre{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.nivel{background:var(--tarjeta);border:1px solid var(--linea);border-radius:12px;padding:18px}
+.nivel ul{margin:10px 0 0;padding-left:18px;color:var(--suave);font-size:15px}
+footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px solid var(--linea)}
+@media (max-width:860px){
+  .ruta{grid-template-columns:1fr;gap:14px}
+  .ruta::before{left:23px;right:auto;top:10px;bottom:10px;width:4px;height:auto}
+  .ruta li{display:grid;grid-template-columns:50px 1fr;gap:4px 14px;text-align:left;padding:0}
+  .ruta .punto{margin:0;grid-row:span 3}
+  .iny,.atajos,.cierre{grid-template-columns:1fr}
+  .capa{grid-template-columns:1fr}.capa .sabe{white-space:normal}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="portada">
+  <div class="envoltura ancha">
+    <span class="etiqueta">Taller práctico · Python + PyCharm + SQLite</span>
+    <h1>Taller de Programación de Lenguaje <span>Python</span> con IDE PyCharm</h1>
+    <p>Un sistema CRUD con ventana gráfica y base de datos. Úsalo aquí abajo: cada botón muestra, al lado, las líneas de Python que se ejecutan.</p>
+    <div class="portada-pie">
+      <div class="letra"><b style="background:#1E9E5A">C</b>Crear</div>
+      <div class="letra"><b style="background:#2F6FDE">R</b>Leer</div>
+      <div class="letra"><b style="background:#D98200">U</b>Actualizar</div>
+      <div class="letra"><b style="background:#D64545">D</b>Eliminar</div>
+      <a class="ir" href="#app-en-vivo">Probar la app ↓</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="app-en-vivo" style="border-top:0">
+    <div class="envoltura ancha">
+      <div class="cabeza-seccion"><span class="num">01</span><h2>La app y su código, en vivo</h2>
+        <p>A la izquierda, la aplicación del taller. A la derecha, su código Python real. Pulsa <b>Crear</b> (ya hay un ejemplo escrito) y mira cómo brilla cada línea mientras viaja por los archivos.</p></div>
+
+      <div class="escritorio">
+        <!-- ═════════ La app ═════════ -->
+        <div class="ventana-app" id="app">
+          <div class="cromo"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>Registro de Estudiantes — app_crud/main.py</span></div>
+          <div class="app-enc">
+            <div class="logo" aria-hidden="true"></div>
+            <div><h3>Registro de Estudiantes</h3><small>Taller de Programación de Lenguaje Python con IDE PyCharm</small></div>
+            <button class="ver-codigo" type="button" id="ver-codigo">&lt;/&gt; Ver código</button>
+            <div class="insignias">
+              <div class="insignia" data-op="INSERT" style="--c:#1E9E5A"><b>C</b>Crear</div>
+              <div class="insignia" data-op="SELECT" style="--c:#2F6FDE"><b>R</b>Leer</div>
+              <div class="insignia" data-op="UPDATE" style="--c:#E08A00"><b>U</b>Actualizar</div>
+              <div class="insignia" data-op="DELETE" style="--c:#D64545"><b>D</b>Eliminar</div>
+            </div>
+          </div>
+
+          <div class="app-cuerpo">
+            <form class="t" id="formulario" autocomplete="off" novalidate>
+              <div class="form-titulo" id="form-titulo">Nuevo estudiante</div>
+              <div class="pista" id="form-pista">Llena los campos y pulsa «Crear».</div>
+              <div class="form-campo" data-campo="nombre"><label for="c-nombre">Nombre completo</label><input id="c-nombre" value="Carlos Ramírez"><small data-pista="Ej. Ana Lucía Pérez">Ej. Ana Lucía Pérez</small></div>
+              <div class="form-campo" data-campo="correo"><label for="c-correo">Correo electrónico</label><input id="c-correo" value="carlos@ejemplo.com"><small data-pista="Ej. ana@correo.com">Ej. ana@correo.com</small></div>
+              <div class="dos">
+                <div class="form-campo" data-campo="telefono"><label for="c-telefono">Teléfono</label><input id="c-telefono" value="55554321" inputmode="numeric"><small data-pista="8 dígitos">8 dígitos</small></div>
+                <div class="form-campo" data-campo="edad"><label for="c-edad">Edad</label><input id="c-edad" value="35" inputmode="numeric"><small data-pista="Solo números">Solo números</small></div>
+              </div>
+              <div class="form-campo" data-campo="carrera"><label for="c-carrera">Carrera</label><select id="c-carrera"></select><small data-pista="Elige de la lista">Elige de la lista</small></div>
+              <div class="botones">
+                <button type="button" class="bt c" id="b-crear">+ Crear</button>
+                <button type="button" class="bt u" id="b-actualizar" disabled>✎ Actualizar</button>
+                <button type="button" class="bt d" id="b-eliminar" disabled>✕ Eliminar</button>
+                <button type="button" class="bt l" id="b-limpiar">Limpiar</button>
+              </div>
+              <div class="confirmar" id="confirmar" hidden>
+                <span id="confirmar-texto"></span>
+                <div><button type="button" id="si-eliminar" style="background:#D64545;color:#fff">Sí, eliminar</button><button type="button" id="no-eliminar" style="background:#fff;color:#1C2333;border:1px solid #D5DCE8">Cancelar</button></div>
+              </div>
+            </form>
+
+            <div class="app-der">
+              <div class="t">
+                <div class="tabla-cab"><h4>Estudiantes registrados</h4><label for="buscar" style="font-size:12px;color:#5F6B82">Buscar:</label><input id="buscar" placeholder="nombre, correo o carrera"></div>
+                <div class="tabla-scroll"><table class="app-tabla"><thead><tr><th>#</th><th>Nombre</th><th>Correo</th><th>Edad</th><th>Carrera</th></tr></thead><tbody id="filas"></tbody></table></div>
+              </div>
+              <div class="t ruta-dato">
+                <h4>Ruta del dato</h4>
+                <div class="estaciones" id="estaciones">
+                  <div class="riel"><i id="riel"></i></div>
+                  <div class="estacion"><b></b>Ventana<small>formulario.py</small></div>
+                  <div class="estacion"><b></b>Validar<small>validaciones.py</small></div>
+                  <div class="estacion"><b></b>Repositorio<small>repositorio.py</small></div>
+                  <div class="estacion"><b></b>SQL<small>base_datos.py</small></div>
+                  <div class="estacion"><b></b>taller.db<small>SQLite</small></div>
+                </div>
+              </div>
+              <div class="abajo">
+                <div class="t pizarra"><h4>¿Qué acaba de pasar?</h4><div class="franja" id="franja"></div><div class="pizarra-texto" id="pizarra" aria-live="polite"></div></div>
+                <div class="t">
+                  <div class="pest" role="tablist"><button type="button" role="tab" aria-selected="true" data-p="consola">Consola SQL</button><button type="button" role="tab" aria-selected="false" data-p="grafico">Por carrera</button></div>
+                  <div class="consola" id="consola" role="tabpanel"></div>
+                  <div class="grafico" id="grafico" role="tabpanel" hidden></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="app-estado"><span id="contador">6 estudiantes</span><span>Enter = guardar · Esc = limpiar</span></div>
+          <div class="toast" id="toast"></div>
+        </div>
+
+        <!-- ═════════ El visor ═════════ -->
+        <div class="visor" id="visor" tabindex="0" aria-label="Visor de código">
+          <div class="v-barra">
+            <span class="marca">&lt;/&gt;</span>
+            <div class="v-titulo" id="v-titulo">Visor de código<small>← → = línea por línea · Espacio = reproducir / pausa</small></div>
+            <div class="v-controles">
+              <button type="button" id="v-repetir" title="Volver a la primera línea">⏮ Inicio</button>
+              <button type="button" id="v-atras" title="Línea anterior (←)">◂ Atrás</button>
+              <button type="button" id="v-linea" class="grande" title="Línea siguiente (→)">Siguiente ▸</button>
+              <button type="button" id="v-pausa" title="Avanzar solo (Espacio)">▶ Reproducir</button>
+              <div class="vel" role="group" aria-label="Velocidad">
+                <button type="button" data-ms="0" aria-pressed="true" title="No avanza solo: tú das cada paso">Paso a paso</button>
+                <button type="button" data-ms="1600" aria-pressed="false">Lento</button>
+                <button type="button" data-ms="800" aria-pressed="false">Normal</button>
+                <button type="button" data-ms="250" aria-pressed="false">Rápido</button>
+              </div>
+              <div class="vel" role="group" aria-label="Tamaño de letra">
+                <button type="button" data-letra="-1" title="Letra más pequeña">A−</button>
+                <button type="button" data-letra="1" title="Letra más grande (para el proyector)">A+</button>
+              </div>
+            </div>
+          </div>
+          <div class="v-pestanas" id="v-pestanas"></div>
+          <div class="v-codigo" id="v-codigo"></div>
+          <div class="v-depura">
+            <div class="pila"><h5>Pila de llamadas (¿quién llamó a quién?)</h5><pre id="v-pila"></pre></div>
+            <div class="vars"><h5>Variables (valores en este momento)</h5><pre id="v-vars"></pre></div>
+          </div>
+          <div class="v-progreso" id="v-progreso-barra" title="Clic para saltar a ese punto del recorrido"><i id="v-progreso"></i></div>
+          <div class="v-estado" id="v-estado"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="envoltura">
+  <section id="ruta">
+    <div class="cabeza-seccion"><span class="num">02</span><h2>La ruta del taller</h2>
+      <p>Siete lecciones, cada una en su propio archivo de <code>lecciones/</code>. Si alguien se atrasa, abre el siguiente archivo y sigue desde ahí.</p></div>
+    <ol class="ruta">
+      <li><span class="punto">01</span><h3>Hola, Python</h3><small>variables · input</small><span class="min">15 min</span></li>
+      <li><span class="punto">02</span><h3>Decisiones</h3><small>if · while · try</small><span class="min">15 min</span></li>
+      <li><span class="punto">03</span><h3>CRUD en memoria</h3><small>listas · diccionarios</small><span class="min">25 min</span></li>
+      <li><span class="punto">04</span><h3>SQLite</h3><small>INSERT · SELECT</small><span class="min">20 min</span></li>
+      <li><span class="punto">05</span><h3>CRUD en consola</h3><small>funciones · inyección</small><span class="min">25 min</span></li>
+      <li><span class="punto">06</span><h3>Primera ventana</h3><small>tkinter · eventos</small><span class="min">20 min</span></li>
+      <li class="meta"><span class="punto">07</span><h3>CRUD gráfico</h3><small>ventana + SQLite</small><span class="min">35 min</span></li>
+    </ol>
+  </section>
+
+  <section id="capas">
+    <div class="cabeza-seccion"><span class="num">03</span><h2>Cada archivo, un solo trabajo</h2>
+      <p>Son las pestañas del visor. Un clic baja por las capas y la respuesta sube de vuelta.</p></div>
+    <div class="capas">
+      <div class="capa"><code>ventana_principal.py</code><p>Lo que se ve: formulario, tabla, consola SQL, animaciones.</p><span class="sabe">sabe de botones, no de SQL</span></div>
+      <div class="flecha">▼ datos del formulario</div>
+      <div class="capa"><code>validaciones.py</code><p>Revisa cada campo antes de guardar. Si algo falla, se pinta en rojo y no se toca la base de datos.</p><span class="sabe">nunca confíes en el usuario</span></div>
+      <div class="flecha">▼ objeto Estudiante (modelo.py)</div>
+      <div class="capa"><code>repositorio.py</code><p>Las cuatro operaciones: <code>crear</code>, <code>listar</code>, <code>actualizar</code>, <code>eliminar</code>.</p><span class="sabe">sabe SQL, no de botones</span></div>
+      <div class="flecha">▼ SQL con ? + valores</div>
+      <div class="capa"><code>base_datos.py</code><p>La única puerta a SQLite. Avisa a la consola de cada sentencia ejecutada.</p><span class="sabe">commit o rollback</span></div>
+      <div class="flecha">▼</div>
+      <div class="capa"><code>taller.db</code><p>Un solo archivo con la tabla <code>estudiantes</code>. Bórralo y la app lo crea de nuevo.</p><span class="sabe">sobrevive al cerrar</span></div>
+    </div>
+  </section>
+
+  <section id="inyeccion">
+    <div class="cabeza-seccion"><span class="num">04</span><h2>Por qué siempre usamos <code>?</code></h2>
+      <p>Si el texto del usuario se pega dentro del SQL, el usuario puede cambiar la consulta. Escribe un nombre o usa el truco clásico.</p></div>
+    <div class="entrada-iny">
+      <label for="iny" class="etiqueta">Nombre a buscar</label>
+      <input id="iny" value="' OR '1'='1">
+      <button class="chip" type="button" data-iny="Ana Pérez">Ana Pérez</button>
+      <button class="chip" type="button" data-iny="' OR '1'='1">' OR '1'='1</button>
+    </div>
+    <div class="iny">
+      <div class="iny-caja mal"><h3>Con f-string</h3><div class="sql" id="iny-mal"></div><p class="resultado" id="iny-mal-r"></p></div>
+      <div class="iny-caja bien"><h3>Con parámetro ?</h3><div class="sql" id="iny-bien"></div><p class="resultado" id="iny-bien-r"></p></div>
+    </div>
+  </section>
+
+  <section id="pycharm">
+    <div class="cabeza-seccion"><span class="num">05</span><h2>PyCharm en seis atajos</h2>
+      <p>Windows y Linux. En macOS cambia <kbd>Ctrl</kbd> por <kbd>Cmd</kbd> en la mayoría.</p></div>
+    <div class="atajos">
+      <div class="atajo"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F10</kbd><p>Ejecutar el archivo abierto.</p></div>
+      <div class="atajo"><kbd>Shift</kbd> + <kbd>F9</kbd><p>Depurar. Con un breakpoint, el programa se detiene en esa línea, igual que el visor de arriba.</p></div>
+      <div class="atajo"><kbd>F8</kbd> · <kbd>F7</kbd><p>Avanzar una línea · entrar a la función. Es el botón «Siguiente ▸» del visor.</p></div>
+      <div class="atajo"><kbd>Ctrl</kbd> + clic<p>Saltar a donde está definida una función o clase.</p></div>
+      <div class="atajo"><kbd>Ctrl</kbd> + <kbd>/</kbd><p>Comentar o descomentar las líneas seleccionadas.</p></div>
+      <div class="atajo"><kbd>Shift</kbd> + <kbd>F6</kbd><p>Renombrar una variable en todo el proyecto sin romper nada.</p></div>
+    </div>
+  </section>
+
+  <section id="retos">
+    <div class="cabeza-seccion"><span class="num">06</span><h2>Retos para cerrar</h2>
+      <p>En parejas. Las pistas están en <code>retos/RETOS.md</code>.</p></div>
+    <div class="cierre">
+      <div class="nivel"><span class="etiqueta">Nivel 1</span><h3>Calentamiento</h3><ul><li>Agrega una carrera nueva</li><li>Cambia el color de «Crear»</li><li>Ajusta la velocidad de la pizarra</li></ul></div>
+      <div class="nivel"><span class="etiqueta">Nivel 2</span><h3>Ya le agarraste la onda</h3><ul><li>El nombre no acepta números</li><li>Promedio de edad con <code>AVG</code></li><li>Buscar también por teléfono</li></ul></div>
+      <div class="nivel"><span class="etiqueta">Nivel 3</span><h3>Reto de verdad</h3><ul><li>Campo «carné» en todas las capas</li><li>Exportar a CSV para Excel</li><li>Ordenar por columna</li></ul></div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer><div class="envoltura">Taller de Programación de Lenguaje Python con IDE PyCharm · El código del visor es el de <code>app_crud/</code>, insertado con <code>presentacion/construir.py</code> · Los datos de esta página viven solo en tu navegador y se reinician al recargar.</div></footer>
+
+<script type="application/json" id="fuentes">{"interfaz/ventana_principal.py": "\"\"\"\nventana_principal.py — El «director de orquesta».\n==================================================\n\nEsta clase arma la ventana con todas las piezas y decide qué pasa\ncuando el usuario hace algo. El recorrido de cada acción es siempre igual:\n\n    ① el usuario hace clic          (formulario.py / tabla.py)\n    ② se validan los datos          (validaciones.py)\n    ③ se llama al CRUD              (repositorio.py)\n    ④ se ejecuta el SQL             (base_datos.py → taller.db)\n    ⑤ se refresca y se anima todo   (tabla, gráfico, pizarra, aviso)\n\n🔦 Los métodos marcados con  @mostrar_en_visor  se GRABAN mientras se\n   ejecutan y luego se reproducen en el Visor de código (F2), con la\n   línea que se ejecuta brillando. Ver rastreador.py y visor_codigo.py.\n\n💡 Para la clase: pon un «breakpoint» (clic en el margen izquierdo de\n   PyCharm) en `crear()` y ejecuta con el botón del insecto (Debug).\n   Podrás seguir el dato paso a paso por los cinco archivos.\n\"\"\"\n\nimport sqlite3\nimport tkinter as tk\nfrom tkinter import messagebox, ttk\n\nfrom base_datos import BaseDatos\nfrom configuracion import COLORES, OPERACIONES, TITULO_APP, VISOR_AL_INICIAR\nfrom repositorio import RepositorioEstudiantes\nfrom validaciones import validar_estudiante\nfrom interfaz.animaciones import Toast, contar_hasta\nfrom interfaz.consola_sql import ConsolaSQL\nfrom interfaz.encabezado import Encabezado\nfrom interfaz.estilos import FUENTES, configurar_estilos\nfrom interfaz.formulario import Formulario\nfrom interfaz.grafico import GraficoCarreras\nfrom interfaz.pizarra import Pizarra\nfrom interfaz.rastreador import Rastreador, mostrar_en_visor\nfrom interfaz.ruta_dato import RutaDelDato\nfrom interfaz.tabla import TablaEstudiantes\nfrom interfaz.visor_codigo import VisorCodigo\n\n\nclass Aplicacion(tk.Tk):\n    \"\"\"La ventana principal. Hereda de tk.Tk, así que ES una ventana.\"\"\"\n\n    def __init__(self, bd: BaseDatos, repo: RepositorioEstudiantes):\n        super().__init__()\n        self.bd = bd\n        self.repo = repo\n        self.id_seleccionado: int | None = None   # ¿qué estudiante se está editando?\n        self._total_mostrado = 0\n\n        self.title(TITULO_APP)\n        self.geometry(\"1280x720\")\n        self.minsize(1120, 660)\n        configurar_estilos(self)\n\n        self.rastreador = Rastreador()   # el «espía» que graba las líneas ejecutadas\n        self._construir()\n        self.visor = VisorCodigo(self)   # ventana aparte con el código\n        self._acomodar_ventanas()\n        self._atajos_de_teclado()\n\n        # La consola escucha a la base de datos desde AHORA.\n        self.bd.agregar_oyente(self.consola.registrar)\n\n        # Primera lectura: llenar tabla, gráfico y contador.\n        total = self.refrescar()\n        self.pizarra.bienvenida(total)\n\n        # Al cerrar la ventana con la X, cerramos bien la base de datos.\n        self.protocol(\"WM_DELETE_WINDOW\", self._cerrar)\n\n    # =======================================================================\n    # 🧱 Construcción de la ventana\n    # =======================================================================\n    def _construir(self) -> None:\n        self.encabezado = Encabezado(self, al_ver_codigo=self.mostrar_visor)\n        self.encabezado.pack(fill=\"x\")\n\n        # --- Barra de estado (abajo). Se empaca ANTES que el cuerpo para que\n        #     nunca quede aplastada si la ventana es pequeña. -----------------------\n        barra = ttk.Frame(self, padding=(16, 0, 16, 10))\n        barra.pack(side=\"bottom\", fill=\"x\")\n        self.contador = ttk.Label(barra, text=\"0 estudiantes\", style=\"Barra.TLabel\")\n        self.contador.pack(side=\"left\")\n        ttk.Label(barra, text=f\"Base de datos: {self.bd.ruta}\", style=\"Barra.TLabel\").pack(side=\"right\")\n        ttk.Label(barra, text=\"Enter = guardar · Esc = limpiar · Supr = eliminar · F2 = código   \",\n                  style=\"Barra.TLabel\").pack(side=\"right\")\n\n        cuerpo = ttk.Frame(self, padding=16)\n        cuerpo.pack(fill=\"both\", expand=True)\n        # Columna 0 = formulario (ancho fijo) · Columna 1 = todo lo demás (se estira).\n        cuerpo.columnconfigure(1, weight=1)\n        cuerpo.rowconfigure(0, weight=1)\n\n        # --- Columna izquierda: el formulario ------------------------------------\n        self.formulario = Formulario(\n            cuerpo,\n            al_crear=self.crear,\n            al_actualizar=self.actualizar,\n            al_eliminar=self.eliminar,\n            al_limpiar=self.limpiar,\n        )\n        self.formulario.grid(row=0, column=0, sticky=\"nw\", padx=(0, 16))\n\n        # --- Columna derecha (de arriba hacia abajo):\n        #     tabla  →  ruta del dato  →  pizarra + pestañas ----------------------\n        derecha = ttk.Frame(cuerpo)\n        derecha.grid(row=0, column=1, sticky=\"nsew\")\n        derecha.columnconfigure(0, weight=2)\n        derecha.columnconfigure(1, weight=3)\n        derecha.rowconfigure(0, weight=3)   # la tabla se lleva más espacio extra\n        derecha.rowconfigure(2, weight=2)\n\n        self.tabla = TablaEstudiantes(derecha, al_seleccionar=self.seleccionar, al_buscar=self.buscar)\n        self.tabla.grid(row=0, column=0, columnspan=2, sticky=\"nsew\")\n\n        self.ruta = RutaDelDato(derecha)\n        self.ruta.grid(row=1, column=0, columnspan=2, sticky=\"ew\", pady=12)\n\n        self.pizarra = Pizarra(derecha)\n        self.pizarra.grid(row=2, column=0, sticky=\"nsew\", padx=(0, 16))\n\n        pestanas = ttk.Notebook(derecha)\n        pestanas.grid(row=2, column=1, sticky=\"nsew\")\n        self.consola = ConsolaSQL(pestanas)\n        self.grafico = GraficoCarreras(pestanas)\n        pestanas.add(self.consola, text=\" Consola SQL \")\n        pestanas.add(self.grafico, text=\" Por carrera \")\n\n        self.toast = Toast(self)\n\n    def _acomodar_ventanas(self) -> None:\n        \"\"\"\n        Pantalla ancha (≥ 1800 px): app a la izquierda y visor a la derecha.\n        Pantalla normal: app maximizada y el visor flotando a la derecha\n        (muévelo, achícalo, fíjalo «siempre encima» o ciérralo; F2 lo vuelve a abrir).\n        \"\"\"\n        ancho, alto = self.winfo_screenwidth(), self.winfo_screenheight()\n        if ancho >= 1800:\n            ancho_visor = min(820, ancho - 1150)\n            self.geometry(f\"{ancho - ancho_visor - 12}x{alto - 110}+0+0\")\n            self.visor.geometry(f\"{ancho_visor}x{alto - 110}+{ancho - ancho_visor}+0\")\n        else:\n            self._maximizar()\n            ancho_visor = min(700, ancho // 2)\n            self.visor.geometry(f\"{ancho_visor}x{min(alto - 120, 840)}+{ancho - ancho_visor - 10}+40\")\n        if not VISOR_AL_INICIAR:\n            self.visor.withdraw()\n\n    def mostrar_visor(self) -> None:\n        \"\"\"F2 o botón «Ver código»: abre el visor y lo trae al frente (se cierra con su X).\"\"\"\n        self.visor.deiconify()\n        self.visor.lift()\n\n    def _maximizar(self) -> None:\n        \"\"\"Abre la ventana maximizada (ideal para proyectar en clase).\"\"\"\n        try:\n            self.state(\"zoomed\")                # Windows y macOS\n        except tk.TclError:\n            try:\n                self.attributes(\"-zoomed\", True)  # Linux\n            except tk.TclError:\n                pass                            # si no se puede, se queda en 1280x720\n\n    def _atajos_de_teclado(self) -> None:\n        # bind() conecta una tecla con una función.\n        self.bind(\"<Return>\", lambda _e: self.actualizar() if self.id_seleccionado else self.crear())\n        self.bind(\"<Escape>\", lambda _e: self.limpiar())\n        self.bind(\"<F2>\", lambda _e: self.mostrar_visor())\n        self.bind(\"<Delete>\", self._suprimir)\n\n    def _suprimir(self, evento) -> None:\n        # Si el cursor está dentro de un campo de texto, Supr borra letras, no estudiantes.\n        if self.id_seleccionado and not isinstance(evento.widget, (tk.Entry, ttk.Entry)):\n            self.eliminar()\n\n    # =======================================================================\n    # 🔁 Refrescar: volver a leer la BD y pintar todo\n    # =======================================================================\n    def refrescar(self, busqueda: str = \"\", con_grafico: bool = True) -> int:\n        \"\"\"Relee la BD y repinta. `con_grafico=False` en búsquedas: los datos no cambiaron.\"\"\"\n        # Si hay búsqueda, el SELECT es la acción principal; si no, es un simple refresco.\n        with self.bd.motivo(None if busqueda else \"refresco\"):\n            if con_grafico:\n                self.grafico.actualizar(self.repo.contar_por_carrera())\n            estudiantes = self.repo.listar(busqueda)\n        self.tabla.mostrar(estudiantes)\n\n        total = len(estudiantes)\n        plantilla = \"{} estudiantes\" if not busqueda else \"{} coincidencias\"\n        contar_hasta(self.contador, self._total_mostrado, total, plantilla)\n        self._total_mostrado = total\n        return total\n\n    # =======================================================================\n    # C — CREAR\n    # =======================================================================\n    @mostrar_en_visor\n    def crear(self) -> None:\n        estudiante, errores = validar_estudiante(self.formulario.leer())\n        if errores:\n            self.formulario.mostrar_errores(errores)\n            self.ruta.recorrer(COLORES[\"error\"], hasta=1, fallo=True)   # se frena en «Validar»\n            self._avisar_error(\"Revisa los campos en rojo\",\n                               \"La validación detuvo el guardado ANTES de llegar a la base de datos. \"\n                               \"Así protegemos los datos.\")\n            return\n        try:\n            nuevo_id = self.repo.crear(estudiante)\n        except sqlite3.IntegrityError:\n            # UNIQUE en la columna correo: SQLite no deja repetirlo.\n            self.formulario.mostrar_errores({\"correo\": \"Ese correo ya está registrado.\"})\n            self.ruta.recorrer(COLORES[\"error\"], hasta=3, fallo=True)   # SQLite lo rechazó\n            self._avisar_error(\"SQLite dijo que no\",\n                               \"La columna «correo» es UNIQUE: no puede haber dos iguales. \"\n                               \"Mira el error en la Consola SQL.\")\n            return\n\n        self._celebrar(\"INSERT\", f\"✓ {estudiante.nombre} creado (#{nuevo_id})\")\n        self.ruta.recorrer(COLORES[\"crear\"])\n        if self.tabla.busqueda.get():\n            self.tabla.busqueda.set(\"\")      # quitar el filtro también refresca la tabla\n        else:\n            self.refrescar()\n        self.tabla.destellar(nuevo_id, COLORES[\"crear\"])\n        self.formulario.vaciar()\n        self.pizarra.explicar_crear(estudiante, nuevo_id)\n\n    # =======================================================================\n    # R — LEER (seleccionar una fila / buscar)\n    # =======================================================================\n    @mostrar_en_visor\n    def seleccionar(self, id_estudiante: int) -> None:\n        estudiante = self.repo.obtener(id_estudiante)\n        if estudiante is None:\n            return\n        self.id_seleccionado = id_estudiante\n        self.formulario.cargar(estudiante)\n        self.encabezado.encender(\"SELECT\")\n        self.ruta.recorrer(COLORES[\"leer\"], saltar={1})   # leer no necesita validar\n        self.pizarra.explicar_leer(estudiante)\n\n    @mostrar_en_visor\n    def buscar(self, texto: str) -> None:\n        total = self.refrescar(texto, con_grafico=False)\n        if texto:\n            self.encabezado.encender(\"SELECT\")\n            self.ruta.recorrer(COLORES[\"leer\"], saltar={1})\n            self.pizarra.explicar_busqueda(texto, total)\n\n    # =======================================================================\n    # U — ACTUALIZAR\n    # =======================================================================\n    @mostrar_en_visor\n    def actualizar(self) -> None:\n        if not self.id_seleccionado:\n            return\n        estudiante, errores = validar_estudiante(self.formulario.leer())\n        if errores:\n            self.formulario.mostrar_errores(errores)\n            self.ruta.recorrer(COLORES[\"error\"], hasta=1, fallo=True)\n            self._avisar_error(\"Revisa los campos en rojo\", \"No se envió ningún UPDATE.\")\n            return\n\n        anterior = self.repo.obtener(self.id_seleccionado)\n        estudiante.id = self.id_seleccionado\n        try:\n            self.repo.actualizar(estudiante)\n        except sqlite3.IntegrityError:\n            self.formulario.mostrar_errores({\"correo\": \"Ese correo ya lo usa otro estudiante.\"})\n            self.ruta.recorrer(COLORES[\"error\"], hasta=3, fallo=True)\n            self._avisar_error(\"SQLite dijo que no\", \"El correo debe ser único (UNIQUE).\")\n            return\n\n        # ¿Qué cambió? Comparamos campo por campo el antes y el después.\n        cambios = [campo for campo in (\"nombre\", \"correo\", \"telefono\", \"edad\", \"carrera\")\n                   if getattr(anterior, campo) != getattr(estudiante, campo)]\n\n        self._celebrar(\"UPDATE\", f\"✎ {estudiante.nombre} actualizado\")\n        self.ruta.recorrer(COLORES[\"actualizar\"])\n        self.refrescar(self.tabla.busqueda.get().strip())\n        self.tabla.destellar(estudiante.id, COLORES[\"actualizar\"])\n        self.pizarra.explicar_actualizar(estudiante, cambios)\n        self.limpiar(explicar=False)\n\n    # =======================================================================\n    # D — ELIMINAR\n    # =======================================================================\n    @mostrar_en_visor\n    def eliminar(self) -> None:\n        if not self.id_seleccionado:\n            return\n        estudiante = self.repo.obtener(self.id_seleccionado)\n        if estudiante is None:\n            return\n        # Siempre pedir confirmación antes de borrar.\n        if not messagebox.askyesno(\"Eliminar estudiante\",\n                                   f\"¿Seguro que quieres eliminar a «{estudiante.nombre}»?\\n\\n\"\n                                   \"Esta acción no se puede deshacer.\", icon=\"warning\", parent=self):\n            return\n\n        self.repo.eliminar(estudiante.id)\n        self._celebrar(\"DELETE\", f\"✕ {estudiante.nombre} eliminado\")\n        self.ruta.recorrer(COLORES[\"eliminar\"], saltar={1})\n        self.limpiar(explicar=False)\n        self.refrescar(self.tabla.busqueda.get().strip())\n        self.pizarra.explicar_eliminar(estudiante.nombre, estudiante.id)\n\n    # =======================================================================\n    # 🧹 Utilidades\n    # =======================================================================\n    def limpiar(self, explicar: bool = True) -> None:\n        self.id_seleccionado = None\n        self.tabla.quitar_seleccion()\n        self.formulario.vaciar()\n        if explicar:\n            self.pizarra.explicar(\"SELECT\", [\n                (\"Formulario listo\\n\", \"SELECT\"),\n                (\"Limpiar no toca la base de datos: solo vacía los campos de la pantalla.\", \"normal\"),\n            ])\n\n    def _celebrar(self, operacion: str, mensaje: str) -> None:\n        \"\"\"Feedback visual de éxito: insignia que pulsa + aviso flotante.\"\"\"\n        self.encabezado.encender(operacion)\n        self.toast.mostrar(mensaje, OPERACIONES[operacion][\"color\"])\n\n    def _avisar_error(self, titulo: str, explicacion: str) -> None:\n        self.toast.mostrar(f\"⚠ {titulo}\", COLORES[\"error\"])\n        self.pizarra.explicar_error(titulo, explicacion)\n\n    def _cerrar(self) -> None:\n        self.bd.cerrar()\n        self.destroy()\n", "validaciones.py": "\"\"\"\nvalidaciones.py — «Nunca confíes en lo que escribe el usuario».\n================================================================\n\nAntes de guardar, revisamos cada campo. Si algo está mal devolvemos\nun diccionario  {campo: \"mensaje de error\"}  para pintar en rojo\nexactamente el campo que falló.\n\n    formulario ──► validar_estudiante() ──► ¿errores?\n                                              ├─ sí → se muestran en rojo\n                                              └─ no → se arma el Estudiante\n\"\"\"\n\nimport re\n\nfrom configuracion import CARRERAS\nfrom modelo import Estudiante\n\n# Expresión regular sencilla para un correo:  algo@algo.algo\nPATRON_CORREO = re.compile(r\"^[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+$\")\n\n\ndef validar_estudiante(datos: dict) -> tuple[Estudiante | None, dict]:\n    \"\"\"\n    Recibe los textos del formulario y devuelve (estudiante, errores).\n\n    - Si no hay errores → (Estudiante(...), {})\n    - Si hay errores    → (None, {\"correo\": \"Correo no válido\", ...})\n    \"\"\"\n    errores = {}\n\n    # .strip() quita espacios al inicio y al final: \"  Ana  \" → \"Ana\"\n    nombre = datos.get(\"nombre\", \"\").strip()\n    correo = datos.get(\"correo\", \"\").strip().lower()\n    telefono = datos.get(\"telefono\", \"\").strip().replace(\"-\", \"\").replace(\" \", \"\")\n    edad_texto = datos.get(\"edad\", \"\").strip()\n    carrera = datos.get(\"carrera\", \"\").strip()\n\n    # --- Nombre --------------------------------------------------------------\n    if len(nombre) < 3:\n        errores[\"nombre\"] = \"Escribe al menos 3 letras.\"\n\n    # --- Correo --------------------------------------------------------------\n    if not PATRON_CORREO.match(correo):\n        errores[\"correo\"] = \"Ejemplo válido: ana@correo.com\"\n\n    # --- Teléfono (opcional, 8 dígitos como en Guatemala) --------------------\n    if telefono and not (telefono.isdigit() and len(telefono) == 8):\n        errores[\"telefono\"] = \"Deben ser 8 dígitos, ej. 5555 1234.\"\n\n    # --- Edad: texto → número entero -----------------------------------------\n    # int(\"abc\") lanza ValueError; lo atrapamos con try/except.\n    edad = 0\n    try:\n        edad = int(edad_texto)\n        if not 10 <= edad <= 120:\n            errores[\"edad\"] = \"La edad debe estar entre 10 y 120.\"\n    except ValueError:\n        errores[\"edad\"] = \"Escribe la edad con números.\"\n\n    # --- Carrera -------------------------------------------------------------\n    if carrera not in CARRERAS:\n        errores[\"carrera\"] = \"Elige una carrera de la lista.\"\n\n    if errores:\n        return None, errores\n\n    if telefono:  # lo guardamos con formato bonito: 5555-1234\n        telefono = f\"{telefono[:4]}-{telefono[4:]}\"\n\n    return Estudiante(nombre=nombre, correo=correo, telefono=telefono,\n                      edad=edad, carrera=carrera), {}\n", "repositorio.py": "\"\"\"\nrepositorio.py — Aquí vive el CRUD.\n====================================\n\n    C  →  crear()        →  INSERT\n    R  →  listar()       →  SELECT\n          obtener()      →  SELECT ... WHERE id = ?\n    U  →  actualizar()   →  UPDATE\n    D  →  eliminar()     →  DELETE\n\n⚠️ Regla de oro: NUNCA armar el SQL pegando texto del usuario.\n\n    ❌ MAL:  f\"SELECT * FROM estudiantes WHERE nombre = '{nombre}'\"\n            Si alguien escribe   ' OR '1'='1   ¡ve todos los datos!\n            (eso se llama «inyección SQL»).\n\n    ✅ BIEN: \"SELECT * FROM estudiantes WHERE nombre = ?\"  + (nombre,)\n            El signo ? es un «hueco» que SQLite llena de forma segura.\n\"\"\"\n\nfrom base_datos import BaseDatos\nfrom modelo import Estudiante\n\n\nclass RepositorioEstudiantes:\n    \"\"\"Todas las operaciones sobre la tabla `estudiantes`.\"\"\"\n\n    def __init__(self, bd: BaseDatos):\n        self.bd = bd\n\n    # -----------------------------------------------------------------------\n    # C — CREATE\n    # -----------------------------------------------------------------------\n    def crear(self, estudiante: Estudiante) -> int:\n        \"\"\"Inserta un estudiante nuevo y devuelve el id que le dio SQLite.\"\"\"\n        cursor = self.bd.ejecutar(\n            \"INSERT INTO estudiantes (nombre, correo, telefono, edad, carrera) \"\n            \"VALUES (?, ?, ?, ?, ?)\",\n            (estudiante.nombre, estudiante.correo, estudiante.telefono,\n             estudiante.edad, estudiante.carrera),\n        )\n        return cursor.lastrowid  # el id recién creado\n\n    # -----------------------------------------------------------------------\n    # R — READ\n    # -----------------------------------------------------------------------\n    def listar(self, busqueda: str = \"\") -> list[Estudiante]:\n        \"\"\"\n        Devuelve todos los estudiantes, o solo los que coinciden con `busqueda`.\n\n        LIKE '%ana%' encuentra «Ana», «Mariana», «Ingeniería Ana»...\n        El % significa «cualquier cosa antes o después».\n        \"\"\"\n        if busqueda:\n            patron = f\"%{busqueda}%\"   # aquí SÍ usamos f-string: es el VALOR, no el SQL\n            filas = self.bd.consultar(\n                \"SELECT * FROM estudiantes \"\n                \"WHERE nombre LIKE ? OR correo LIKE ? OR carrera LIKE ? \"\n                \"ORDER BY id DESC\",\n                (patron, patron, patron),\n            )\n        else:\n            filas = self.bd.consultar(\"SELECT * FROM estudiantes ORDER BY id DESC\")\n\n        # «List comprehension»: convierte cada fila en un objeto Estudiante.\n        return [Estudiante.desde_fila(fila) for fila in filas]\n\n    def obtener(self, id_estudiante: int) -> Estudiante | None:\n        \"\"\"Busca un estudiante por su id. Devuelve None si no existe.\"\"\"\n        filas = self.bd.consultar(\"SELECT * FROM estudiantes WHERE id = ?\", (id_estudiante,))\n        return Estudiante.desde_fila(filas[0]) if filas else None\n\n    def contar_por_carrera(self) -> list[tuple[str, int]]:\n        \"\"\"Para el gráfico de barras: [('Agronomía', 4), ('Medicina', 2), ...].\"\"\"\n        filas = self.bd.consultar(\n            \"SELECT carrera, COUNT(*) AS total FROM estudiantes \"\n            \"GROUP BY carrera ORDER BY total DESC\"\n        )\n        return [(fila[\"carrera\"], fila[\"total\"]) for fila in filas]\n\n    # -----------------------------------------------------------------------\n    # U — UPDATE\n    # -----------------------------------------------------------------------\n    def actualizar(self, estudiante: Estudiante) -> bool:\n        \"\"\"Guarda los cambios de un estudiante existente. True si se modificó.\"\"\"\n        cursor = self.bd.ejecutar(\n            \"UPDATE estudiantes \"\n            \"SET nombre = ?, correo = ?, telefono = ?, edad = ?, carrera = ? \"\n            \"WHERE id = ?\",   # ⚠️ sin WHERE se modificarían TODAS las filas\n            (estudiante.nombre, estudiante.correo, estudiante.telefono,\n             estudiante.edad, estudiante.carrera, estudiante.id),\n        )\n        return cursor.rowcount == 1\n\n    # -----------------------------------------------------------------------\n    # D — DELETE\n    # -----------------------------------------------------------------------\n    def eliminar(self, id_estudiante: int) -> bool:\n        \"\"\"Borra un estudiante por su id. True si se borró.\"\"\"\n        cursor = self.bd.ejecutar(\n            \"DELETE FROM estudiantes WHERE id = ?\",  # ⚠️ sin WHERE se borra TODO\n            (id_estudiante,),\n        )\n        return cursor.rowcount == 1\n", "base_datos.py": "\"\"\"\nbase_datos.py — La única puerta de entrada a SQLite.\n=====================================================\n\n¿Qué es SQLite?\n    Una base de datos completa que vive en UN SOLO ARCHIVO (taller.db).\n    No hay que instalar un servidor: Python ya trae el módulo `sqlite3`.\n\n¿Por qué una clase aparte?\n    Porque así ningún otro archivo «habla» directo con SQLite.\n    Si mañana cambiamos a MySQL o PostgreSQL, solo se toca este archivo.\n\n    Ventana  ──►  Repositorio  ──►  BaseDatos  ──►  taller.db\n    (botones)     (CRUD)            (SQL)           (archivo)\n\nTruco didáctico — los «oyentes»:\n    Cada vez que se ejecuta una sentencia SQL, la clase avisa a quien\n    esté escuchando (por ejemplo, la Consola SQL de la ventana).\n    Así los alumnos VEN en vivo el SQL que provoca cada botón.\n\"\"\"\n\nimport sqlite3\nimport time\nfrom contextlib import contextmanager\nfrom pathlib import Path\n\nfrom configuracion import RUTA_BD\n\n# ---------------------------------------------------------------------------\n# 🧱 Estructura de la tabla\n# ---------------------------------------------------------------------------\n# CREATE TABLE IF NOT EXISTS → solo la crea la primera vez.\n#   PRIMARY KEY AUTOINCREMENT → SQLite pone el id solito (1, 2, 3...).\n#   NOT NULL                  → el campo es obligatorio.\n#   UNIQUE                    → no puede haber dos correos iguales.\n#   CHECK                     → regla que la BD vigila por su cuenta.\n#   DEFAULT                   → valor automático si no mandamos nada.\nSQL_CREAR_TABLA = \"\"\"\nCREATE TABLE IF NOT EXISTS estudiantes (\n    id        INTEGER PRIMARY KEY AUTOINCREMENT,\n    nombre    TEXT    NOT NULL,\n    correo    TEXT    NOT NULL UNIQUE,\n    telefono  TEXT,\n    edad      INTEGER CHECK (edad BETWEEN 10 AND 120),\n    carrera   TEXT    NOT NULL,\n    creado_en TEXT    NOT NULL DEFAULT (datetime('now', 'localtime'))\n)\n\"\"\"\n\n\nclass BaseDatos:\n    \"\"\"Envuelve la conexión a SQLite y registra cada sentencia ejecutada.\"\"\"\n\n    def __init__(self, ruta: Path | str = RUTA_BD):\n        # \":memory:\" crea una BD temporal en RAM (la usan las pruebas).\n        self.ruta = str(ruta)\n\n        # 1) Abrir (o crear) el archivo de la base de datos.\n        self.conexion = sqlite3.connect(self.ruta)\n\n        # 2) row_factory = sqlite3.Row → cada fila se puede leer por nombre:\n        #    fila[\"nombre\"] en lugar de fila[1]. ¡Mucho más legible!\n        self.conexion.row_factory = sqlite3.Row\n\n        # 3) Lista de funciones que quieren enterarse de cada SQL.\n        self._oyentes = []\n        self._motivo = None   # etiqueta opcional, ej. \"refresco\" (ver más abajo)\n\n        # 4) Asegurar que la tabla exista.\n        self.conexion.execute(SQL_CREAR_TABLA)\n        self.conexion.commit()\n\n    # -----------------------------------------------------------------------\n    # 👂 Oyentes (patrón «observador»)\n    # -----------------------------------------------------------------------\n    def agregar_oyente(self, funcion) -> None:\n        \"\"\"Registra una función que recibirá un dict con los detalles de cada SQL.\"\"\"\n        self._oyentes.append(funcion)\n\n    def _avisar(self, **detalle) -> None:\n        detalle[\"motivo\"] = self._motivo\n        for funcion in self._oyentes:\n            funcion(detalle)\n\n    @contextmanager\n    def motivo(self, nombre: str):\n        \"\"\"\n        Marca las sentencias de un bloque con un «motivo». Ejemplo:\n\n            with bd.motivo(\"refresco\"):\n                repo.listar()      # la consola lo mostrará en una sola línea tenue\n\n        Así la consola distingue el SQL que pidió el usuario del SQL que la\n        app ejecuta por su cuenta para volver a pintar la tabla.\n        \"\"\"\n        anterior, self._motivo = self._motivo, nombre\n        try:\n            yield\n        finally:\n            self._motivo = anterior\n\n    # -----------------------------------------------------------------------\n    # ✍️ Sentencias que MODIFICAN datos: INSERT, UPDATE, DELETE\n    # -----------------------------------------------------------------------\n    def ejecutar(self, sql: str, parametros: tuple = ()) -> sqlite3.Cursor:\n        \"\"\"\n        Ejecuta una sentencia que cambia datos y la confirma (commit).\n\n        `with self.conexion:` es una «transacción»:\n            ✔ si todo sale bien → COMMIT  (se guarda en el archivo)\n            ✘ si algo falla     → ROLLBACK (se deshace, la BD queda intacta)\n        \"\"\"\n        inicio = time.perf_counter()\n        try:\n            with self.conexion:\n                cursor = self.conexion.execute(sql, parametros)\n        except sqlite3.Error as error:\n            self._avisar(sql=sql, parametros=parametros, filas=0,\n                         ms=self._ms_desde(inicio), error=str(error))\n            raise  # se vuelve a lanzar para que la ventana muestre el mensaje\n\n        self._avisar(sql=sql, parametros=parametros, filas=cursor.rowcount,\n                     ms=self._ms_desde(inicio), error=None)\n        return cursor\n\n    # -----------------------------------------------------------------------\n    # 🔎 Sentencias que solo LEEN datos: SELECT\n    # -----------------------------------------------------------------------\n    def consultar(self, sql: str, parametros: tuple = ()) -> list[sqlite3.Row]:\n        \"\"\"Ejecuta un SELECT y devuelve todas las filas encontradas.\"\"\"\n        inicio = time.perf_counter()\n        filas = self.conexion.execute(sql, parametros).fetchall()\n        self._avisar(sql=sql, parametros=parametros, filas=len(filas),\n                     ms=self._ms_desde(inicio), error=None)\n        return filas\n\n    # -----------------------------------------------------------------------\n    def cerrar(self) -> None:\n        \"\"\"Cierra la conexión. Se llama al cerrar la ventana.\"\"\"\n        self.conexion.close()\n\n    @staticmethod\n    def _ms_desde(inicio: float) -> float:\n        return (time.perf_counter() - inicio) * 1000\n", "modelo.py": "\"\"\"\nmodelo.py — ¿Qué ES un estudiante para nuestro programa?\n=========================================================\n\nUna `dataclass` es una clase que solo guarda datos.\nPython escribe por nosotros el constructor (__init__) y la forma\nde imprimirla (__repr__). Menos código, menos errores.\n\n    Fila de la tabla (SQLite)          Objeto de Python\n    ┌────┬────────┬───────────┐        Estudiante(\n    │ id │ nombre │ correo ...│  ───►     id=1, nombre=\"Ana\", ...\n    └────┴────────┴───────────┘        )\n\"\"\"\n\nfrom dataclasses import dataclass\nimport sqlite3\n\n\n@dataclass\nclass Estudiante:\n    nombre: str\n    correo: str\n    telefono: str\n    edad: int\n    carrera: str\n    # Estos dos los pone SQLite, por eso empiezan vacíos (None).\n    id: int | None = None\n    creado_en: str | None = None\n\n    @classmethod\n    def desde_fila(cls, fila: sqlite3.Row) -> \"Estudiante\":\n        \"\"\"Convierte una fila de SQLite en un objeto Estudiante.\"\"\"\n        return cls(\n            id=fila[\"id\"],\n            nombre=fila[\"nombre\"],\n            correo=fila[\"correo\"],\n            telefono=fila[\"telefono\"] or \"\",\n            edad=fila[\"edad\"],\n            carrera=fila[\"carrera\"],\n            creado_en=fila[\"creado_en\"],\n        )\n\n    def como_tupla_tabla(self) -> tuple:\n        \"\"\"Valores en el orden en que se muestran en la tabla de la ventana.\"\"\"\n        return (self.id, self.nombre, self.correo, self.telefono, self.edad, self.carrera)\n"}</script>
+<script>
+/*
+ * motor.js — Reproduce, línea por línea, lo que hace el código Python de app_crud/.
+ * ===============================================================================
+ *
+ * En la app de escritorio, las líneas se graban con sys.settrace. En el navegador
+ * no hay Python, así que este motor «camina» por el MISMO código fuente (que se
+ * inserta en la página con construir.py) siguiendo la misma lógica:
+ *
+ *     P('if errores:')   →  busca esa línea en el archivo real, a partir de donde va
+ *                            la función, y anota un Paso con su número de línea,
+ *                            la pila de llamadas y las variables locales.
+ *
+ * Cada función de Python tiene aquí su «gemela» en JavaScript que llama a P()
+ * en el mismo orden en que Python ejecutaría las líneas.
+ * Si alguien cambia el código Python y una línea ya no existe, se avisa en la
+ * consola del navegador (Motor.faltantes) en lugar de romperse.
+ */
+const Motor = (() => {
+  "use strict";
+
+  // ───────────────────────── Código fuente y búsqueda de líneas ─────────────────
+  let LINEAS = {};
+  const faltantes = [];
+
+  function cargarFuentes(fuentes) {
+    LINEAS = {};
+    for (const ruta in fuentes) LINEAS[ruta] = fuentes[ruta].split("\n");
+  }
+
+  function lineaDef(ruta, fn) {
+    const i = LINEAS[ruta].findIndex((l) => l.trimStart().startsWith(`def ${fn}(`));
+    return i + 1;
+  }
+
+  function buscarLinea(ruta, desde, texto) {
+    const lineas = LINEAS[ruta];
+    for (let i = desde - 1; i < lineas.length; i++) if (lineas[i].includes(texto)) return i + 1;
+    return null;
+  }
+
+  // ───────────────────────── repr() al estilo Python ────────────────────────────
+  function pyrepr(v, profundidad = 0) {
+    if (v === null || v === undefined) return "None";
+    if (v === true) return "True";
+    if (v === false) return "False";
+    if (typeof v === "number") return String(v);
+    if (typeof v === "string") return "'" + v.replace(/\\/g, "\\\\").replace(/'/g, "\\'") + "'";
+    if (profundidad > 2) return "...";
+    if (Array.isArray(v)) return "[" + v.map((x) => pyrepr(x, profundidad + 1)).join(", ") + "]";
+    if (v.__tupla) {
+      const d = v.__tupla.map((x) => pyrepr(x, profundidad + 1));
+      return "(" + d.join(", ") + (d.length === 1 ? ",)" : ")");
+    }
+    if (v.__tipo === "Estudiante") {
+      return `Estudiante(nombre=${pyrepr(v.nombre)}, correo=${pyrepr(v.correo)}, telefono=${pyrepr(v.telefono)}, ` +
+             `edad=${pyrepr(v.edad)}, carrera=${pyrepr(v.carrera)}, id=${pyrepr(v.id)}, creado_en=${pyrepr(v.creado_en)})`;
+    }
+    if (v.__tipo) return `<${v.__tipo} object>`;
+    return "{" + Object.entries(v).map(([k, x]) => `${pyrepr(k)}: ${pyrepr(x, profundidad + 1)}`).join(", ") + "}";
+  }
+  const recortar = (t, n = 70) => (t.length > n ? t.slice(0, n - 3) + "..." : t);
+
+  // ───────────────────────── Grabación ──────────────────────────────────────────
+  let pasos = [], marcos = [];
+  const tope = () => marcos[marcos.length - 1];
+  const nombreCorto = (ruta) => ruta.split("/").pop().replace(".py", "");
+
+  function entrar(ruta, fn, vars = {}) {
+    const def = lineaDef(ruta, fn);
+    marcos.push({ ruta, fn, cursor: def, vars: { ...vars }, etiqueta: `${nombreCorto(ruta)}.${fn}` });
+  }
+  function salir() { marcos.pop(); }
+  function v(nombre, valor) { tope().vars[nombre] = valor; }
+
+  function foto(vars) {
+    const r = {};
+    for (const [k, x] of Object.entries(vars)) r[k] = recortar(pyrepr(x));
+    return r;
+  }
+
+  /** «Python está a punto de ejecutar esta línea». */
+  function P(texto, opciones = {}) {
+    const m = tope();
+    const n = buscarLinea(m.ruta, m.cursor, texto);
+    if (!n) { faltantes.push(`${m.ruta}: ${texto}`); console.warn("Motor: no encontré la línea", m.ruta, texto); return; }
+    m.cursor = n;
+    pasos.push({ archivo: m.ruta, linea: n, funcion: m.fn, pila: marcos.map((x) => x.etiqueta),
+                 variables: foto(m.vars), nota: opciones.nota || "", error: false });
+  }
+  /** Un error (excepción) pasa por la línea actual de la función de arriba. */
+  function E(nota) {
+    const m = tope();
+    pasos.push({ archivo: m.ruta, linea: m.cursor, funcion: m.fn, pila: marcos.map((x) => x.etiqueta),
+                 variables: foto(m.vars), nota, error: true });
+  }
+  /** Una función que se ejecuta completa pero se muestra como un solo paso. */
+  function resumir(ruta, fn, nota) {
+    entrar(ruta, fn);
+    const m = tope();
+    pasos.push({ archivo: ruta, linea: m.cursor, funcion: fn, pila: marcos.map((x) => x.etiqueta),
+                 variables: {}, nota, error: false });
+    salir();
+  }
+
+  function grabar(funcion) {
+    pasos = []; marcos = [];
+    const resultado = funcion();
+    return { resultado, pasos };
+  }
+
+  // ───────────────────────── La «base de datos» (tabla en memoria) ──────────────
+  const CARRERAS = ["Ingeniería en Sistemas", "Agronomía", "Administración de Empresas",
+                    "Medicina", "Derecho", "Arquitectura", "Otra"];
+  const BD = { filas: [], siguienteId: 1, motivo: null, registro: [] };
+
+  function sembrar() {
+    const ejemplos = [
+      ["Luis Fernando Ajú", "luis.aju@ejemplo.com", "4777-1200", 30, "Ingeniería en Sistemas"],
+      ["Sofía Castillo", "sofia.castillo@ejemplo.com", "5012-4455", 22, "Administración de Empresas"],
+      ["Diego Hernández", "diego.hdz@ejemplo.com", "3098-7766", 27, "Agronomía"],
+      ["María José Ruiz", "mariajose.ruiz@ejemplo.com", "", 19, "Medicina"],
+      ["Carlos Méndez", "carlos.mendez@ejemplo.com", "4410-2299", 24, "Agronomía"],
+      ["Ana Lucía Pérez", "ana.perez@ejemplo.com", "5521-3344", 21, "Ingeniería en Sistemas"],
+    ];
+    BD.filas = ejemplos.map(([nombre, correo, telefono, edad, carrera], i) =>
+      ({ id: i + 1, nombre, correo, telefono, edad, carrera, creado_en: "2026-10-19 09:00:00" }));
+    BD.siguienteId = ejemplos.length + 1;
+  }
+  sembrar();
+
+  function ahora() {
+    const d = new Date(), p = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+  }
+  const ms = () => +(0.05 + Math.random() * 0.4).toFixed(2);
+  function anotarSQL(sql, parametros, filas, error = null) {
+    BD.registro.push({ sql, parametros, filas, ms: ms(), error, motivo: BD.motivo, hora: new Date() });
+  }
+  const tupla = (arr) => ({ __tupla: arr });
+  const comoEstudiante = (f) => ({ __tipo: "Estudiante", ...f });
+  const RUTAS = { ventana: "interfaz/ventana_principal.py", val: "validaciones.py",
+                  repo: "repositorio.py", bd: "base_datos.py", modelo: "modelo.py" };
+
+  // ───────────────────────── base_datos.py ──────────────────────────────────────
+  function bd_ms_desde() {
+    entrar(RUTAS.bd, "_ms_desde"); P("return (time.perf_counter() - inicio) * 1000"); salir();
+  }
+  function bd_avisar() {
+    entrar(RUTAS.bd, "_avisar");
+    P('detalle["motivo"] = self._motivo');
+    P("for funcion in self._oyentes:");
+    P("funcion(detalle)", { nota: "→ la Consola SQL recibe el aviso y lo muestra" });
+    salir();
+  }
+  /** sql, parametros y una función `efecto` que cambia la tabla (o lanza error). */
+  function bd_ejecutar(sql, parametros, efecto) {
+    entrar(RUTAS.bd, "ejecutar", { sql, parametros: tupla(parametros) });
+    P("inicio = time.perf_counter()"); v("inicio", 13851.6366);
+    P("try:");
+    P("with self.conexion:");
+    P("cursor = self.conexion.execute(sql, parametros)");
+    let cursor;
+    try {
+      cursor = efecto();
+    } catch (falla) {
+      E(`⚠ sqlite3.IntegrityError: ${falla.message}`);
+      P("except sqlite3.Error as error:", { nota: "with deshizo todo (ROLLBACK): la tabla quedó intacta" });
+      v("error", { __tipo: "sqlite3.IntegrityError" });
+      P("self._avisar(sql=sql, parametros=parametros, filas=0,"); bd_ms_desde(); bd_avisar();
+      anotarSQL(sql, parametros, 0, falla.message);
+      P("raise", { nota: "el error se lanza hacia arriba, a quien llamó" });
+      salir();
+      throw falla;
+    }
+    v("cursor", { __tipo: "sqlite3.Cursor" });
+    P("self._avisar(sql=sql, parametros=parametros, filas=cursor.rowcount,"); bd_ms_desde(); bd_avisar();
+    anotarSQL(sql, parametros, cursor.rowcount);
+    P("return cursor", { nota: cursor.lastrowid ? `COMMIT ✓ · SQLite asignó el id ${cursor.lastrowid}` : "COMMIT ✓ cambios guardados en taller.db" });
+    salir();
+    return cursor;
+  }
+  function bd_consultar(sql, parametros, consulta) {
+    entrar(RUTAS.bd, "consultar", { sql, parametros: tupla(parametros) });
+    P("inicio = time.perf_counter()"); v("inicio", 13851.9021);
+    P("filas = self.conexion.execute(sql, parametros).fetchall()");
+    const filas = consulta();
+    v("filas", filas.map((f) => ({ ...f })));
+    P("self._avisar(sql=sql, parametros=parametros, filas=len(filas),"); bd_ms_desde(); bd_avisar();
+    anotarSQL(sql, parametros, filas.length);
+    P("return filas");
+    salir();
+    return filas;
+  }
+  /** Lo que la app ejecuta para repintar (refrescar): se anota en la consola como «refresco». */
+  function refrescoSilencioso(busqueda = "") {
+    const antes = BD.motivo;
+    BD.motivo = busqueda ? null : "refresco";
+    anotarSQL("SELECT carrera, COUNT(*) AS total FROM estudiantes GROUP BY carrera ORDER BY total DESC", [], porCarrera().length);
+    anotarSQL("SELECT * FROM estudiantes ORDER BY id DESC", [], BD.filas.length);
+    BD.motivo = antes;
+  }
+
+  // ───────────────────────── modelo.py ──────────────────────────────────────────
+  function modelo_desde_fila(fila) {
+    entrar(RUTAS.modelo, "desde_fila", { fila: { ...fila } });
+    P("return cls(", { nota: "la fila de SQLite se convierte en un objeto Estudiante" });
+    salir();
+    return comoEstudiante(fila);
+  }
+
+  // ───────────────────────── validaciones.py ────────────────────────────────────
+  const PATRON_CORREO = /^[\p{L}\p{N}_.+-]+@[\p{L}\p{N}_-]+(\.[\p{L}\p{N}_-]+)+$/u;
+
+  function validar_estudiante(datos) {
+    entrar(RUTAS.val, "validar_estudiante", { datos });
+    const errores = {};
+    P("errores = {}"); v("errores", errores);
+    P('nombre = datos.get("nombre", "").strip()'); const nombre = (datos.nombre || "").trim(); v("nombre", nombre);
+    P('correo = datos.get("correo", "").strip().lower()'); const correo = (datos.correo || "").trim().toLowerCase(); v("correo", correo);
+    P('telefono = datos.get("telefono", "")'); let telefono = (datos.telefono || "").trim().replace(/-/g, "").replace(/ /g, ""); v("telefono", telefono);
+    P('edad_texto = datos.get("edad", "").strip()'); const edadTexto = (datos.edad || "").trim(); v("edad_texto", edadTexto);
+    P('carrera = datos.get("carrera", "").strip()'); const carrera = (datos.carrera || "").trim(); v("carrera", carrera);
+
+    P("if len(nombre) < 3:");
+    if (nombre.length < 3) { P('errores["nombre"] = '); errores.nombre = "Escribe al menos 3 letras."; }
+    P("if not PATRON_CORREO.match(correo):");
+    if (!PATRON_CORREO.test(correo)) { P('errores["correo"] = '); errores.correo = "Ejemplo válido: ana@correo.com"; }
+    P("if telefono and not (telefono.isdigit()");
+    if (telefono && !(/^\d+$/.test(telefono) && telefono.length === 8)) { P('errores["telefono"] = '); errores.telefono = "Deben ser 8 dígitos, ej. 5555 1234."; }
+    P("edad = 0"); let edad = 0;
+    P("try:"); v("edad", 0);
+    P("edad = int(edad_texto)");
+    if (/^\s*[+-]?\d+\s*$/.test(edadTexto)) {
+      edad = parseInt(edadTexto, 10); v("edad", edad);
+      P("if not 10 <= edad <= 120:");
+      if (!(edad >= 10 && edad <= 120)) { P('errores["edad"] = "La edad debe'); errores.edad = "La edad debe estar entre 10 y 120."; }
+    } else {
+      E(`⚠ ValueError: invalid literal for int(): ${pyrepr(edadTexto)}`);
+      P("except ValueError:", { nota: "try/except atrapó el error: el programa NO se cae" });
+      P('errores["edad"] = "Escribe la edad'); errores.edad = "Escribe la edad con números.";
+    }
+    P("if carrera not in CARRERAS:");
+    if (!CARRERAS.includes(carrera)) { P('errores["carrera"] = '); errores.carrera = "Elige una carrera de la lista."; }
+    v("errores", { ...errores });
+
+    P("if errores:");
+    if (Object.keys(errores).length) {
+      P("return None, errores", { nota: `${Object.keys(errores).length} campo(s) con error → no se toca la base de datos` });
+      salir();
+      return [null, errores];
+    }
+    P("if telefono:");
+    if (telefono) { P('telefono = f"{telefono[:4]}-{telefono[4:]}"'); telefono = `${telefono.slice(0, 4)}-${telefono.slice(4)}`; v("telefono", telefono); }
+    P("return Estudiante(nombre=nombre", { nota: "todo bien → se arma el objeto Estudiante" });
+    salir();
+    return [comoEstudiante({ nombre, correo, telefono, edad, carrera, id: null, creado_en: null }), {}];
+  }
+
+  // ───────────────────────── repositorio.py ─────────────────────────────────────
+  const unico = (correo, excepto) => {
+    if (BD.filas.some((f) => f.correo === correo && f.id !== excepto)) {
+      throw new Error("UNIQUE constraint failed: estudiantes.correo");
+    }
+  };
+
+  function repo_crear(e) {
+    entrar(RUTAS.repo, "crear", { estudiante: e });
+    P("cursor = self.bd.ejecutar(");
+    let cursor;
+    try {
+      cursor = bd_ejecutar("INSERT INTO estudiantes (nombre, correo, telefono, edad, carrera) VALUES (?, ?, ?, ?, ?)",
+        [e.nombre, e.correo, e.telefono, e.edad, e.carrera], () => {
+          unico(e.correo);
+          const id = BD.siguienteId++;
+          BD.filas.push({ id, nombre: e.nombre, correo: e.correo, telefono: e.telefono, edad: e.edad, carrera: e.carrera, creado_en: ahora() });
+          return { rowcount: 1, lastrowid: id };
+        });
+    } catch (falla) { E(`⚠ IntegrityError sube por repositorio.crear()`); salir(); throw falla; }
+    v("cursor", { __tipo: "sqlite3.Cursor" });
+    P("return cursor.lastrowid", { nota: `devuelve el id nuevo: ${cursor.lastrowid}` });
+    salir();
+    return cursor.lastrowid;
+  }
+
+  function repo_obtener(id) {
+    entrar(RUTAS.repo, "obtener", { id_estudiante: id });
+    P('filas = self.bd.consultar("SELECT * FROM estudiantes WHERE id = ?"');
+    const filas = bd_consultar("SELECT * FROM estudiantes WHERE id = ?", [id], () => BD.filas.filter((f) => f.id === id));
+    v("filas", filas.map((f) => ({ ...f })));
+    P("return Estudiante.desde_fila(filas[0]) if filas else None");
+    const r = filas.length ? modelo_desde_fila(filas[0]) : null;
+    salir();
+    return r;
+  }
+
+  function repo_listar(busqueda) {
+    entrar(RUTAS.repo, "listar", { busqueda });
+    P("if busqueda:");
+    let filas;
+    if (busqueda) {
+      const patron = `%${busqueda}%`;
+      P('patron = f"%{busqueda}%"'); v("patron", patron);
+      P("filas = self.bd.consultar(");
+      const t = busqueda.toLowerCase();
+      filas = bd_consultar("SELECT * FROM estudiantes WHERE nombre LIKE ? OR correo LIKE ? OR carrera LIKE ? ORDER BY id DESC",
+        [patron, patron, patron], () => BD.filas.filter((f) =>
+          [f.nombre, f.correo, f.carrera].some((x) => x.toLowerCase().includes(t))).slice().reverse());
+    } else {
+      P('filas = self.bd.consultar("SELECT * FROM estudiantes ORDER BY id DESC")');
+      filas = bd_consultar("SELECT * FROM estudiantes ORDER BY id DESC", [], () => BD.filas.slice().reverse());
+    }
+    v("filas", filas.map((f) => ({ ...f })));
+    P("return [Estudiante.desde_fila(fila) for fila in filas]",
+      { nota: `«list comprehension»: ${filas.length} filas → ${filas.length} objetos Estudiante` });
+    const lista = filas.map((f) => modelo_desde_fila(f));
+    salir();
+    return lista;
+  }
+
+  function repo_actualizar(e) {
+    entrar(RUTAS.repo, "actualizar", { estudiante: e });
+    P("cursor = self.bd.ejecutar(");
+    let cursor;
+    try {
+      cursor = bd_ejecutar("UPDATE estudiantes SET nombre = ?, correo = ?, telefono = ?, edad = ?, carrera = ? WHERE id = ?",
+        [e.nombre, e.correo, e.telefono, e.edad, e.carrera, e.id], () => {
+          unico(e.correo, e.id);
+          const f = BD.filas.find((x) => x.id === e.id);
+          if (!f) return { rowcount: 0 };
+          Object.assign(f, { nombre: e.nombre, correo: e.correo, telefono: e.telefono, edad: e.edad, carrera: e.carrera });
+          return { rowcount: 1 };
+        });
+    } catch (falla) { E("⚠ IntegrityError sube por repositorio.actualizar()"); salir(); throw falla; }
+    v("cursor", { __tipo: "sqlite3.Cursor" });
+    P("return cursor.rowcount == 1");
+    salir();
+    return cursor.rowcount === 1;
+  }
+
+  function repo_eliminar(id) {
+    entrar(RUTAS.repo, "eliminar", { id_estudiante: id });
+    P("cursor = self.bd.ejecutar(");
+    const cursor = bd_ejecutar("DELETE FROM estudiantes WHERE id = ?", [id], () => {
+      const antes = BD.filas.length;
+      BD.filas = BD.filas.filter((f) => f.id !== id);
+      return { rowcount: antes - BD.filas.length };
+    });
+    v("cursor", { __tipo: "sqlite3.Cursor" });
+    P("return cursor.rowcount == 1");
+    salir();
+    return cursor.rowcount === 1;
+  }
+
+  function porCarrera() {
+    const cuenta = {};
+    BD.filas.forEach((f) => { cuenta[f.carrera] = (cuenta[f.carrera] || 0) + 1; });
+    return Object.entries(cuenta).sort((a, b) => b[1] - a[1]);
+  }
+
+  // ───────────────────────── interfaz/ventana_principal.py ──────────────────────
+  // Las líneas de la ventana (toast, ruta, pizarra...) se recorren; lo que hacen en
+  // pantalla lo ejecuta la página DESPUÉS, según el resultado que devolvemos.
+  function v_celebrar(operacion, mensaje) {
+    entrar(RUTAS.ventana, "_celebrar", { operacion, mensaje });
+    P("self.encabezado.encender(operacion)");
+    P('self.toast.mostrar(mensaje, OPERACIONES[operacion]["color"])');
+    salir();
+  }
+  function v_avisar_error(titulo, explicacion) {
+    entrar(RUTAS.ventana, "_avisar_error", { titulo, explicacion });
+    P('self.toast.mostrar(f"⚠ {titulo}", COLORES["error"])');
+    P("self.pizarra.explicar_error(titulo, explicacion)");
+    salir();
+  }
+  function v_limpiar(explicar) {
+    entrar(RUTAS.ventana, "limpiar", { explicar });
+    P("self.id_seleccionado = None");
+    P("self.tabla.quitar_seleccion()");
+    P("self.formulario.vaciar()");
+    P("if explicar:");
+    salir();
+  }
+  function v_refrescar_resumido() {
+    resumir(RUTAS.ventana, "refrescar", "↻ refrescar() vuelve a leer la tabla y el gráfico (se resume en un paso)");
+    refrescoSilencioso();
+  }
+
+  function crear(datos, busquedaActiva) {
+    entrar(RUTAS.ventana, "crear");
+    P("estudiante, errores = validar_estudiante(self.formulario.leer())");
+    const [estudiante, errores] = validar_estudiante(datos);
+    v("estudiante", estudiante); v("errores", errores);
+    P("if errores:");
+    if (Object.keys(errores).length) {
+      P("self.formulario.mostrar_errores(errores)");
+      P('self.ruta.recorrer(COLORES["error"], hasta=1, fallo=True)');
+      P('self._avisar_error("Revisa los campos en rojo",');
+      v_avisar_error("Revisa los campos en rojo", "La validación detuvo el guardado...");
+      P("return"); salir();
+      return { tipo: "errores", errores };
+    }
+    P("try:");
+    P("nuevo_id = self.repo.crear(estudiante)");
+    let nuevoId;
+    try {
+      nuevoId = repo_crear(estudiante);
+    } catch (falla) {
+      E("⚠ IntegrityError llega a la ventana");
+      P("except sqlite3.IntegrityError:", { nota: "la ventana atrapa el error y avisa con calma" });
+      P('self.formulario.mostrar_errores({"correo": "Ese correo ya está registrado."})');
+      P('self.ruta.recorrer(COLORES["error"], hasta=3, fallo=True)');
+      P('self._avisar_error("SQLite dijo que no",');
+      v_avisar_error("SQLite dijo que no", "La columna «correo» es UNIQUE...");
+      P("return"); salir();
+      return { tipo: "unico" };
+    }
+    v("nuevo_id", nuevoId);
+    P('self._celebrar("INSERT"'); v_celebrar("INSERT", `✓ ${estudiante.nombre} creado (#${nuevoId})`);
+    P('self.ruta.recorrer(COLORES["crear"])');
+    P("if self.tabla.busqueda.get():");
+    if (busquedaActiva) { P('self.tabla.busqueda.set("")'); } else { P("self.refrescar()"); }
+    v_refrescar_resumido();
+    P("self.tabla.destellar(nuevo_id");
+    P("self.formulario.vaciar()");
+    P("self.pizarra.explicar_crear(estudiante, nuevo_id)");
+    salir();
+    estudiante.id = nuevoId;
+    return { tipo: "ok", estudiante, id: nuevoId };
+  }
+
+  function seleccionar(id) {
+    entrar(RUTAS.ventana, "seleccionar", { id_estudiante: id });
+    P("estudiante = self.repo.obtener(id_estudiante)");
+    const e = repo_obtener(id);
+    v("estudiante", e);
+    P("if estudiante is None:");
+    if (!e) { P("return"); salir(); return { tipo: "nada" }; }
+    P("self.id_seleccionado = id_estudiante");
+    P("self.formulario.cargar(estudiante)");
+    P('self.encabezado.encender("SELECT")');
+    P('self.ruta.recorrer(COLORES["leer"], saltar={1})');
+    P("self.pizarra.explicar_leer(estudiante)");
+    salir();
+    return { tipo: "ok", estudiante: e };
+  }
+
+  function buscar(texto) {
+    entrar(RUTAS.ventana, "buscar", { texto });
+    P("total = self.refrescar(texto, con_grafico=False)");
+    // Aquí sí mostramos refrescar por dentro: el SELECT con LIKE es la acción principal.
+    entrar(RUTAS.ventana, "refrescar", { busqueda: texto, con_grafico: false });
+    P("with self.bd.motivo(");
+    P("if con_grafico:");
+    P("estudiantes = self.repo.listar(busqueda)");
+    const antes = BD.motivo; BD.motivo = texto ? null : "refresco";
+    const estudiantes = repo_listar(texto);
+    BD.motivo = antes;
+    v("estudiantes", estudiantes);
+    P("self.tabla.mostrar(estudiantes)", { nota: "la tabla de la ventana se vuelve a pintar" });
+    P("total = len(estudiantes)"); v("total", estudiantes.length);
+    P("plantilla = ");
+    P("contar_hasta(self.contador");
+    P("self._total_mostrado = total");
+    P("return total");
+    salir();
+    v("total", estudiantes.length);
+    P("if texto:");
+    if (texto) {
+      P('self.encabezado.encender("SELECT")');
+      P('self.ruta.recorrer(COLORES["leer"], saltar={1})');
+      P("self.pizarra.explicar_busqueda(texto, total)");
+    }
+    salir();
+    return { tipo: "ok", estudiantes, total: estudiantes.length };
+  }
+
+  function actualizar(id, datos) {
+    entrar(RUTAS.ventana, "actualizar");
+    P("if not self.id_seleccionado:");
+    P("estudiante, errores = validar_estudiante(self.formulario.leer())");
+    const [estudiante, errores] = validar_estudiante(datos);
+    v("estudiante", estudiante); v("errores", errores);
+    P("if errores:");
+    if (Object.keys(errores).length) {
+      P("self.formulario.mostrar_errores(errores)");
+      P('self.ruta.recorrer(COLORES["error"], hasta=1, fallo=True)');
+      P('self._avisar_error("Revisa los campos en rojo", "No se envió ningún UPDATE.")');
+      v_avisar_error("Revisa los campos en rojo", "No se envió ningún UPDATE.");
+      P("return"); salir();
+      return { tipo: "errores", errores };
+    }
+    P("anterior = self.repo.obtener(self.id_seleccionado)");
+    const anterior = repo_obtener(id);
+    v("anterior", anterior);
+    P("estudiante.id = self.id_seleccionado"); estudiante.id = id; v("estudiante", estudiante);
+    P("try:");
+    P("self.repo.actualizar(estudiante)");
+    try {
+      repo_actualizar(estudiante);
+    } catch (falla) {
+      E("⚠ IntegrityError llega a la ventana");
+      P("except sqlite3.IntegrityError:");
+      P('self.formulario.mostrar_errores({"correo": "Ese correo ya lo usa otro estudiante."})');
+      P('self.ruta.recorrer(COLORES["error"], hasta=3, fallo=True)');
+      P('self._avisar_error("SQLite dijo que no", "El correo debe ser único (UNIQUE).")');
+      v_avisar_error("SQLite dijo que no", "El correo debe ser único (UNIQUE).");
+      P("return"); salir();
+      return { tipo: "unico" };
+    }
+    const cambios = ["nombre", "correo", "telefono", "edad", "carrera"].filter((c) => anterior[c] !== estudiante[c]);
+    P("cambios = [campo for campo in"); v("cambios", cambios);
+    P('self._celebrar("UPDATE"'); v_celebrar("UPDATE", `✎ ${estudiante.nombre} actualizado`);
+    P('self.ruta.recorrer(COLORES["actualizar"])');
+    P("self.refrescar(self.tabla.busqueda.get().strip())"); v_refrescar_resumido();
+    P("self.tabla.destellar(estudiante.id");
+    P("self.pizarra.explicar_actualizar(estudiante, cambios)");
+    P("self.limpiar(explicar=False)"); v_limpiar(false);
+    salir();
+    return { tipo: "ok", estudiante, cambios };
+  }
+
+  function eliminar(id) {
+    entrar(RUTAS.ventana, "eliminar");
+    P("if not self.id_seleccionado:");
+    P("estudiante = self.repo.obtener(self.id_seleccionado)");
+    const e = repo_obtener(id);
+    v("estudiante", e);
+    P("if estudiante is None:");
+    if (!e) { P("return"); salir(); return { tipo: "nada" }; }
+    P("if not messagebox.askyesno(", { nota: "se pidió confirmación y el usuario dijo «Sí»" });
+    P("self.repo.eliminar(estudiante.id)"); repo_eliminar(e.id);
+    P('self._celebrar("DELETE"'); v_celebrar("DELETE", `✕ ${e.nombre} eliminado`);
+    P('self.ruta.recorrer(COLORES["eliminar"], saltar={1})');
+    P("self.limpiar(explicar=False)"); v_limpiar(false);
+    P("self.refrescar(self.tabla.busqueda.get().strip())"); v_refrescar_resumido();
+    P("self.pizarra.explicar_eliminar(estudiante.nombre, estudiante.id)");
+    salir();
+    return { tipo: "ok", estudiante: e };
+  }
+
+  // ───────────────────────── API pública ────────────────────────────────────────
+  return {
+    cargarFuentes, grabar, faltantes, BD, CARRERAS, porCarrera, refrescoSilencioso,
+    filasVisibles: (texto) => {
+      const t = (texto || "").toLowerCase();
+      return BD.filas.filter((f) => !t || [f.nombre, f.correo, f.carrera].some((x) => x.toLowerCase().includes(t))).slice().reverse();
+    },
+    obtenerFila: (id) => BD.filas.find((f) => f.id === id),
+    operaciones: { crear, seleccionar, buscar, actualizar, eliminar },
+    reiniciar: () => { sembrar(); BD.registro = []; },
+  };
+})();
+if (typeof module !== "undefined") module.exports = Motor;
+
+</script>
+<script>
+(() => {
+  "use strict";
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const reducir = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const COLOR = { crear: "#1E9E5A", seleccionar: "#2F6FDE", buscar: "#2F6FDE", actualizar: "#E08A00", eliminar: "#D64545", error: "#C62828" };
+
+  const FUENTES = JSON.parse($("#fuentes").textContent);
+  Motor.cargarFuentes(FUENTES);
+  const RUTAS = Object.keys(FUENTES);
+
+  /* ══════════════════ Resaltado de Python ══════════════════ */
+  const CLAVES = new Set("False None True and as assert async await break class continue def del elif else except finally for from global if import in is lambda nonlocal not or pass raise return try while with yield".split(" "));
+  const INTEGRADAS = new Set("print len int str float bool list dict tuple set range enumerate zip isinstance getattr repr round max min next super any all reversed staticmethod classmethod".split(" "));
+  function resaltar(src) {
+    const out = []; let i = 0, previo = "";
+    const push = (txt, cls) => out.push(cls ? `<span class="${cls}">${esc(txt)}</span>` : esc(txt));
+    while (i < src.length) {
+      const c = src[i], resto = src.slice(i);
+      let m;
+      if (c === "#") { const fin = src.indexOf("\n", i); const j = fin < 0 ? src.length : fin; push(src.slice(i, j), "py-c"); i = j; continue; }
+      if ((m = /^[rRbBfFuU]{0,2}("""|'''|"|')/.exec(resto))) {
+        const q = m[1], ini = m[0].length; let j = i + ini;
+        if (q.length === 3) { const f = src.indexOf(q, j); j = f < 0 ? src.length : f + 3; }
+        else { while (j < src.length && src[j] !== q && src[j] !== "\n") { if (src[j] === "\\") j++; j++; } j++; }
+        push(src.slice(i, j), "py-s"); i = j; previo = "str"; continue;
+      }
+      if ((m = /^[A-Za-z_áéíóúñÁÉÍÓÚÑ][\wáéíóúñÁÉÍÓÚÑ]*/.exec(resto))) {
+        const w = m[0]; let cls = "";
+        if (previo === "def" || previo === "class") cls = "py-d";
+        else if (previo === "@") cls = "py-dec";
+        else if (w === "True" || w === "False" || w === "None") cls = "py-n";
+        else if (CLAVES.has(w)) cls = "py-k";
+        else if (w === "self" || w === "cls") cls = "py-self";
+        else if (INTEGRADAS.has(w)) cls = "py-b";
+        push(w, cls); i += w.length; previo = w; continue;
+      }
+      if ((m = /^\d[\d_]*(\.\d+)?/.exec(resto))) { push(m[0], "py-n"); i += m[0].length; previo = "num"; continue; }
+      if (c === "@") { push(c, "py-dec"); i++; previo = "@"; continue; }
+      push(c, ""); i++;
+      if (!/\s/.test(c)) previo = c;
+    }
+    // Partimos el HTML en líneas cerrando y reabriendo los <span> que cruzan saltos de línea.
+    const lineas = []; let actual = "";
+    for (const trozo of out) {
+      const cls = /^<span class="([^"]+)">/.exec(trozo)?.[1] || null;
+      const texto = cls ? trozo.replace(/^<span class="[^"]+">/, "").replace(/<\/span>$/, "") : trozo;
+      const partes = texto.split("\n");
+      partes.forEach((p, k) => {
+        if (k > 0) { lineas.push(actual); actual = ""; }
+        if (p) actual += cls ? `<span class="${cls}">${p}</span>` : p;
+      });
+    }
+    lineas.push(actual);
+    return lineas;
+  }
+
+  /* ══════════════════ Visor ══════════════════ */
+  const visor = $("#visor"), codigo = $("#v-codigo"), pestanas = $("#v-pestanas");
+  const lineasDe = {}, archivoDe = {}, botonDe = {};
+  RUTAS.forEach((ruta) => {
+    const div = document.createElement("div");
+    div.className = "archivo"; div.hidden = true;
+    div.innerHTML = resaltar(FUENTES[ruta]).map((h, k) => `<div class="l"><span class="n">${k + 1}</span><span>${h || " "}</span></div>`).join("");
+    codigo.appendChild(div);
+    archivoDe[ruta] = div; lineasDe[ruta] = Array.from(div.children);
+    const b = document.createElement("button");
+    b.type = "button"; b.innerHTML = `${ruta.split("/").pop()}<i></i>`;
+    b.addEventListener("click", () => mostrarArchivo(ruta));
+    pestanas.appendChild(b); botonDe[ruta] = b;
+  });
+
+  let archivoActual = null;
+  function mostrarArchivo(ruta) {
+    if (archivoActual === ruta) return;
+    RUTAS.forEach((r) => { archivoDe[r].hidden = r !== ruta; botonDe[r].classList.toggle("activa", r === ruta); });
+    archivoActual = ruta;
+  }
+  function centrar(ruta, n, suave = true) {
+    const el = lineasDe[ruta][n - 1]; if (!el) return;
+    const destino = el.offsetTop - codigo.clientHeight / 2 + el.offsetHeight / 2;
+    codigo.scrollTo({ top: Math.max(0, destino), behavior: suave && !reducir ? "smooth" : "auto" });
+  }
+
+  const guardado = (k, def) => { try { return localStorage.getItem(k) ?? def; } catch { return def; } };
+  const guardar = (k, x) => { try { localStorage.setItem(k, x); } catch {} };
+  // ms = 0 → «Paso a paso»: el recorrido espera a que el instructor pulse «Siguiente».
+  const V = { pasos: [], i: -1, op: "", timer: null, pausado: true, ms: Number(guardado("visor-ms", "0")), hechas: [] };
+  const ritmo = () => V.ms || 800;
+  function limpiarMarcas() {
+    V.hechas.forEach((el) => el.classList.remove("hecha", "activa", "err"));
+    V.hechas = [];
+    RUTAS.forEach((r) => botonDe[r].classList.remove("visto"));
+  }
+  function botones() {
+    const hay = V.pasos.length > 0, alFinal = V.i >= V.pasos.length - 1;
+    $("#v-atras").disabled = !hay || V.i <= 0;
+    $("#v-linea").disabled = !hay || alFinal;
+    $("#v-repetir").disabled = !hay;
+    $("#v-pausa").disabled = !hay;
+    $("#v-pausa").textContent = !hay ? "▶ Reproducir" : alFinal ? "↺ Otra vez" : V.pausado ? "▶ Reproducir" : "‖ Pausa";
+  }
+  function reproducir(pasos, op) {
+    clearTimeout(V.timer);
+    limpiarMarcas();
+    Object.assign(V, { pasos, i: -1, op, pausado: V.ms === 0 });
+    visor.style.setProperty("--op", COLOR[op] || COLOR.buscar);
+    $("#v-titulo").firstChild.textContent = `Visor de código · ${op}()`;
+    avanzar();
+  }
+  function avanzar() {
+    V.timer = null;
+    if (V.i + 1 >= V.pasos.length) { terminar(); return; }
+    V.i++;
+    const p = V.pasos[V.i];
+    marcar(p); panel(p); centrar(p.archivo, p.linea);
+    if (!V.pausado) V.timer = setTimeout(avanzar, ritmo() * (p.nota || p.error ? 3 : 1));
+    botones();
+  }
+  function terminar() {
+    V.pausado = true; botones();
+    const archivos = new Set(V.pasos.map((p) => p.archivo)).size;
+    $("#v-estado").innerHTML = `✓ Recorrido completo: <b>${V.pasos.length} líneas</b> ejecutadas en <b>${archivos} archivos</b>. Usa «◂ Atrás» para repasar, «Otra vez» para repetirlo o prueba otro botón.`;
+  }
+  // Salta a cualquier paso (hacia atrás o adelante) rehaciendo las marcas hasta ahí.
+  function irA(k) {
+    if (!V.pasos.length) return;
+    clearTimeout(V.timer); V.pausado = true;
+    k = Math.max(0, Math.min(V.pasos.length - 1, k));
+    limpiarMarcas();
+    for (let j = 0; j <= k; j++) marcar(V.pasos[j], j === k);
+    V.i = k;
+    const p = V.pasos[k];
+    panel(p); centrar(p.archivo, p.linea); botones();
+  }
+  function marcar(p, brillar = true) {
+    botonDe[p.archivo].classList.add("visto");
+    V.hechas.forEach((el) => el.classList.remove("activa"));
+    const el = lineasDe[p.archivo][p.linea - 1];
+    if (el) {
+      el.classList.remove("activa"); void el.offsetWidth;   // reinicia la animación de brillo
+      el.classList.add("hecha");
+      if (brillar) el.classList.add("activa");
+      if (p.error) el.classList.add("err");
+      V.hechas.push(el);
+    }
+  }
+  // En qué estación de la «Ruta del dato» está la línea actual.
+  const ESTACION = { "ventana_principal.py": 0, "validaciones.py": 1, "repositorio.py": 2, "modelo.py": 2, "base_datos.py": 3 };
+  function estacionActual(p) {
+    const nombre = p.archivo.split("/").pop();
+    const texto = FUENTES[p.archivo].split("\n")[p.linea - 1] || "";
+    return nombre === "base_datos.py" && /\.execute\(/.test(texto) ? 4 : ESTACION[nombre] ?? -1;
+  }
+  function panel(p) {
+    mostrarArchivo(p.archivo);
+    const aqui = estacionActual(p);
+    $$(".estacion").forEach((e, k) => e.classList.toggle("aqui", k === aqui));
+    // Pila: la más reciente arriba
+    $("#v-pila").innerHTML = p.pila.slice().reverse().map((f, k) => k === 0 ? `<span class="actual">▶ ${esc(f)}</span>` : `<span class="otra">  ${esc(f)}</span>`).join("\n");
+    // Variables: en amarillo las nuevas o cambiadas
+    const antes = V.i > 0 ? V.pasos[V.i - 1].variables : {};
+    const ents = Object.entries(p.variables);
+    $("#v-vars").innerHTML = ents.length ? ents.map(([k, x]) => `<span class="nom">${esc(k)}</span> = <span class="${antes[k] !== x ? "cambio" : ""}">${esc(x)}</span>`).join("\n") : '<span class="otra">(sin variables locales todavía)</span>';
+    const nota = p.nota ? ` &nbsp;<b>${esc(p.nota)}</b>` : "";
+    const ayuda = V.pausado && V.i === 0 ? " &nbsp;<b>→ Pulsa «Siguiente ▸» (o la flecha →) para avanzar.</b>" : "";
+    $("#v-estado").innerHTML = `Paso ${V.i + 1} de ${V.pasos.length} · ${esc(p.archivo.split("/").pop())}, línea ${p.linea} · dentro de ${esc(p.funcion)}()${nota}${ayuda}`;
+    $("#v-progreso").style.width = `${(100 * (V.i + 1)) / V.pasos.length}%`;
+  }
+  function pausarOSeguir() {
+    if (!V.pasos.length) return;
+    if (V.i >= V.pasos.length - 1) { V.pausado = V.ms === 0; irA(0); if (V.ms) { V.pausado = false; V.timer = setTimeout(avanzar, ritmo()); botones(); } return; }
+    V.pausado = !V.pausado;
+    if (V.pausado) { clearTimeout(V.timer); botones(); } else avanzar();
+  }
+  function lineaSiguiente() {
+    if (!V.pasos.length) return;
+    V.pausado = true; clearTimeout(V.timer);
+    if (V.i >= V.pasos.length - 1) { terminar(); return; }
+    avanzar();
+  }
+  $("#v-pausa").addEventListener("click", pausarOSeguir);
+  $("#v-linea").addEventListener("click", lineaSiguiente);
+  $("#v-atras").addEventListener("click", () => irA(V.i - 1));
+  $("#v-repetir").addEventListener("click", () => irA(0));
+  $("#v-progreso-barra").addEventListener("click", (e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    irA(Math.floor(((e.clientX - r.left) / r.width) * V.pasos.length));
+  });
+  $$(".vel button[data-ms]").forEach((b) => {
+    b.setAttribute("aria-pressed", String(Number(b.dataset.ms) === V.ms));
+    b.addEventListener("click", () => {
+      V.ms = Number(b.dataset.ms); guardar("visor-ms", V.ms);
+      $$(".vel button[data-ms]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      if (V.ms === 0 && !V.pausado) { V.pausado = true; clearTimeout(V.timer); botones(); }
+    });
+  });
+  let letra = Number(guardado("visor-letra", "13.5"));
+  const ponerLetra = () => codigo.style.setProperty("--letra", `${letra}px`);
+  ponerLetra();
+  $$(".vel button[data-letra]").forEach((b) => b.addEventListener("click", () => {
+    letra = Math.max(11, Math.min(24, letra + 1.5 * Number(b.dataset.letra)));
+    ponerLetra(); guardar("visor-letra", letra);
+    if (V.i >= 0) centrar(V.pasos[V.i].archivo, V.pasos[V.i].linea, false);
+  }));
+  visor.addEventListener("keydown", (e) => {
+    if (e.key === " ") { e.preventDefault(); pausarOSeguir(); }
+  });
+  // Las flechas funcionan en toda la página, salvo mientras se escribe en un campo.
+  document.addEventListener("keydown", (e) => {
+    if (!V.pasos.length || e.target.closest?.("input, select, textarea")) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); lineaSiguiente(); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); irA(V.i - 1); }
+  });
+  botones();
+
+  /* ══════════════════ La app ══════════════════ */
+  const O = Motor.operaciones;
+  const campos = ["nombre", "correo", "telefono", "edad", "carrera"];
+  const entrada = (c) => $(`#c-${c}`);
+  const sel = entrada("carrera");
+  sel.innerHTML = '<option value=""></option>' + Motor.CARRERAS.map((c) => `<option>${esc(c)}</option>`).join("");
+  sel.value = "Ingeniería en Sistemas";
+  let idSel = null, totalMostrado = 6, registroVisto = 0;
+
+  function leerFormulario() { const d = {}; campos.forEach((c) => (d[c] = entrada(c).value)); return d; }
+  function quitarErrores() {
+    $$(".form-campo").forEach((f) => { f.classList.remove("mal"); const s = f.querySelector("small"); s.textContent = s.dataset.pista; });
+  }
+  function mostrarErrores(err) {
+    quitarErrores();
+    let primero = null;
+    for (const c of campos) if (err[c]) {
+      const f = $(`.form-campo[data-campo="${c}"]`); f.classList.add("mal");
+      f.querySelector("small").textContent = "⚠ " + err[c];
+      primero = primero || entrada(c);
+    }
+    primero && primero.focus();
+  }
+  campos.forEach((c) => entrada(c).addEventListener("input", () => {
+    const f = $(`.form-campo[data-campo="${c}"]`); f.classList.remove("mal");
+    const s = f.querySelector("small"); s.textContent = s.dataset.pista;
+  }));
+
+  function modo(editando) {
+    $("#form-titulo").textContent = editando ? `Editando al estudiante #${idSel}` : "Nuevo estudiante";
+    $("#form-titulo").classList.toggle("editando", editando);
+    $("#form-pista").textContent = editando ? "Cambia lo que quieras y pulsa «Actualizar»." : "Llena los campos y pulsa «Crear».";
+    $("#b-crear").disabled = editando;
+    $("#b-actualizar").disabled = $("#b-eliminar").disabled = !editando;
+    $("#confirmar").hidden = true;
+  }
+  function vaciar() { campos.forEach((c) => (entrada(c).value = "")); quitarErrores(); idSel = null; modo(false); }
+
+  function pintarTabla(destello) {
+    const filas = Motor.filasVisibles($("#buscar").value.trim());
+    $("#filas").innerHTML = filas.length ? filas.map((f) =>
+      `<tr data-id="${f.id}" class="${f.id === idSel ? "sel" : ""}"><td>${f.id}</td><td>${esc(f.nombre)}</td><td>${esc(f.correo)}</td><td>${f.edad}</td><td>${esc(f.carrera)}</td></tr>`).join("")
+      : '<tr><td colspan="5" class="vacio">No hay estudiantes que coincidan.</td></tr>';
+    if (destello) {
+      const tr = $(`#filas tr[data-id="${destello.id}"]`);
+      if (tr) { tr.style.setProperty("--c", destello.color); tr.classList.add("destello"); tr.scrollIntoView({ block: "nearest" }); }
+    }
+    contar(filas.length, $("#buscar").value.trim() ? "coincidencias" : "estudiantes");
+  }
+  function contar(hasta, palabra) {
+    const desde = totalMostrado; totalMostrado = hasta;
+    const t0 = performance.now();
+    const paso = (t) => {
+      const k = Math.min(1, (t - t0) / 450);
+      $("#contador").textContent = `${Math.round(desde + (hasta - desde) * k)} ${palabra}`;
+      if (k < 1) requestAnimationFrame(paso);
+    };
+    reducir ? ($("#contador").textContent = `${hasta} ${palabra}`) : requestAnimationFrame(paso);
+  }
+  function pintarGrafico() {
+    const datos = Motor.porCarrera(), max = Math.max(1, ...datos.map((d) => d[1]));
+    const colores = ["#2F6FDE", "#1E9E5A", "#E08A00", "#8E5BD9", "#D64545", "#0F9BA8", "#7A8599"];
+    $("#grafico").innerHTML = datos.map(([c, n], k) => `<div class="barra-fila"><span title="${esc(c)}">${esc(c)}</span><div><i style="background:${colores[k % 7]}" data-w="${(100 * n) / max}"></i></div><span>${n}</span></div>`).join("");
+    requestAnimationFrame(() => $$("#grafico i").forEach((i) => (i.style.width = i.dataset.w + "%")));
+  }
+
+  function encender(op) {
+    const b = $(`.insignia[data-op="${op}"]`); if (!b) return;
+    b.classList.remove("pulso"); void b.offsetWidth; b.classList.add("pulso");
+  }
+  let toastTimer;
+  function toast(msg, color) {
+    const t = $("#toast"); t.textContent = msg; t.style.background = color;
+    t.classList.add("ver"); clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("ver"), 2600);
+  }
+  function ruta(color, { hasta = 4, fallo = false, saltar = [] } = {}) {
+    const est = $$(".estacion"), riel = $("#riel");
+    est.forEach((e) => { e.classList.remove("ok", "salto"); e.querySelector("b").textContent = ""; });
+    riel.style.setProperty("--c", color); riel.style.transition = "none"; riel.style.width = "0"; void riel.offsetWidth;
+    riel.style.transition = ""; riel.style.width = `${(hasta / 4) * 100}%`;
+    est.forEach((e, k) => {
+      e.style.setProperty("--c", color);
+      if (saltar.includes(k)) { e.classList.add("salto"); return; }
+      if (k > hasta) return;
+      setTimeout(() => { e.classList.add("ok"); if (fallo && k === hasta) e.querySelector("b").textContent = "✕"; }, reducir ? 0 : (1600 * k) / Math.max(1, hasta));
+    });
+  }
+
+  /* Pizarra con efecto máquina de escribir */
+  let escribiendo;
+  function pizarra(color, partes) {
+    $("#franja").style.background = color;
+    const caja = $("#pizarra"); caja.innerHTML = "";
+    const spans = partes.map(([texto, cls]) => { const s = document.createElement("span"); if (cls) s.className = cls; if (cls === "tit") s.style.color = color; caja.appendChild(s); return [s, texto]; });
+    clearTimeout(escribiendo);
+    if (reducir) { spans.forEach(([s, t]) => (s.textContent = t)); return; }
+    let k = 0, j = 0;
+    const tic = () => {
+      if (k >= spans.length) return;
+      const [s, t] = spans[k]; j = Math.min(t.length, j + 3); s.textContent = t.slice(0, j);
+      if (j >= t.length) { k++; j = 0; }
+      escribiendo = setTimeout(tic, 14);
+    };
+    tic();
+  }
+
+  /* Consola SQL */
+  const PALABRAS = /\b(SELECT|FROM|WHERE|INSERT|INTO|VALUES|UPDATE|SET|DELETE|ORDER BY|GROUP BY|LIKE|OR|AND|COUNT|AS|DESC)\b/g;
+  const LETRA = { INSERT: "C", SELECT: "R", UPDATE: "U", DELETE: "D" };
+  const pyval = (v) => (typeof v === "string" ? `'${v}'` : String(v));
+  function consola() {
+    const caja = $("#consola"), nuevos = Motor.BD.registro.slice(registroVisto);
+    registroVisto = Motor.BD.registro.length;
+    for (const r of nuevos) {
+      const h = r.hora.toTimeString().slice(0, 8), op = r.sql.split(" ")[0];
+      let html;
+      if (r.motivo === "refresco" && !r.error) {
+        const corto = r.sql.length > 56 ? r.sql.slice(0, 53) + "..." : r.sql;
+        html = `<span class="h">${h}  ↻ refresco  ${esc(corto)}  (${r.filas} filas)</span>\n\n`;
+      } else {
+        html = `<span class="h">${h}</span>  <span class="${op}">${LETRA[op]} · ${op.padEnd(7)}</span>` +
+          (r.error ? `  <span class="err">✗ ${esc(r.error)}</span>\n` : `  <span class="h">✓ ${r.filas} ${r.filas === 1 ? "fila" : "filas"} · ${r.ms} ms</span>\n`) +
+          esc(r.sql).replace(PALABRAS, '<span class="kw">$1</span>') +
+          (r.parametros.length ? `\n  <span class="h">valores →</span> <span class="val">(${esc(r.parametros.map(pyval).join(", "))}${r.parametros.length === 1 ? "," : ""})</span>` : "") + "\n\n";
+      }
+      caja.insertAdjacentHTML("beforeend", html);
+    }
+    caja.scrollTop = caja.scrollHeight;
+  }
+
+  /* ── Las acciones: el motor graba, la página reacciona, el visor reproduce ── */
+  function ejecutar(nombre, fn) {
+    const { resultado, pasos } = Motor.grabar(fn);
+    consola();
+    reproducir(pasos, nombre);
+    return resultado;
+  }
+
+  function crear() {
+    const datos = leerFormulario();
+    const r = ejecutar("crear", () => O.crear(datos, !!$("#buscar").value.trim()));
+    if (r.tipo === "errores") {
+      mostrarErrores(r.errores); ruta(COLOR.error, { hasta: 1, fallo: true });
+      toast("⚠ Revisa los campos en rojo", COLOR.error);
+      pizarra(COLOR.error, [["Revisa los campos en rojo\n", "tit"], ["La validación detuvo el guardado ANTES de llegar a la base de datos. Así protegemos los datos.", ""]]);
+      return;
+    }
+    if (r.tipo === "unico") {
+      mostrarErrores({ correo: "Ese correo ya está registrado." }); ruta(COLOR.error, { hasta: 3, fallo: true });
+      toast("⚠ SQLite dijo que no", COLOR.error);
+      pizarra(COLOR.error, [["SQLite dijo que no\n", "tit"], ["La columna «correo» es UNIQUE: no puede haber dos iguales. Mira el error en la Consola SQL y la línea roja en el visor.", ""]]);
+      return;
+    }
+    const e = r.estudiante;
+    encender("INSERT"); toast(`✓ ${e.nombre} creado (#${r.id})`, COLOR.crear); ruta(COLOR.crear);
+    $("#buscar").value = ""; vaciar(); pintarTabla({ id: r.id, color: "#BFE8D0" }); pintarGrafico();
+    pizarra(COLOR.crear, [["C · CREATE\n", "tit"], ["1. Pulsaste «Crear». La ventana llamó a ", ""], ["validar_estudiante()", "k"],
+      [".\n2. Todo estaba bien: se llamó a ", ""], ["repo.crear(estudiante)", "k"], [".\n3. Python envió un ", ""], ["INSERT", "k"],
+      [` a SQLite.\n4. SQLite guardó a «${e.nombre}» y le asignó el id `, ""], [`#${r.id}`, "k"], [" (AUTOINCREMENT).", ""]]);
+  }
+
+  function seleccionar(id) {
+    const r = ejecutar("seleccionar", () => O.seleccionar(id));
+    if (r.tipo !== "ok") return;
+    const e = r.estudiante; idSel = id;
+    campos.forEach((c) => (entrada(c).value = c === "edad" ? String(e.edad) : e[c] || ""));
+    quitarErrores(); modo(true); pintarTabla();
+    encender("SELECT"); ruta(COLOR.buscar, { saltar: [1] });
+    pizarra(COLOR.buscar, [["R · READ\n", "tit"], ["Hiciste clic en una fila. Se llamó a ", ""], [`repo.obtener(${id})`, "k"], [", que ejecutó:\n", ""],
+      [`SELECT * FROM estudiantes WHERE id = ${id}`, "k"], ["\nLos datos viajaron al formulario. Leer ", ""], ["no cambia nada", "tit"], [" en la base de datos.", ""]]);
+  }
+
+  let busquedaTimer;
+  function buscar() {
+    const texto = $("#buscar").value.trim();
+    const r = ejecutar("buscar", () => O.buscar(texto));
+    idSel = null; modo(false); pintarTabla();
+    if (texto) {
+      encender("SELECT"); ruta(COLOR.buscar, { saltar: [1] });
+      pizarra(COLOR.buscar, [["R · READ (búsqueda)\n", "tit"], ["Cada búsqueda ejecuta un SELECT con ", ""], ["LIKE", "k"], [":\n", ""],
+        [`... WHERE nombre LIKE '%${texto}%'`, "k"], [`\nEl % significa «lo que sea». Coincidencias: ${r.total}.`, ""]]);
+    }
+  }
+
+  function actualizar() {
+    if (!idSel) return;
+    const datos = leerFormulario(), id = idSel;
+    const r = ejecutar("actualizar", () => O.actualizar(id, datos));
+    if (r.tipo === "errores") {
+      mostrarErrores(r.errores); ruta(COLOR.error, { hasta: 1, fallo: true });
+      toast("⚠ Revisa los campos en rojo", COLOR.error);
+      pizarra(COLOR.error, [["Revisa los campos en rojo\n", "tit"], ["No se envió ningún UPDATE.", ""]]);
+      return;
+    }
+    if (r.tipo === "unico") {
+      mostrarErrores({ correo: "Ese correo ya lo usa otro estudiante." }); ruta(COLOR.error, { hasta: 3, fallo: true });
+      toast("⚠ SQLite dijo que no", COLOR.error);
+      pizarra(COLOR.error, [["SQLite dijo que no\n", "tit"], ["El correo debe ser único (UNIQUE).", ""]]);
+      return;
+    }
+    const e = r.estudiante;
+    encender("UPDATE"); toast(`✎ ${e.nombre} actualizado`, COLOR.actualizar); ruta(COLOR.actualizar);
+    vaciar(); pintarTabla({ id, color: "#F8DDB0" }); pintarGrafico();
+    pizarra(COLOR.actualizar, [["U · UPDATE\n", "tit"], ["Se llamó a ", ""], ["repo.actualizar(estudiante)", "k"],
+      [`.\nCambiaste: ${r.cambios.length ? r.cambios.join(", ") : "ningún campo (los datos ya eran iguales)"}.\nLa clave es el `, ""],
+      [`WHERE id = ${id}`, "k"], [": sin él, SQLite cambiaría a TODOS los estudiantes.", ""]]);
+  }
+
+  function pedirEliminar() {
+    if (!idSel) return;
+    const f = Motor.obtenerFila(idSel); if (!f) return;
+    $("#confirmar-texto").textContent = `¿Seguro que quieres eliminar a «${f.nombre}»? No se puede deshacer.`;
+    $("#confirmar").hidden = false; $("#si-eliminar").focus();
+  }
+  function eliminar() {
+    const id = idSel; $("#confirmar").hidden = true;
+    const r = ejecutar("eliminar", () => O.eliminar(id));
+    if (r.tipo !== "ok") return;
+    const e = r.estudiante;
+    encender("DELETE"); toast(`✕ ${e.nombre} eliminado`, COLOR.eliminar); ruta(COLOR.eliminar, { saltar: [1] });
+    vaciar(); pintarTabla(); pintarGrafico();
+    pizarra(COLOR.eliminar, [["D · DELETE\n", "tit"], ["Confirmaste y se llamó a ", ""], [`repo.eliminar(${id})`, "k"],
+      [`.\n«${e.nombre}» ya no existe en taller.db. DELETE no tiene papelera.\n`, ""], ["El id ", "s"], [`#${id}`, "k"], [" no se vuelve a usar.", "s"]]);
+  }
+
+  function limpiar() {
+    vaciar(); pintarTabla();
+    pizarra(COLOR.buscar, [["Formulario listo\n", "tit"], ["Limpiar no toca la base de datos: solo vacía los campos de la pantalla.", ""]]);
+  }
+
+  $("#b-crear").addEventListener("click", crear);
+  $("#b-actualizar").addEventListener("click", actualizar);
+  $("#b-eliminar").addEventListener("click", pedirEliminar);
+  $("#si-eliminar").addEventListener("click", eliminar);
+  $("#no-eliminar").addEventListener("click", () => ($("#confirmar").hidden = true));
+  $("#b-limpiar").addEventListener("click", limpiar);
+  $("#formulario").addEventListener("submit", (e) => e.preventDefault());
+  $("#formulario").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); idSel ? actualizar() : crear(); }
+    if (e.key === "Escape") limpiar();
+  });
+  $("#filas").addEventListener("click", (e) => { const tr = e.target.closest("tr[data-id]"); if (tr) seleccionar(Number(tr.dataset.id)); });
+  $("#buscar").addEventListener("input", () => { clearTimeout(busquedaTimer); busquedaTimer = setTimeout(buscar, 250); });
+  $$(".pest button").forEach((b) => b.addEventListener("click", () => {
+    $$(".pest button").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+    $("#consola").hidden = b.dataset.p !== "consola"; $("#grafico").hidden = b.dataset.p !== "grafico";
+    if (b.dataset.p === "grafico") pintarGrafico();
+  }));
+  $("#ver-codigo").addEventListener("click", () => {
+    if (matchMedia("(max-width:1279px)").matches) visor.scrollIntoView({ behavior: reducir ? "auto" : "smooth", block: "start" });
+    visor.classList.remove("llamar"); void visor.offsetWidth; visor.classList.add("llamar"); visor.focus({ preventScroll: true });
+  });
+
+  /* ── Estado inicial: como al abrir la app de escritorio ── */
+  $("#consola").innerHTML = '<span class="h">-- Consola SQL en vivo: cada clic en la ventana aparece aquí.\n-- Los ? son huecos que SQLite llena con los «valores» de forma segura.</span>\n\n';
+  Motor.refrescoSilencioso(); consola();
+  pintarTabla(); pintarGrafico(); modo(false);
+  pizarra(COLOR.buscar, [["¡Bienvenido!\n", "tit"], ["Al abrir, la app ejecutó ", ""], ["repo.listar()", "k"], [" y encontró 6 estudiantes.\nYa hay un ejemplo escrito: pulsa ", ""], ["Crear", "k"], [" y mira el visor de la derecha.", ""]]);
+  mostrarArchivo(RUTAS[0]);
+  const def = FUENTES[RUTAS[0]].split("\n").findIndex((l) => l.includes("def crear(")) + 1;
+  lineasDe[RUTAS[0]][def - 1]?.classList.add("hecha"); V.hechas.push(lineasDe[RUTAS[0]][def - 1]);
+  requestAnimationFrame(() => centrar(RUTAS[0], def, false));
+  $("#v-estado").innerHTML = "Este es el código real de <b>app_crud/</b>. Pulsa un botón en la app (Crear, clic en una fila, Buscar…) y aquí brillará, línea por línea, lo que Python ejecuta.";
+  $("#v-pila").innerHTML = '<span class="otra">(vacía: el programa espera un clic en mainloop())</span>';
+  $("#v-vars").innerHTML = '<span class="otra">(aparecen al ejecutar)</span>';
+
+  /* ══════════════════ Inyección SQL ══════════════════ */
+  const muestra = ["Ana Pérez", "Carlos Méndez", "Sofía Castillo", "Diego Hernández"];
+  function inyeccion() {
+    const t = $("#iny").value;
+    const truco = /'\s*or\s*'?(\w+)'?\s*=\s*'?\1'?/i.test(t);
+    const nMal = truco ? muestra.length : muestra.filter((m) => m === t).length;
+    const nBien = muestra.filter((m) => m === t).length;
+    $("#iny-mal").innerHTML = esc(`SELECT * FROM estudiantes WHERE nombre = '${t}'`).replace(/\b(SELECT|FROM|WHERE|OR)\b/g, '<span class="kw">$1</span>');
+    $("#iny-bien").innerHTML = '<span class="kw">SELECT</span> * <span class="kw">FROM</span> estudiantes <span class="kw">WHERE</span> nombre = ?' + `\n<span class="cm">  valores →</span> <span class="val">(${esc(JSON.stringify(t))},)</span>`;
+    $("#iny-mal-r").textContent = truco ? `Devolvió ${nMal} de ${muestra.length} filas: la condición OR '1'='1' siempre es verdadera.` : `Devolvió ${nMal} fila${nMal === 1 ? "" : "s"}.`;
+    $("#iny-mal-r").className = "resultado " + (truco ? "peligro" : "");
+    $("#iny-bien-r").textContent = `Devolvió ${nBien} fila${nBien === 1 ? "" : "s"}: buscó ese texto tal cual, como un dato.`;
+    $("#iny-bien-r").className = "resultado ok";
+  }
+  $("#iny").addEventListener("input", inyeccion);
+  $$("[data-iny]").forEach((b) => b.addEventListener("click", () => { $("#iny").value = b.dataset.iny; inyeccion(); }));
+  inyeccion();
+})();
+</script>
+
+</body>
+</html>
