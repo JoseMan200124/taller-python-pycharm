@@ -140,7 +140,8 @@ El simulador replica la aplicación y su visor en una sola página HTML, sin ser
 |---|---|
 | `plantilla.html` | Interfaz, estilos y reproductor del visor. |
 | `motor.js` | Versiones en JavaScript de las funciones de `app_crud/`. Cada una llama a `P('texto de la línea')`, que localiza esa línea en el **código Python real** y la registra como paso. |
-| `construir.py` | Inserta los `.py` de `app_crud/` como JSON y el motor en la plantilla, y escribe `index.html`. |
+| `grabar_lecciones.py` | Ejecuta los ejemplos de `lecciones/ejemplos/` y graba cada paso en `lecciones.json` (ver abajo). |
+| `construir.py` | Inserta los `.py` de `app_crud/`, la grabación de las lecciones y el motor en la plantilla, y escribe `index.html`. |
 
 Como el visor busca cada línea por su texto, el código que se muestra siempre es el de `app_crud/`. Si se edita la aplicación:
 
@@ -150,6 +151,25 @@ python presentacion/construir.py
 
 Si alguna línea que el motor espera ya no existe, aparece en `Motor.faltantes` (consola del navegador) para actualizar `motor.js`.
 
+### Las lecciones, paso a paso
+
+La primera sección de la página no usa un motor en JavaScript: muestra una **grabación real**. `grabar_lecciones.py` ejecuta cada ejemplo con Python bajo `sys.settrace` y, antes de cada línea, guarda:
+
+- el número de línea, la función y la pila de llamadas;
+- las variables (locales y globales) con un `repr` corto;
+- cuánto lleva impreso la consola (`print`), con las respuestas de `input()` marcadas;
+- la tabla `estudiantes` de la conexión SQLite que tenga el ejemplo, si existe;
+- en los ejemplos con ventana, el estado de cada widget.
+
+Las respuestas a `input()` vienen de la lista `entradas` de cada lección. Los ejemplos 06 y 07 se graban con un `tkinter` mínimo que imita al real (`Tk`, `StringVar`, `IntVar`, `Label`, `Entry`, `Button`, `Listbox`). Su `mainloop()` no espera clics: reproduce los `eventos` configurados («escribe Ana», «clic en Crear»). En PyCharm los mismos archivos abren la ventana de verdad.
+
+La grabación se guarda en `lecciones.json` y se versiona junto con el código. Así `construir.py` siempre produce la misma página, sin importar la versión de Python que lo ejecute. Si cambias un ejemplo:
+
+```bash
+python presentacion/grabar_lecciones.py
+python presentacion/construir.py
+```
+
 ## Pruebas
 
-`tests/test_crud.py` prueba el modelo, las validaciones y el repositorio contra una base SQLite en memoria (`:memory:`), sin abrir ventanas. Por eso corren en cualquier máquina y en la integración continua.
+`tests/test_crud.py` prueba el modelo, las validaciones y el repositorio contra una base SQLite en memoria (`:memory:`), sin abrir ventanas. `tests/test_lecciones.py` comprueba que cada ejemplo de `lecciones/ejemplos/` se graba completo. Ninguna abre ventanas, así que corren en cualquier máquina y en la integración continua.

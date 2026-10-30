@@ -7,11 +7,14 @@ archivos de app_crud/. Para no copiarlos a mano, este script:
 
     1. lee plantilla.html y motor.js,
     2. lee los archivos .py que se muestran en el visor,
-    3. los mete dentro de la página como JSON,
+    3. los mete dentro de la página como JSON, junto con lecciones.json
+       (la grabación de los ejemplos que hace grabar_lecciones.py),
     4. escribe index.html (lista para abrir con doble clic en el navegador).
 
 ▶ Ejecútalo cada vez que cambies el código de app_crud/:
       python presentacion/construir.py
+  Si cambiaste un ejemplo de lecciones/ejemplos/, primero:
+      python presentacion/grabar_lecciones.py
 
   Opcional: python presentacion/construir.py ruta/fragmento.html
   escribe además una versión sin <html>/<head> (la que se publica en línea).
@@ -39,9 +42,15 @@ def construir() -> str:
     motor = (CARPETA / "motor.js").read_text(encoding="utf-8")
     fuentes = {ruta: (APP / ruta).read_text(encoding="utf-8") for ruta in ARCHIVOS}
 
+    lecciones = json.loads((CARPETA / "lecciones.json").read_text(encoding="utf-8"))
+
     # «</» se escapa para que un texto del código nunca cierre el <script> antes de tiempo.
-    datos = json.dumps(fuentes, ensure_ascii=False).replace("</", "<\\/")
-    return plantilla.replace("__FUENTES__", datos).replace("__MOTOR__", motor)
+    def como_json(valor) -> str:
+        return json.dumps(valor, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+    return (plantilla.replace("__LECCIONES__", como_json(lecciones))
+            .replace("__FUENTES__", json.dumps(fuentes, ensure_ascii=False).replace("</", "<\\/"))
+            .replace("__MOTOR__", motor))
 
 
 def documento_completo(fragmento: str) -> str:

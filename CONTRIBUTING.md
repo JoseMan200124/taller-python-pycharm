@@ -26,6 +26,13 @@
 
    Abre `presentacion/index.html`, pulsa cada botón y confirma que `Motor.faltantes` esté vacío en la consola del navegador. Si una línea cambió de texto, actualiza la llamada `P('…')` correspondiente en `presentacion/motor.js`.
 
+   Si cambiaste un ejemplo de `lecciones/ejemplos/`, vuelve a grabarlo antes de construir la página y revisa la sección «Las lecciones, paso a paso»:
+
+   ```bash
+   python presentacion/grabar_lecciones.py
+   python presentacion/construir.py
+   ```
+
 4. Abre un *pull request* que explique qué cambia y qué aprende el estudiante con ese cambio.
 
 ## Ideas bienvenidas

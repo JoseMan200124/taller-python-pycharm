@@ -232,6 +232,55 @@ footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px 
   .iny,.atajos,.cierre{grid-template-columns:1fr}
   .capa{grid-template-columns:1fr}.capa .sabe{white-space:normal}
 }
+/* ───────── Lecciones paso a paso ───────── */
+.lec-pestanas{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.lec-pestanas button{border:1px solid var(--linea);background:var(--tarjeta);color:var(--tinta);border-radius:999px;padding:7px 14px;font-size:15px;display:flex;gap:8px;align-items:center}
+.lec-pestanas button b{font-family:var(--f-codigo);font-size:12px;color:var(--suave)}
+.lec-pestanas button[aria-selected="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.lec-pestanas button[aria-selected="true"] b{color:var(--amarillo)}
+.lec-idea{display:flex;gap:6px 16px;align-items:baseline;flex-wrap:wrap;margin-bottom:14px}
+.lec-idea p{font-size:19px;font-weight:700}
+.lec-idea a{color:var(--azul-claro);font-size:14px}
+.lec-mesa{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:1100px){.lec-mesa{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start}}
+.lec-visor .v-codigo{height:auto;min-height:260px;max-height:640px}
+.lec-visor .v-titulo{color:#FFD43B}
+.lec-lado{display:grid;gap:12px;min-width:0}
+.lec-panel{background:var(--tarjeta);border:1px solid var(--linea);border-radius:12px;padding:12px 14px;min-width:0}
+.lec-panel h4{margin:0 0 8px;font-family:var(--f-codigo);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);font-weight:700}
+.lec-vars{font-family:var(--f-codigo);font-size:14px;display:grid;gap:2px;max-height:260px;overflow:auto}
+.lv-titulo{font-size:12px;color:var(--suave);margin-top:6px}
+.lv-titulo:first-child{margin-top:0}
+.lv-fila{display:grid;grid-template-columns:minmax(90px,auto) 1fr;gap:12px;padding:3px 8px;border-radius:6px;transition:background .4s}
+.lv-n{color:var(--azul-claro);font-weight:700}
+.lv-v{overflow-wrap:anywhere}
+.lv-fila.cambio{background:color-mix(in srgb,var(--amarillo) 40%,transparent)}
+.lv-vacio{color:var(--suave);font-size:13px}
+.lec-consola{margin:0;background:var(--consola);color:var(--consola-tinta);font-family:var(--f-codigo);font-size:14px;line-height:1.5;border-radius:8px;padding:10px 12px;min-height:90px;max-height:240px;overflow:auto;white-space:pre-wrap}
+.lec-consola .in{color:#FFD43B;font-weight:700}
+.lec-consola .nuevo{background:rgba(255,212,59,.18);border-radius:3px}
+.lec-consola .h{color:var(--consola-suave)}
+.lec-tabla{overflow:auto}
+.lec-tabla table{border-collapse:collapse;width:100%;font-size:14px}
+.lec-tabla th{text-align:left;background:#1F3A68;color:#fff;padding:5px 10px;font-weight:700}
+.lec-tabla td{padding:5px 10px;border-bottom:1px solid var(--linea)}
+.lec-tabla tr.nueva td{background:color-mix(in srgb,var(--crear) 22%,transparent)}
+.lec-tabla .vacio{color:var(--suave);font-size:14px}
+/* La ventanita de tkinter: siempre clara, como en el escritorio */
+.tk-ventana{background:#EEF2F8;color:#1C2333;border:1px solid #C9D2E2;border-radius:8px;overflow:hidden;max-width:420px}
+.tk-cromo{background:#DCE3EE;font-size:12px;color:#5F6B82;padding:6px 10px}
+.tk-cuerpo{padding:12px 16px;display:grid;gap:7px;justify-items:center;font-size:14px}
+.tkw-label{text-align:center}
+.tkw-entry{width:220px;min-height:28px;background:#fff;border:1px solid #9AA6BC;border-radius:3px;padding:3px 8px;font-family:var(--f-codigo);font-size:13px}
+.tkw-entry.foco{outline:3px solid #FFD43B}
+.tkw-entry .cursor{display:inline-block;width:2px;height:15px;background:#1C2333;vertical-align:middle;margin-left:1px;animation:parpadeo 1s steps(1) infinite}
+@keyframes parpadeo{50%{opacity:0}}
+.tkw-boton{border:1px solid #9AA6BC;background:#E3E8F1;border-radius:4px;padding:4px 18px}
+.tkw-boton.pulsado{background:#2F6FDE;color:#fff;border-color:#2F6FDE;box-shadow:0 0 0 3px #FFD43B}
+.tkw-lista{width:260px;min-height:64px;background:#fff;border:1px solid #9AA6BC;font-family:var(--f-codigo);font-size:13px;padding:4px 6px}
+.tkw-lista .vacio{color:#8A93A6}
+.tk-aun{color:var(--suave);font-size:14px}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
@@ -245,15 +294,52 @@ footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px 
       <div class="letra"><b style="background:#2F6FDE">R</b>Leer</div>
       <div class="letra"><b style="background:#D98200">U</b>Actualizar</div>
       <div class="letra"><b style="background:#D64545">D</b>Eliminar</div>
-      <a class="ir" href="#app-en-vivo">Probar la app ↓</a>
+      <a class="ir" href="#lecciones">Ver las lecciones ↓</a>
+      <a class="ir" href="#app-en-vivo" style="margin-left:0">Probar la app ↓</a>
     </div>
   </div>
 </header>
 
 <main>
-  <section id="app-en-vivo" style="border-top:0">
+  <section id="lecciones" style="border-top:0">
     <div class="envoltura ancha">
-      <div class="cabeza-seccion"><span class="num">01</span><h2>La app y su código, en vivo</h2>
+      <div class="cabeza-seccion"><span class="num">01</span><h2>Las lecciones, paso a paso</h2>
+        <p>Un ejemplo corto de cada lección. Python lo ejecutó de verdad y aquí lo ves una línea a la vez: la línea resaltada es la que <b>está por ejecutarse</b>; a la derecha, las variables, lo que imprime y, si hay base de datos, cómo queda la tabla.</p></div>
+      <div class="lec-pestanas" id="l-pestanas" role="tablist" aria-label="Lecciones"></div>
+      <div class="lec-idea"><p id="l-idea"></p><a id="l-enlace" target="_blank" rel="noopener"></a></div>
+      <div class="lec-mesa" id="l-mesa">
+        <div class="visor lec-visor" id="l-visor" tabindex="0" aria-label="Código del ejemplo">
+          <div class="v-barra">
+            <span class="marca">&lt;/&gt;</span>
+            <div class="v-titulo"><span id="l-archivo"></span><small>← → = línea por línea · Espacio = reproducir / pausa</small></div>
+            <div class="v-controles">
+              <button type="button" id="l-inicio" title="Volver a la primera línea">⏮ Inicio</button>
+              <button type="button" id="l-atras" title="Línea anterior (←)">◂ Atrás</button>
+              <button type="button" id="l-sig" class="grande" title="Línea siguiente (→)">Siguiente ▸</button>
+              <button type="button" id="l-play" title="Avanzar solo (Espacio)">▶ Reproducir</button>
+              <div class="vel" role="group" aria-label="Tamaño de letra">
+                <button type="button" data-letra="-1" title="Letra más pequeña">A−</button>
+                <button type="button" data-letra="1" title="Letra más grande (para el proyector)">A+</button>
+              </div>
+            </div>
+          </div>
+          <div class="v-codigo" id="l-codigo"></div>
+          <div class="v-progreso" id="l-progreso-barra" title="Clic para saltar a ese punto"><i id="l-progreso"></i></div>
+          <div class="v-estado" id="l-estado"></div>
+        </div>
+        <div class="lec-lado">
+          <div class="lec-panel" id="l-panel-ventana" hidden><h4>La ventana (clics simulados)</h4><div class="tk-ventana"><div class="tk-cromo" id="l-ventana-titulo"></div><div class="tk-cuerpo" id="l-ventana"></div></div></div>
+          <div class="lec-panel"><h4>Variables</h4><div class="lec-vars" id="l-vars"></div></div>
+          <div class="lec-panel" id="l-panel-tabla" hidden><h4>Tabla estudiantes (SQLite)</h4><div class="lec-tabla" id="l-tabla"></div></div>
+          <div class="lec-panel"><h4>Consola</h4><pre class="lec-consola" id="l-consola"></pre></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="app-en-vivo">
+    <div class="envoltura ancha">
+      <div class="cabeza-seccion"><span class="num">02</span><h2>La app y su código, en vivo</h2>
         <p>A la izquierda, la aplicación del taller. A la derecha, su código Python real. Pulsa <b>Crear</b> (ya hay un ejemplo escrito) y mira cómo brilla cada línea mientras viaja por los archivos.</p></div>
 
       <div class="escritorio">
@@ -362,7 +448,7 @@ footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px 
 
   <div class="envoltura">
   <section id="ruta">
-    <div class="cabeza-seccion"><span class="num">02</span><h2>La ruta del taller</h2>
+    <div class="cabeza-seccion"><span class="num">03</span><h2>La ruta del taller</h2>
       <p>Siete lecciones, cada una en su propio archivo de <code>lecciones/</code>. Si alguien se atrasa, abre el siguiente archivo y sigue desde ahí.</p></div>
     <ol class="ruta">
       <li><span class="punto">01</span><h3>Hola, Python</h3><small>variables · input</small><span class="min">15 min</span></li>
@@ -376,7 +462,7 @@ footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px 
   </section>
 
   <section id="capas">
-    <div class="cabeza-seccion"><span class="num">03</span><h2>Cada archivo, un solo trabajo</h2>
+    <div class="cabeza-seccion"><span class="num">04</span><h2>Cada archivo, un solo trabajo</h2>
       <p>Son las pestañas del visor. Un clic baja por las capas y la respuesta sube de vuelta.</p></div>
     <div class="capas">
       <div class="capa"><code>ventana_principal.py</code><p>Lo que se ve: formulario, tabla, consola SQL, animaciones.</p><span class="sabe">sabe de botones, no de SQL</span></div>
@@ -392,7 +478,7 @@ footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px 
   </section>
 
   <section id="inyeccion">
-    <div class="cabeza-seccion"><span class="num">04</span><h2>Por qué siempre usamos <code>?</code></h2>
+    <div class="cabeza-seccion"><span class="num">05</span><h2>Por qué siempre usamos <code>?</code></h2>
       <p>Si el texto del usuario se pega dentro del SQL, el usuario puede cambiar la consulta. Escribe un nombre o usa el truco clásico.</p></div>
     <div class="entrada-iny">
       <label for="iny" class="etiqueta">Nombre a buscar</label>
@@ -407,7 +493,7 @@ footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px 
   </section>
 
   <section id="pycharm">
-    <div class="cabeza-seccion"><span class="num">05</span><h2>PyCharm en seis atajos</h2>
+    <div class="cabeza-seccion"><span class="num">06</span><h2>PyCharm en seis atajos</h2>
       <p>Windows y Linux. En macOS cambia <kbd>Ctrl</kbd> por <kbd>Cmd</kbd> en la mayoría.</p></div>
     <div class="atajos">
       <div class="atajo"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F10</kbd><p>Ejecutar el archivo abierto.</p></div>
@@ -420,7 +506,7 @@ footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px 
   </section>
 
   <section id="retos">
-    <div class="cabeza-seccion"><span class="num">06</span><h2>Retos para cerrar</h2>
+    <div class="cabeza-seccion"><span class="num">07</span><h2>Retos para cerrar</h2>
       <p>En parejas. Las pistas están en <code>retos/RETOS.md</code>.</p></div>
     <div class="cierre">
       <div class="nivel"><span class="etiqueta">Nivel 1</span><h3>Calentamiento</h3><ul><li>Agrega una carrera nueva</li><li>Cambia el color de «Crear»</li><li>Ajusta la velocidad de la pizarra</li></ul></div>
@@ -434,6 +520,7 @@ footer{padding-block:28px 48px;color:var(--suave);font-size:14px;border-top:1px 
 <footer><div class="envoltura">Taller de Programación de Lenguaje Python con IDE PyCharm · El código del visor es el de <code>app_crud/</code>, insertado con <code>presentacion/construir.py</code> · Los datos de esta página viven solo en tu navegador y se reinician al recargar.</div></footer>
 
 <script type="application/json" id="fuentes">__FUENTES__</script>
+<script type="application/json" id="lecciones-datos">__LECCIONES__</script>
 <script>
 __MOTOR__
 </script>
@@ -637,7 +724,7 @@ __MOTOR__
     });
   });
   let letra = Number(guardado("visor-letra", "13.5"));
-  const ponerLetra = () => codigo.style.setProperty("--letra", `${letra}px`);
+  const ponerLetra = () => document.documentElement.style.setProperty("--letra", `${letra}px`);
   ponerLetra();
   $$(".vel button[data-letra]").forEach((b) => b.addEventListener("click", () => {
     letra = Math.max(11, Math.min(24, letra + 1.5 * Number(b.dataset.letra)));
@@ -648,12 +735,157 @@ __MOTOR__
     if (e.key === " ") { e.preventDefault(); pausarOSeguir(); }
   });
   // Las flechas funcionan en toda la página, salvo mientras se escribe en un campo.
+  // Las flechas mueven el panel que se usó por última vez: las lecciones o el visor de la app.
+  let activo = "lecciones";
+  $("#lecciones").addEventListener("pointerdown", () => (activo = "lecciones"));
+  $("#lecciones").addEventListener("focusin", () => (activo = "lecciones"));
+  $("#app-en-vivo").addEventListener("pointerdown", () => (activo = "visor"));
+  $("#app-en-vivo").addEventListener("focusin", () => (activo = "visor"));
   document.addEventListener("keydown", (e) => {
-    if (!V.pasos.length || e.target.closest?.("input, select, textarea")) return;
+    if (e.target.closest?.("input, select, textarea")) return;
+    if (activo === "lecciones") {
+      if (e.key === "ArrowRight") { e.preventDefault(); Lec.siguiente(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); Lec.ir(Lec.i - 1); }
+      return;
+    }
+    if (!V.pasos.length) return;
     if (e.key === "ArrowRight") { e.preventDefault(); lineaSiguiente(); }
     if (e.key === "ArrowLeft") { e.preventDefault(); irA(V.i - 1); }
   });
   botones();
+
+  /* ══════════════════ Lecciones paso a paso ══════════════════ */
+  // Cada paso lo grabó presentacion/grabar_lecciones.py ejecutando el ejemplo con Python.
+  const LECCIONES = JSON.parse($("#lecciones-datos").textContent);
+  const lecCodigo = $("#l-codigo");
+  const Lec = {
+    lec: null, i: 0, lineas: [], timer: null,
+    get pasos() { return this.lec ? this.lec.pasos : []; },
+    abrir(k) {
+      this.parar();
+      this.lec = LECCIONES[k];
+      $$("#l-pestanas button").forEach((b, j) => b.setAttribute("aria-selected", String(j === k)));
+      $("#l-idea").textContent = this.lec.idea;
+      $("#l-enlace").href = this.lec.enlace;
+      $("#l-enlace").textContent = `Lección completa: ${this.lec.leccion} ↗`;
+      $("#l-archivo").textContent = this.lec.archivo.split("/").pop();
+      lecCodigo.innerHTML = resaltar(this.lec.codigo.replace(/\n$/, "")).map((h, n) => `<div class="l"><span class="n">${n + 1}</span><span>${h || " "}</span></div>`).join("");
+      this.lineas = Array.from(lecCodigo.children);
+      $("#l-panel-ventana").hidden = !this.pasos.some((p) => p.ventana);
+      $("#l-panel-tabla").hidden = !this.pasos.some((p) => p.tabla);
+      lecCodigo.scrollTop = 0;
+      this.ir(0, false);
+    },
+    ir(k, suave = true) {
+      if (!this.lec) return;
+      const pasos = this.pasos;
+      k = Math.max(0, Math.min(pasos.length - 1, k));
+      this.i = k;
+      const p = pasos[k], antes = pasos[k - 1];
+      this.lineas.forEach((el) => el.classList.remove("hecha", "activa"));
+      for (let j = 0; j < k; j++) if (pasos[j].linea) this.lineas[pasos[j].linea - 1]?.classList.add("hecha");
+      if (p.linea) {
+        const el = this.lineas[p.linea - 1];
+        el.classList.add("hecha", "activa");
+        const destino = el.offsetTop - lecCodigo.clientHeight / 2 + el.offsetHeight / 2;
+        lecCodigo.scrollTo({ top: Math.max(0, destino), behavior: suave && !reducir ? "smooth" : "auto" });
+      }
+      this.variables(p, antes);
+      this.consola(p.salida, antes ? antes.salida : 0);
+      this.ventana(p);
+      this.tabla(p.tabla, antes && antes.tabla);
+      const donde = p.fin ? "✓ <b>Fin del programa.</b> Usa «◂ Atrás» para repasar."
+        : `línea ${p.linea}${p.funcion ? ` · dentro de ${esc(p.funcion)}()` : ""}`;
+      const evento = p.evento ? ` &nbsp;<b>${esc(p.evento)}</b>` : "";
+      const ayuda = k === 0 ? " &nbsp;<b>→ Pulsa «Siguiente ▸» (o la flecha →).</b>" : "";
+      $("#l-estado").innerHTML = `Paso ${k + 1} de ${pasos.length} · ${donde}${evento}${ayuda}`;
+      $("#l-progreso").style.width = `${(100 * (k + 1)) / pasos.length}%`;
+      $("#l-atras").disabled = k === 0;
+      $("#l-sig").disabled = k === pasos.length - 1;
+      $("#l-play").textContent = this.timer ? "‖ Pausa" : k === pasos.length - 1 ? "↺ Otra vez" : "▶ Reproducir";
+    },
+    siguiente() { this.parar(); this.ir(this.i + 1); },
+    parar() { clearTimeout(this.timer); this.timer = null; },
+    reproducir() {
+      if (this.timer) { this.parar(); this.ir(this.i); return; }
+      if (this.i >= this.pasos.length - 1) this.ir(0);
+      const tic = () => {
+        if (this.i >= this.pasos.length - 1) { this.parar(); this.ir(this.i); return; }
+        this.timer = setTimeout(() => { this.ir(this.i + 1); tic(); }, ritmo() * (this.pasos[this.i].evento ? 2 : 1));
+      };
+      tic(); this.ir(this.i);
+    },
+    variables(p, antes) {
+      const grupo = (titulo, vars, previas) => {
+        const ents = Object.entries(vars || {});
+        if (!ents.length) return `<div class="lv-vacio">${titulo ? titulo + ": " : ""}(ninguna todavía)</div>`;
+        return (titulo ? `<div class="lv-titulo">${titulo}</div>` : "") + ents.map(([n, v]) =>
+          `<div class="lv-fila${previas[n] !== v ? " cambio" : ""}"><span class="lv-n">${esc(n)}</span><span class="lv-v">${esc(v)}</span></div>`).join("");
+      };
+      let html = "";
+      if (p.locales) html += grupo(`Locales de ${esc(p.funcion)}()`, p.locales, antes && antes.funcion === p.funcion && antes.locales ? antes.locales : {});
+      html += grupo(p.locales ? "Globales" : "", p.globales, antes ? antes.globales : {});
+      $("#l-vars").innerHTML = html;
+    },
+    consola(hasta, previo) {
+      let html = "", pos = 0;
+      for (const [tipo, texto] of this.lec.salida) {
+        if (pos >= hasta) break;
+        const trozo = texto.slice(0, hasta - pos);
+        const viejo = trozo.slice(0, Math.max(0, previo - pos)), nuevo = trozo.slice(viejo.length);
+        const envolver = (t) => (tipo === "in" ? `<span class="in">${esc(t)}</span>` : esc(t));
+        html += envolver(viejo) + (nuevo ? `<span class="nuevo">${envolver(nuevo)}</span>` : "");
+        pos += texto.length;
+      }
+      const caja = $("#l-consola");
+      caja.innerHTML = html || '<span class="h">(todavía no imprime nada)</span>';
+      caja.scrollTop = caja.scrollHeight;
+    },
+    ventana(p) {
+      if ($("#l-panel-ventana").hidden) return;
+      const v = p.ventana, cuerpo = $("#l-ventana");
+      if (!v) { $("#l-ventana-titulo").textContent = "tk"; cuerpo.innerHTML = '<div class="tk-aun">La ventana se crea con <code>tk.Tk()</code>.</div>'; return; }
+      $("#l-ventana-titulo").textContent = v.titulo;
+      const r = p.resalta || [];
+      let entrada = -1;
+      cuerpo.innerHTML = v.widgets.map((w) => {
+        if (w.tipo === "Entry") {
+          entrada++;
+          const foco = r[0] === "Entry" && r[1] === entrada;
+          return `<div class="tkw-entry${foco ? " foco" : ""}">${esc(w.texto)}${foco ? '<i class="cursor"></i>' : ""}</div>`;
+        }
+        if (w.tipo === "Button") return `<div class="tkw-boton${r[0] === "Button" && r[1] === w.texto ? " pulsado" : ""}">${esc(w.texto)}</div>`;
+        if (w.tipo === "Listbox") return `<div class="tkw-lista">${w.filas.length ? w.filas.map((f) => `<div>${esc(f)}</div>`).join("") : '<div class="vacio">(vacía)</div>'}</div>`;
+        return `<div class="tkw-label">${esc(w.texto)}</div>`;
+      }).join("") || '<div class="tk-aun">(ventana vacía)</div>';
+    },
+    tabla(t, previa) {
+      if ($("#l-panel-tabla").hidden) return;
+      const caja = $("#l-tabla");
+      if (!t) { caja.innerHTML = '<div class="vacio">La tabla todavía no existe: la crea <code>CREATE TABLE</code>.</div>'; return; }
+      const antes = new Set((previa ? previa.filas : []).map((f) => JSON.stringify(f)));
+      caja.innerHTML = `<table><thead><tr>${t.columnas.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>` +
+        (t.filas.length ? t.filas.map((f) => `<tr class="${previa && !antes.has(JSON.stringify(f)) ? "nueva" : ""}">${f.map((x) => `<td>${esc(x)}</td>`).join("")}</tr>`).join("")
+          : `<tr><td colspan="${t.columnas.length}" class="vacio">(sin filas)</td></tr>`) + "</tbody></table>";
+    },
+  };
+  LECCIONES.forEach((lec, k) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role", "tab");
+    b.innerHTML = `<b>${esc(lec.id)}</b>${esc(lec.titulo)}`;
+    b.addEventListener("click", () => Lec.abrir(k));
+    $("#l-pestanas").appendChild(b);
+  });
+  $("#l-sig").addEventListener("click", () => Lec.siguiente());
+  $("#l-atras").addEventListener("click", () => { Lec.parar(); Lec.ir(Lec.i - 1); });
+  $("#l-inicio").addEventListener("click", () => { Lec.parar(); Lec.ir(0); });
+  $("#l-play").addEventListener("click", () => Lec.reproducir());
+  $("#l-progreso-barra").addEventListener("click", (e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    Lec.parar(); Lec.ir(Math.floor(((e.clientX - r.left) / r.width) * Lec.pasos.length));
+  });
+  $("#l-visor").addEventListener("keydown", (e) => { if (e.key === " ") { e.preventDefault(); Lec.reproducir(); } });
+  Lec.abrir(0);
 
   /* ══════════════════ La app ══════════════════ */
   const O = Motor.operaciones;

@@ -71,7 +71,12 @@ python app_crud/main.py          # abre la aplicación final
 
 ## El simulador web
 
-[`presentacion/index.html`](presentacion/index.html) reproduce la aplicación y su visor de código **en el navegador**, sin instalar nada. Está pensado para proyectar en clase:
+[`presentacion/index.html`](presentacion/index.html) funciona **en el navegador**, sin instalar nada, y está pensado para proyectar en clase. Tiene dos partes:
+
+1. **Las lecciones, paso a paso.** Un ejemplo corto de cada lección ([`lecciones/ejemplos/`](lecciones/ejemplos/)) ejecutándose una línea a la vez: la línea que está por ejecutarse, las variables, lo que imprime, la tabla SQLite (lecciones 04, 05 y 07) y la ventana de tkinter (06 y 07, con clics simulados). No es una animación hecha a mano: [`presentacion/grabar_lecciones.py`](presentacion/grabar_lecciones.py) ejecuta cada ejemplo con Python y lo graba con `sys.settrace`.
+2. **La app y su código, en vivo.** La aplicación final con su visor de código.
+
+Los dos se controlan igual:
 
 | Control | Acción |
 |---|---|
@@ -82,9 +87,10 @@ python app_crud/main.py          # abre la aplicación final
 | `▶ Reproducir` · <kbd>Espacio</kbd> | Avanza solo (Lento, Normal o Rápido) |
 | `A−` · `A+` | Tamaño de letra para el proyector |
 
-Por defecto arranca en **Paso a paso**: tras cada clic en la aplicación, el visor espera a que el instructor avance. El código que se muestra es el de `app_crud/`, insertado en la página por [`presentacion/construir.py`](presentacion/construir.py). Si cambias la aplicación, vuelve a generarla:
+Por defecto arranca en **Paso a paso**: tras cada clic en la aplicación, el visor espera a que el instructor avance. El código que se muestra es el de `app_crud/`, insertado en la página por [`presentacion/construir.py`](presentacion/construir.py). Si cambias la aplicación o un ejemplo, vuelve a generarla:
 
 ```bash
+python presentacion/grabar_lecciones.py   # solo si cambiaste lecciones/ejemplos/
 python presentacion/construir.py
 ```
 
@@ -96,6 +102,7 @@ Disponible en línea en **<https://joseman200124.github.io/taller-python-pycharm
 taller-python-pycharm/
 ├── verificar_entorno.py     comprueba Python ≥ 3.10 y tkinter
 ├── lecciones/               siete lecciones progresivas, un archivo por tema
+│   └── ejemplos/            versión corta de cada lección (la que se ve paso a paso en la web)
 ├── app_crud/                aplicación final, organizada en capas
 │   ├── main.py              punto de entrada
 │   ├── modelo.py            qué es un Estudiante (dataclass)
@@ -104,7 +111,7 @@ taller-python-pycharm/
 │   ├── base_datos.py        única puerta de entrada a SQLite
 │   ├── configuracion.py     colores, carreras y ajustes
 │   └── interfaz/            ventana, formulario, tabla, visor de código…
-├── presentacion/            simulador web (plantilla, motor y generador)
+├── presentacion/            simulador web (plantilla, motor, grabador de lecciones y generador)
 ├── tests/                   pruebas automáticas del CRUD
 ├── retos/RETOS.md           ejercicios por nivel, con pistas
 └── docs/                    instalación, guía del instructor y arquitectura

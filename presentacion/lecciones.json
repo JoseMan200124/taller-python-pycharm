@@ -1,0 +1,7519 @@
+[
+ {
+  "id": "01",
+  "titulo": "Hola, Python",
+  "idea": "Las variables son cajitas con nombre; input() siempre devuelve texto.",
+  "archivo": "lecciones/ejemplos/01_hola_python.py",
+  "leccion": "lecciones/01_hola_python.py",
+  "enlace": "https://github.com/JoseMan200124/taller-python-pycharm/blob/main/lecciones/01_hola_python.py",
+  "codigo": "\"\"\"Ejemplo corto de la lección 01 — variables, tipos, operaciones, f-strings e input().\"\"\"\n\nprint(\"¡Hola, mundo!\")\n\nnombre = \"Ana\"          # str   → texto\nedad = 21               # int   → número entero\nestatura = 1.62         # float → número con decimales\nes_estudiante = True    # bool  → True o False\n\nprint(type(edad))\nprint(10 // 3, 10 % 3, 2 ** 10)    # división entera, residuo y potencia\nprint(f\"{nombre} tiene {edad} años y mide {estatura} m.\")\n\ntu_nombre = input(\"¿Cómo te llamas? \")\ntu_edad = int(input(\"¿Cuántos años tienes? \"))   # input() devuelve texto: lo convertimos\nprint(f\"Mucho gusto, {tu_nombre}. En 10 años tendrás {tu_edad + 10}.\")\n",
+  "salida": [
+   [
+    "out",
+    "¡Hola, mundo!\n<class 'int'>\n3 1 1024\nAna tiene 21 años y mide 1.62 m.\n¿Cómo te llamas? "
+   ],
+   [
+    "in",
+    "Luis"
+   ],
+   [
+    "out",
+    "\n¿Cuántos años tienes? "
+   ],
+   [
+    "in",
+    "19"
+   ],
+   [
+    "out",
+    "\nMucho gusto, Luis. En 10 años tendrás 29.\n"
+   ]
+  ],
+  "pasos": [
+   {
+    "linea": 1,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 3,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 5,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 14
+   },
+   {
+    "linea": 6,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'"
+    },
+    "salida": 14
+   },
+   {
+    "linea": 7,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21"
+    },
+    "salida": 14
+   },
+   {
+    "linea": 8,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21",
+     "estatura": "1.62"
+    },
+    "salida": 14
+   },
+   {
+    "linea": 10,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21",
+     "estatura": "1.62",
+     "es_estudiante": "True"
+    },
+    "salida": 14
+   },
+   {
+    "linea": 11,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21",
+     "estatura": "1.62",
+     "es_estudiante": "True"
+    },
+    "salida": 28
+   },
+   {
+    "linea": 12,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21",
+     "estatura": "1.62",
+     "es_estudiante": "True"
+    },
+    "salida": 37
+   },
+   {
+    "linea": 14,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21",
+     "estatura": "1.62",
+     "es_estudiante": "True"
+    },
+    "salida": 70
+   },
+   {
+    "linea": 15,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21",
+     "estatura": "1.62",
+     "es_estudiante": "True",
+     "tu_nombre": "'Luis'"
+    },
+    "salida": 92
+   },
+   {
+    "linea": 16,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21",
+     "estatura": "1.62",
+     "es_estudiante": "True",
+     "tu_nombre": "'Luis'",
+     "tu_edad": "19"
+    },
+    "salida": 117
+   },
+   {
+    "linea": null,
+    "funcion": null,
+    "pila": [],
+    "locales": null,
+    "globales": {
+     "nombre": "'Ana'",
+     "edad": "21",
+     "estatura": "1.62",
+     "es_estudiante": "True",
+     "tu_nombre": "'Luis'",
+     "tu_edad": "19"
+    },
+    "salida": 159,
+    "fin": true
+   }
+  ]
+ },
+ {
+  "id": "02",
+  "titulo": "Decisiones y validación",
+  "idea": "if elige un camino; try/except atrapa el error; while repite hasta que el dato sirve.",
+  "archivo": "lecciones/ejemplos/02_decisiones_y_validacion.py",
+  "leccion": "lecciones/02_decisiones_y_validacion.py",
+  "enlace": "https://github.com/JoseMan200124/taller-python-pycharm/blob/main/lecciones/02_decisiones_y_validacion.py",
+  "codigo": "\"\"\"Ejemplo corto de la lección 02 — if/elif/else, try/except y while.\"\"\"\n\nnota = 75\nif nota >= 90:\n    print(\"Excelente\")\nelif nota >= 61:\n    print(\"Aprobado\")\nelse:\n    print(\"Reprobado\")\n\ntexto = \"veinte\"\ntry:\n    numero = int(texto)          # aquí ocurre un ValueError...\nexcept ValueError:\n    print(f\"«{texto}» no es un número, pero el programa no se cayó\")\n\n# Preguntar HASTA que la respuesta sea válida\nwhile True:\n    respuesta = input(\"Edad (10 a 120): \")\n    try:\n        edad = int(respuesta)\n    except ValueError:\n        print(\"  Escribe solo números\")\n        continue                 # vuelve al inicio del while\n    if 10 <= edad <= 120:\n        break                    # sale del while\n    print(\"  Debe estar entre 10 y 120\")\n\nprint(f\"Edad registrada: {edad}\")\n",
+  "salida": [
+   [
+    "out",
+    "Aprobado\n«veinte» no es un número, pero el programa no se cayó\nEdad (10 a 120): "
+   ],
+   [
+    "in",
+    "veinte"
+   ],
+   [
+    "out",
+    "\n  Escribe solo números\nEdad (10 a 120): "
+   ],
+   [
+    "in",
+    "5"
+   ],
+   [
+    "out",
+    "\n  Debe estar entre 10 y 120\nEdad (10 a 120): "
+   ],
+   [
+    "in",
+    "20"
+   ],
+   [
+    "out",
+    "\nEdad registrada: 20\n"
+   ]
+  ],
+  "pasos": [
+   {
+    "linea": 1,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 3,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 4,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 6,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 7,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 11,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75"
+    },
+    "salida": 9
+   },
+   {
+    "linea": 12,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'"
+    },
+    "salida": 9
+   },
+   {
+    "linea": 13,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'"
+    },
+    "salida": 9
+   },
+   {
+    "linea": 14,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'"
+    },
+    "salida": 9
+   },
+   {
+    "linea": 15,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'"
+    },
+    "salida": 9
+   },
+   {
+    "linea": 18,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'"
+    },
+    "salida": 63
+   },
+   {
+    "linea": 19,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'"
+    },
+    "salida": 63
+   },
+   {
+    "linea": 20,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'veinte'"
+    },
+    "salida": 87
+   },
+   {
+    "linea": 21,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'veinte'"
+    },
+    "salida": 87
+   },
+   {
+    "linea": 22,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'veinte'"
+    },
+    "salida": 87
+   },
+   {
+    "linea": 23,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'veinte'"
+    },
+    "salida": 87
+   },
+   {
+    "linea": 24,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'veinte'"
+    },
+    "salida": 110
+   },
+   {
+    "linea": 18,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'veinte'"
+    },
+    "salida": 110
+   },
+   {
+    "linea": 19,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'veinte'"
+    },
+    "salida": 110
+   },
+   {
+    "linea": 20,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'5'"
+    },
+    "salida": 129
+   },
+   {
+    "linea": 21,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'5'"
+    },
+    "salida": 129
+   },
+   {
+    "linea": 25,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'5'",
+     "edad": "5"
+    },
+    "salida": 129
+   },
+   {
+    "linea": 27,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'5'",
+     "edad": "5"
+    },
+    "salida": 129
+   },
+   {
+    "linea": 18,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'5'",
+     "edad": "5"
+    },
+    "salida": 157
+   },
+   {
+    "linea": 19,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'5'",
+     "edad": "5"
+    },
+    "salida": 157
+   },
+   {
+    "linea": 20,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'20'",
+     "edad": "5"
+    },
+    "salida": 177
+   },
+   {
+    "linea": 21,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'20'",
+     "edad": "5"
+    },
+    "salida": 177
+   },
+   {
+    "linea": 25,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'20'",
+     "edad": "20"
+    },
+    "salida": 177
+   },
+   {
+    "linea": 26,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'20'",
+     "edad": "20"
+    },
+    "salida": 177
+   },
+   {
+    "linea": 29,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'20'",
+     "edad": "20"
+    },
+    "salida": 177
+   },
+   {
+    "linea": null,
+    "funcion": null,
+    "pila": [],
+    "locales": null,
+    "globales": {
+     "nota": "75",
+     "texto": "'veinte'",
+     "respuesta": "'20'",
+     "edad": "20"
+    },
+    "salida": 197,
+    "fin": true
+   }
+  ]
+ },
+ {
+  "id": "03",
+  "titulo": "CRUD en memoria",
+  "idea": "Una lista de diccionarios funciona como una tabla… hasta que cierras el programa.",
+  "archivo": "lecciones/ejemplos/03_crud_en_memoria.py",
+  "leccion": "lecciones/03_crud_en_memoria.py",
+  "enlace": "https://github.com/JoseMan200124/taller-python-pycharm/blob/main/lecciones/03_crud_en_memoria.py",
+  "codigo": "\"\"\"Ejemplo corto de la lección 03 — listas, diccionarios y un CRUD en memoria.\"\"\"\n\nestudiantes = [\n    {\"id\": 1, \"nombre\": \"Ana\", \"edad\": 22},\n    {\"id\": 2, \"nombre\": \"Carlos\", \"edad\": 24},\n]\nsiguiente_id = 3\n\n\ndef buscar(id_buscado):\n    for e in estudiantes:\n        if e[\"id\"] == id_buscado:\n            return e\n    return None                  # None = «no lo encontré»\n\n\n# C — Create\nestudiantes.append({\"id\": siguiente_id, \"nombre\": \"Sofía\", \"edad\": 19})\nsiguiente_id += 1\n\n# R — Read\nfor e in estudiantes:\n    print(e[\"id\"], e[\"nombre\"], e[\"edad\"])\n\n# U — Update\nana = buscar(1)\nana[\"edad\"] = 23\n\n# D — Delete\nestudiantes.remove(buscar(2))\nprint(\"Quedan\", len(estudiantes), \"estudiantes\")\n",
+  "salida": [
+   [
+    "out",
+    "1 Ana 22\n2 Carlos 24\n3 Sofía 19\nQuedan 2 estudiantes\n"
+   ]
+  ],
+  "pasos": [
+   {
+    "linea": 1,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 4,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 5,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 3,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 7,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}]"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 10,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}]",
+     "siguiente_id": "3"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 18,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}]",
+     "siguiente_id": "3"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 19,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "3"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 22,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 23,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 22, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 22,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 22, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 9
+   },
+   {
+    "linea": 23,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 24, 'id': 2, 'nombre': 'Carlos'}"
+    },
+    "salida": 9
+   },
+   {
+    "linea": 22,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 24, 'id': 2, 'nombre': 'Carlos'}"
+    },
+    "salida": 21
+   },
+   {
+    "linea": 23,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}"
+    },
+    "salida": 21
+   },
+   {
+    "linea": 22,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 26,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 11,
+    "funcion": "buscar",
+    "pila": [
+     "buscar",
+     "módulo"
+    ],
+    "locales": {
+     "id_buscado": "1"
+    },
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 12,
+    "funcion": "buscar",
+    "pila": [
+     "buscar",
+     "módulo"
+    ],
+    "locales": {
+     "id_buscado": "1",
+     "e": "{'edad': 22, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 13,
+    "funcion": "buscar",
+    "pila": [
+     "buscar",
+     "módulo"
+    ],
+    "locales": {
+     "id_buscado": "1",
+     "e": "{'edad': 22, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 27,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 22, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 22, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 30,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 23, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 11,
+    "funcion": "buscar",
+    "pila": [
+     "buscar",
+     "módulo"
+    ],
+    "locales": {
+     "id_buscado": "2"
+    },
+    "globales": {
+     "estudiantes": "[{'edad': 23, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 12,
+    "funcion": "buscar",
+    "pila": [
+     "buscar",
+     "módulo"
+    ],
+    "locales": {
+     "id_buscado": "2",
+     "e": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "globales": {
+     "estudiantes": "[{'edad': 23, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 11,
+    "funcion": "buscar",
+    "pila": [
+     "buscar",
+     "módulo"
+    ],
+    "locales": {
+     "id_buscado": "2",
+     "e": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "globales": {
+     "estudiantes": "[{'edad': 23, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 12,
+    "funcion": "buscar",
+    "pila": [
+     "buscar",
+     "módulo"
+    ],
+    "locales": {
+     "id_buscado": "2",
+     "e": "{'edad': 24, 'id': 2, 'nombre': 'Carlos'}"
+    },
+    "globales": {
+     "estudiantes": "[{'edad': 23, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 13,
+    "funcion": "buscar",
+    "pila": [
+     "buscar",
+     "módulo"
+    ],
+    "locales": {
+     "id_buscado": "2",
+     "e": "{'edad': 24, 'id': 2, 'nombre': 'Carlos'}"
+    },
+    "globales": {
+     "estudiantes": "[{'edad': 23, 'id': 1, 'nombre': 'Ana'}, {'edad': 24, 'id': 2, 'nombre': 'Carlos'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": 31,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 23, 'id': 1, 'nombre': 'Ana'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 32
+   },
+   {
+    "linea": null,
+    "funcion": null,
+    "pila": [],
+    "locales": null,
+    "globales": {
+     "estudiantes": "[{'edad': 23, 'id': 1, 'nombre': 'Ana'}, {'edad': 19, 'id': 3, 'nombre': 'Sofía'}]",
+     "siguiente_id": "4",
+     "e": "{'edad': 19, 'id': 3, 'nombre': 'Sofía'}",
+     "ana": "{'edad': 23, 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 53,
+    "fin": true
+   }
+  ]
+ },
+ {
+  "id": "04",
+  "titulo": "SQLite: primeros pasos",
+  "idea": "INSERT, SELECT, UPDATE y DELETE: mira la tabla cambiar con cada línea.",
+  "archivo": "lecciones/ejemplos/04_sqlite_primeros_pasos.py",
+  "leccion": "lecciones/04_sqlite_primeros_pasos.py",
+  "enlace": "https://github.com/JoseMan200124/taller-python-pycharm/blob/main/lecciones/04_sqlite_primeros_pasos.py",
+  "codigo": "\"\"\"Ejemplo corto de la lección 04 — el CRUD con SQL en una base de datos SQLite.\"\"\"\nimport sqlite3\n\nconexion = sqlite3.connect(\":memory:\")   # en la lección: \"leccion04.db\" (un archivo)\nconexion.execute(\"\"\"CREATE TABLE estudiantes (\n    id     INTEGER PRIMARY KEY AUTOINCREMENT,\n    nombre TEXT NOT NULL,\n    edad   INTEGER)\"\"\")\n\n# C — INSERT: los ? se llenan con la tupla de valores\nconexion.execute(\"INSERT INTO estudiantes (nombre, edad) VALUES (?, ?)\", (\"Ana\", 21))\nconexion.execute(\"INSERT INTO estudiantes (nombre, edad) VALUES (?, ?)\", (\"Carlos\", 24))\nconexion.commit()                        # guardar los cambios\n\n# R — SELECT\nfilas = conexion.execute(\"SELECT id, nombre, edad FROM estudiantes\").fetchall()\nfor id_, nombre, edad in filas:\n    print(f\"#{id_} {nombre}, {edad} años\")\n\n# U — UPDATE (¡siempre con WHERE!)\nconexion.execute(\"UPDATE estudiantes SET edad = edad + 1 WHERE nombre = ?\", (\"Ana\",))\n\n# D — DELETE\nconexion.execute(\"DELETE FROM estudiantes WHERE nombre = ?\", (\"Carlos\",))\nconexion.commit()\n\ntotal = conexion.execute(\"SELECT COUNT(*) FROM estudiantes\").fetchone()[0]\nprint(\"Total en la tabla:\", total)\nconexion.close()\n",
+  "salida": [
+   [
+    "out",
+    "#1 Ana, 21 años\n#2 Carlos, 24 años\nTotal en la tabla: 1\n"
+   ]
+  ],
+  "pasos": [
+   {
+    "linea": 1,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 2,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 4,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 5,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 11,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 12,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 13,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 16,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "1",
+     "nombre": "'Ana'",
+     "edad": "21"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "1",
+     "nombre": "'Ana'",
+     "edad": "21"
+    },
+    "salida": 16,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24"
+    },
+    "salida": 16,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24"
+    },
+    "salida": 35,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 21,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24"
+    },
+    "salida": 35,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 24,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24"
+    },
+    "salida": 35,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       22
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 25,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24"
+    },
+    "salida": 35,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       22
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 27,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24"
+    },
+    "salida": 35,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       22
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 28,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24",
+     "total": "1"
+    },
+    "salida": 35,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       22
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 29,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24",
+     "total": "1"
+    },
+    "salida": 56,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       22
+      ]
+     ]
+    }
+   },
+   {
+    "linea": null,
+    "funcion": null,
+    "pila": [],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "filas": "[(1, 'Ana', 21), (2, 'Carlos', 24)]",
+     "id_": "2",
+     "nombre": "'Carlos'",
+     "edad": "24",
+     "total": "1"
+    },
+    "salida": 56,
+    "fin": true,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       22
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "05",
+  "titulo": "CRUD con funciones",
+  "idea": "Cada operación es una función; el correo repetido lo rechaza SQLite, no Python.",
+  "archivo": "lecciones/ejemplos/05_crud_consola_sqlite.py",
+  "leccion": "lecciones/05_crud_consola_sqlite.py",
+  "enlace": "https://github.com/JoseMan200124/taller-python-pycharm/blob/main/lecciones/05_crud_consola_sqlite.py",
+  "codigo": "\"\"\"Ejemplo corto de la lección 05 — funciones + SQLite + por qué usamos ?.\"\"\"\nimport sqlite3\n\n\ndef conectar():\n    conexion = sqlite3.connect(\":memory:\")       # en la lección: \"leccion05.db\"\n    conexion.row_factory = sqlite3.Row           # fila[\"nombre\"] en vez de fila[1]\n    conexion.execute(\"\"\"CREATE TABLE estudiantes (\n        id     INTEGER PRIMARY KEY AUTOINCREMENT,\n        nombre TEXT NOT NULL,\n        correo TEXT NOT NULL UNIQUE)\"\"\")\n    return conexion\n\n\ndef crear(conexion, nombre, correo):\n    with conexion:                               # bien → COMMIT · error → ROLLBACK\n        cursor = conexion.execute(\n            \"INSERT INTO estudiantes (nombre, correo) VALUES (?, ?)\", (nombre, correo))\n    return cursor.lastrowid\n\n\ndef listar(conexion, texto=\"\"):\n    return conexion.execute(\n        \"SELECT * FROM estudiantes WHERE nombre LIKE ?\", (f\"%{texto}%\",)).fetchall()\n\n\nconexion = conectar()\ncrear(conexion, \"Ana\", \"ana@correo.com\")\ncrear(conexion, \"Carlos\", \"carlos@correo.com\")\ntry:\n    crear(conexion, \"Otra Ana\", \"ana@correo.com\")   # correo repetido\nexcept sqlite3.IntegrityError as error:\n    print(\"SQLite dijo que no:\", error)\n\nfor fila in listar(conexion, \"an\"):\n    print(fila[\"id\"], fila[\"nombre\"])\n\n# Inyección SQL: el texto del usuario NUNCA se pega dentro del SQL\ntruco = \"' OR '1'='1\"\npeligroso = conexion.execute(f\"SELECT * FROM estudiantes WHERE nombre = '{truco}'\").fetchall()\nseguro = conexion.execute(\"SELECT * FROM estudiantes WHERE nombre = ?\", (truco,)).fetchall()\nprint(\"Con f-string:\", len(peligroso), \"filas · con ?:\", len(seguro), \"filas\")\n",
+  "salida": [
+   [
+    "out",
+    "SQLite dijo que no: UNIQUE constraint failed: estudiantes.correo\n1 Ana\nCon f-string: 2 filas · con ?: 0 filas\n"
+   ]
+  ],
+  "pasos": [
+   {
+    "linea": 1,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 2,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 5,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 15,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 22,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 27,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 6,
+    "funcion": "conectar",
+    "pila": [
+     "conectar",
+     "módulo"
+    ],
+    "locales": {},
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 7,
+    "funcion": "conectar",
+    "pila": [
+     "conectar",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 8,
+    "funcion": "conectar",
+    "pila": [
+     "conectar",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 12,
+    "funcion": "conectar",
+    "pila": [
+     "conectar",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "globales": {},
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 28,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 16,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 16,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Ana'",
+     "correo": "'ana@correo.com'",
+     "cursor": "<cursor SQLite>"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 19,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Ana'",
+     "correo": "'ana@correo.com'",
+     "cursor": "<cursor SQLite>"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 29,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 16,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Carlos'",
+     "correo": "'carlos@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Carlos'",
+     "correo": "'carlos@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Carlos'",
+     "correo": "'carlos@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Carlos'",
+     "correo": "'carlos@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 16,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Carlos'",
+     "correo": "'carlos@correo.com'",
+     "cursor": "<cursor SQLite>"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 19,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Carlos'",
+     "correo": "'carlos@correo.com'",
+     "cursor": "<cursor SQLite>"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 30,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 31,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 16,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Otra Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Otra Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Otra Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Otra Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 16,
+    "funcion": "crear",
+    "pila": [
+     "crear",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "nombre": "'Otra Ana'",
+     "correo": "'ana@correo.com'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 32,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 33,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "error": "IntegrityError: UNIQUE constraint failed: estudiantes.correo"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 35,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 65,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "listar",
+    "pila": [
+     "listar",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "texto": "'an'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 65,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 24,
+    "funcion": "listar",
+    "pila": [
+     "listar",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "texto": "'an'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 65,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "listar",
+    "pila": [
+     "listar",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "texto": "'an'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 65,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 24,
+    "funcion": "listar",
+    "pila": [
+     "listar",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "texto": "'an'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 65,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "listar",
+    "pila": [
+     "listar",
+     "módulo"
+    ],
+    "locales": {
+     "conexion": "<conexión SQLite>",
+     "texto": "'an'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 65,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 36,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "fila": "{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 65,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 35,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "fila": "{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 71,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 39,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "fila": "{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}"
+    },
+    "salida": 71,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 40,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "fila": "{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}",
+     "truco": "\"' OR '1'='1\""
+    },
+    "salida": 71,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 41,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "fila": "{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}",
+     "truco": "\"' OR '1'='1\"",
+     "peligroso": "[{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}, {'correo': 'carlos@correo.com', 'id': 2, 'nombre': 'Carlos'}]"
+    },
+    "salida": 71,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 42,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "fila": "{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}",
+     "truco": "\"' OR '1'='1\"",
+     "peligroso": "[{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}, {'correo': 'carlos@correo.com', 'id': 2, 'nombre': 'Carlos'}]",
+     "seguro": "[]"
+    },
+    "salida": 71,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   },
+   {
+    "linea": null,
+    "funcion": null,
+    "pila": [],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "fila": "{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}",
+     "truco": "\"' OR '1'='1\"",
+     "peligroso": "[{'correo': 'ana@correo.com', 'id': 1, 'nombre': 'Ana'}, {'correo': 'carlos@correo.com', 'id': 2, 'nombre': 'Carlos'}]",
+     "seguro": "[]"
+    },
+    "salida": 110,
+    "fin": true,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "correo"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       "ana@correo.com"
+      ],
+      [
+       2,
+       "Carlos",
+       "carlos@correo.com"
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "06",
+  "titulo": "Primera ventana",
+  "idea": "mainloop() espera; cada clic llama a la función que le diste con command=.",
+  "archivo": "lecciones/ejemplos/06_primera_ventana.py",
+  "leccion": "lecciones/06_primera_ventana.py",
+  "enlace": "https://github.com/JoseMan200124/taller-python-pycharm/blob/main/lecciones/06_primera_ventana.py",
+  "codigo": "\"\"\"\nEjemplo corto de la lección 06 — primera ventana con tkinter.\nEn PyCharm se abre la ventana de verdad. En la página web se simula lo que\nhace el usuario (escribir y hacer clic) para ver qué código se ejecuta.\n\"\"\"\nimport tkinter as tk\n\nventana = tk.Tk()\nventana.title(\"Mi primera ventana\")\n\n# Variables «enlazadas»: cambian solas cuando el usuario escribe\nnombre = tk.StringVar()\nmensaje = tk.StringVar(value=\"Escribe tu nombre\")\ncontador = tk.IntVar(value=0)\n\n\ndef saludar():                       # se ejecuta con cada clic en «Saludar»\n    texto = nombre.get().strip()\n    if not texto:\n        mensaje.set(\"¡No escribiste nada!\")\n        return\n    contador.set(contador.get() + 1)\n    mensaje.set(f\"¡Hola, {texto}! (saludo #{contador.get()})\")\n\n\ntk.Label(ventana, text=\"Nombre:\").pack()\ntk.Entry(ventana, textvariable=nombre).pack()\ntk.Button(ventana, text=\"Saludar\", command=saludar).pack()   # sin paréntesis\ntk.Label(ventana, textvariable=mensaje).pack()\n\nventana.mainloop()   # espera eventos: cada clic llama a saludar()\n",
+  "salida": [],
+  "pasos": [
+   {
+    "linea": 1,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 6,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 8,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 9,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "tk",
+     "widgets": []
+    }
+   },
+   {
+    "linea": 12,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": []
+    }
+   },
+   {
+    "linea": 13,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": []
+    }
+   },
+   {
+    "linea": 14,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": []
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": []
+    }
+   },
+   {
+    "linea": 26,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": []
+    }
+   },
+   {
+    "linea": 27,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 28,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      }
+     ]
+    }
+   },
+   {
+    "linea": 29,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 31,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Escribe tu nombre"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 31,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "evento": "🖱 clic en «Saludar»",
+    "resalta": [
+     "Button",
+     "Saludar"
+    ],
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Escribe tu nombre"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {},
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Escribe tu nombre"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 19,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "''"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Escribe tu nombre"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 20,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "''"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('Escribe tu nombre')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Escribe tu nombre"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 21,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "''"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "mensaje": "StringVar('¡No escribiste nada!')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡No escribiste nada!"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 31,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡No escribiste nada!')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "evento": "⌨ escribes «Ana»",
+    "resalta": [
+     "Entry",
+     0
+    ],
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡No escribiste nada!"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 31,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡No escribiste nada!')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "evento": "🖱 clic en «Saludar»",
+    "resalta": [
+     "Button",
+     "Saludar"
+    ],
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡No escribiste nada!"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {},
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡No escribiste nada!')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡No escribiste nada!"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 19,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡No escribiste nada!')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡No escribiste nada!"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 22,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡No escribiste nada!')",
+     "contador": "IntVar(0)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡No escribiste nada!"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡No escribiste nada!')",
+     "contador": "IntVar(1)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡No escribiste nada!"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 31,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡Hola, Ana! (saludo #1)')",
+     "contador": "IntVar(1)"
+    },
+    "salida": 0,
+    "evento": "🖱 clic en «Saludar»",
+    "resalta": [
+     "Button",
+     "Saludar"
+    ],
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡Hola, Ana! (saludo #1)"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {},
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡Hola, Ana! (saludo #1)')",
+     "contador": "IntVar(1)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡Hola, Ana! (saludo #1)"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 19,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡Hola, Ana! (saludo #1)')",
+     "contador": "IntVar(1)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡Hola, Ana! (saludo #1)"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 22,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡Hola, Ana! (saludo #1)')",
+     "contador": "IntVar(1)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡Hola, Ana! (saludo #1)"
+      }
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "saludar",
+    "pila": [
+     "saludar"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡Hola, Ana! (saludo #1)')",
+     "contador": "IntVar(2)"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡Hola, Ana! (saludo #1)"
+      }
+     ]
+    }
+   },
+   {
+    "linea": null,
+    "funcion": null,
+    "pila": [],
+    "locales": null,
+    "globales": {
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "mensaje": "StringVar('¡Hola, Ana! (saludo #2)')",
+     "contador": "IntVar(2)"
+    },
+    "salida": 0,
+    "fin": true,
+    "ventana": {
+     "titulo": "Mi primera ventana",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre:"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Saludar"
+      },
+      {
+       "tipo": "Label",
+       "texto": "¡Hola, Ana! (saludo #2)"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "id": "07",
+  "titulo": "CRUD gráfico",
+  "idea": "La ventana, la validación y el SQL juntos: el mismo camino que la app final.",
+  "archivo": "lecciones/ejemplos/07_crud_grafico_un_archivo.py",
+  "leccion": "lecciones/07_crud_grafico_un_archivo.py",
+  "enlace": "https://github.com/JoseMan200124/taller-python-pycharm/blob/main/lecciones/07_crud_grafico_un_archivo.py",
+  "codigo": "\"\"\"\nEjemplo corto de la lección 07 — CRUD gráfico: ventana + SQLite en un archivo.\nEn PyCharm se abre la ventana de verdad; en la página web se simulan los clics.\n\"\"\"\nimport sqlite3\nimport tkinter as tk\n\nconexion = sqlite3.connect(\":memory:\")   # en la lección: \"leccion07.db\"\nconexion.execute(\"\"\"CREATE TABLE estudiantes (\n    id     INTEGER PRIMARY KEY AUTOINCREMENT,\n    nombre TEXT NOT NULL,\n    edad   INTEGER)\"\"\")\n\nventana = tk.Tk()\nventana.title(\"CRUD de estudiantes\")\nnombre = tk.StringVar()\nedad = tk.StringVar()\nmensaje = tk.StringVar(value=\"Llena los campos y pulsa Crear\")\n\n\ndef cargar_tabla():                      # R — leer y mostrar\n    tabla.delete(0, tk.END)\n    for id_, nom, ed in conexion.execute(\"SELECT id, nombre, edad FROM estudiantes\"):\n        tabla.insert(tk.END, f\"#{id_}  {nom}, {ed} años\")\n\n\ndef crear():                             # C — validar y guardar\n    texto = nombre.get().strip()\n    if not texto or not edad.get().isdigit():\n        mensaje.set(\"Revisa el nombre y la edad\")\n        return\n    with conexion:\n        conexion.execute(\"INSERT INTO estudiantes (nombre, edad) VALUES (?, ?)\",\n                         (texto, int(edad.get())))\n    mensaje.set(f\"{texto} guardado\")\n    nombre.set(\"\")\n    edad.set(\"\")\n    cargar_tabla()\n\n\ntk.Label(ventana, text=\"Nombre\").pack()\ntk.Entry(ventana, textvariable=nombre).pack()\ntk.Label(ventana, text=\"Edad\").pack()\ntk.Entry(ventana, textvariable=edad).pack()\ntk.Button(ventana, text=\"Crear\", command=crear).pack()\ntk.Label(ventana, textvariable=mensaje).pack()\ntabla = tk.Listbox(ventana)\ntabla.pack()\n\nventana.mainloop()\n",
+  "salida": [],
+  "pasos": [
+   {
+    "linea": 1,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 5,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 6,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 8,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {},
+    "salida": 0
+   },
+   {
+    "linea": 9,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0
+   },
+   {
+    "linea": 14,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>"
+    },
+    "salida": 0,
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 15,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "tk",
+     "widgets": []
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 16,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": []
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 17,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": []
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 18,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": []
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 21,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": []
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 27,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": []
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 41,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": []
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 42,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 43,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 44,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 45,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 46,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 47,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 48,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "evento": "⌨ escribes «Ana»",
+    "resalta": [
+     "Entry",
+     0
+    ],
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('veinte')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "evento": "⌨ escribes «veinte»",
+    "resalta": [
+     "Entry",
+     1
+    ],
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "veinte"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('veinte')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "evento": "🖱 clic en «Crear»",
+    "resalta": [
+     "Button",
+     "Crear"
+    ],
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "veinte"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 28,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {},
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('veinte')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "veinte"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 29,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('veinte')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "veinte"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 30,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('veinte')",
+     "mensaje": "StringVar('Llena los campos y pulsa Crear')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "veinte"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Llena los campos y pulsa Crear"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 31,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('veinte')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "veinte"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "evento": "⌨ escribes «21»",
+    "resalta": [
+     "Entry",
+     1
+    ],
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "evento": "🖱 clic en «Crear»",
+    "resalta": [
+     "Button",
+     "Crear"
+    ],
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 28,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {},
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 29,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 32,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 33,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 34,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 33,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": []
+    }
+   },
+   {
+    "linea": 32,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 35,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Revisa el nombre y la edad')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Revisa el nombre y la edad"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 36,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Ana')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Ana"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 37,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('21')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "21"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 38,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Ana'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 22,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {},
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {},
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 24,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {
+     "id_": "1",
+     "nom": "'Ana'",
+     "ed": "21"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {
+     "id_": "1",
+     "nom": "'Ana'",
+     "ed": "21"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "evento": "⌨ escribes «Carlos»",
+    "resalta": [
+     "Entry",
+     0
+    ],
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "evento": "⌨ escribes «24»",
+    "resalta": [
+     "Entry",
+     1
+    ],
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 50,
+    "funcion": null,
+    "pila": [
+     "módulo"
+    ],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "evento": "🖱 clic en «Crear»",
+    "resalta": [
+     "Button",
+     "Crear"
+    ],
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 28,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {},
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 29,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 32,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 33,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 34,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 33,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 32,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 35,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Ana guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Ana guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 36,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('Carlos')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "Carlos"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 37,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('24')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": "24"
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 38,
+    "funcion": "crear",
+    "pila": [
+     "crear"
+    ],
+    "locales": {
+     "texto": "'Carlos'"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 22,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {},
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {},
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 24,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {
+     "id_": "1",
+     "nom": "'Ana'",
+     "ed": "21"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": []
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {
+     "id_": "1",
+     "nom": "'Ana'",
+     "ed": "21"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 24,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {
+     "id_": "2",
+     "nom": "'Carlos'",
+     "ed": "24"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": 23,
+    "funcion": "cargar_tabla",
+    "pila": [
+     "cargar_tabla",
+     "crear"
+    ],
+    "locales": {
+     "id_": "2",
+     "nom": "'Carlos'",
+     "ed": "24"
+    },
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años",
+        "#2  Carlos, 24 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   },
+   {
+    "linea": null,
+    "funcion": null,
+    "pila": [],
+    "locales": null,
+    "globales": {
+     "conexion": "<conexión SQLite>",
+     "ventana": "<Tk>",
+     "nombre": "StringVar('')",
+     "edad": "StringVar('')",
+     "mensaje": "StringVar('Carlos guardado')",
+     "tabla": "<Listbox>"
+    },
+    "salida": 0,
+    "fin": true,
+    "ventana": {
+     "titulo": "CRUD de estudiantes",
+     "widgets": [
+      {
+       "tipo": "Label",
+       "texto": "Nombre"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Label",
+       "texto": "Edad"
+      },
+      {
+       "tipo": "Entry",
+       "texto": ""
+      },
+      {
+       "tipo": "Button",
+       "texto": "Crear"
+      },
+      {
+       "tipo": "Label",
+       "texto": "Carlos guardado"
+      },
+      {
+       "tipo": "Listbox",
+       "filas": [
+        "#1  Ana, 21 años",
+        "#2  Carlos, 24 años"
+       ]
+      }
+     ]
+    },
+    "tabla": {
+     "columnas": [
+      "id",
+      "nombre",
+      "edad"
+     ],
+     "filas": [
+      [
+       1,
+       "Ana",
+       21
+      ],
+      [
+       2,
+       "Carlos",
+       24
+      ]
+     ]
+    }
+   }
+  ]
+ }
+]

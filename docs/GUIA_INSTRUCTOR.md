@@ -85,6 +85,8 @@ Saltar la lección 03 (mencionarla como tarea), dar la 01 y la 02 juntas en 20 m
 
    En la página web (`presentacion/index.html`) el visor arranca en **Paso a paso**: al pulsar un botón se detiene en la primera línea y avanza solo cuando tú quieres (`Siguiente ▸` o `→`; `◂ Atrás` o `←` para regresar; clic en la barra de progreso para saltar). «Reproducir» lo deja correr a la velocidad elegida, `A− / A+` agranda la letra para el proyector y la «Ruta del dato» marca en amarillo la capa de la línea actual.
 
+   Arriba de la app, la sección **«Las lecciones, paso a paso»** tiene un ejemplo corto de cada lección (`lecciones/ejemplos/`) con los mismos controles. Úsala al empezar cada bloque de la agenda: abre la pestaña de la lección, avanza línea por línea y pregunta «¿qué valor tendrá esta variable después de esta línea?» antes de pulsar `Siguiente ▸`. Después los alumnos abren el archivo completo en PyCharm.
+
    Es el puente perfecto hacia el depurador real: primero lo ven automático en el visor y luego lo hacen ellos con breakpoints. (Mientras se usa el Debug de PyCharm, el visor se pausa solo para no estorbar al depurador.)
 
 **6. La app final como pizarra.** En `app_crud` cada botón:
